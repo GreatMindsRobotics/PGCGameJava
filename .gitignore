@@ -1,8 +1,13 @@
 *.class
 
 # Package Files #
+*.war
+*.ear
 
 #Can't ignore due to libraries
 #*.jar
-*.war
-*.ear
+
+
+# temp stuff #
+*.snap
+.metadata\*.*
