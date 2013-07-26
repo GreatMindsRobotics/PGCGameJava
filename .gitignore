@@ -7,12 +7,6 @@
 # Cannot ignore .jar files due to libraries #
 #*.jar
 
-# Eclipse workspace #
+# temp stuff #
 *.snap
-.metadata
-!version.ini
-!.plugins/org.eclipse.jdt.core/variablesAndContainers.dat
-!.plugins/org.eclipse.core.resources/.projects/*/.location
-!.metadata\.plugins\org.eclipse.core.resources\.root
-!.metadata\.plugins\org.eclipse.core.resources\.safetable
-!.metadata/.plugins/org.eclipse.wst.jsdt.core/variablesAndContainers.dat
+.metadata\*.*

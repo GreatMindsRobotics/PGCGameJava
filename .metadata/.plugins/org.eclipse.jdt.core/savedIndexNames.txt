@@ -1,18 +1,11 @@
-INDEX VERSION 1.126+C:\Users\Stan\Documents\GitHub\PGCGameJava (GitHub for Windows)\.metadata\.plugins\org.eclipse.jdt.core
-1697886153.index
-4041092966.index
-163172794.index
-3065916431.index
-1115467115.index
-2743424743.index
-3974580528.index
-3945630132.index
-1498219845.index
-945349998.index
-30765161.index
-305854171.index
-3133528496.index
-1995173708.index
-4108727661.index
-1299022128.index
-4155206848.index
+INDEX VERSION 1.126+C:\Users\Stan\Documents\GitHub\PGCGameJava\.metadata\.plugins\org.eclipse.jdt.core
+944539316.index
+1493371577.index
+2744202557.index
+2974003095.index
+1849084989.index
+3249294202.index
+34798500.index
+440727001.index
+163057382.index
+3534349815.index
