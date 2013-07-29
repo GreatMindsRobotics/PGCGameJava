@@ -15,4 +15,12 @@ public class GameContent {
 			enemyDrone2 = new Texture(Gdx.files.internal("Images/EnemyDrone2"));
 		}
 	}
+	
+	public static class Bullet {
+		Texture bullet;
+		
+		Bullet() {
+			bullet = new Texture(Gdx.files.internal("Images/SingleBullet"));
+		}
+	}
 }
