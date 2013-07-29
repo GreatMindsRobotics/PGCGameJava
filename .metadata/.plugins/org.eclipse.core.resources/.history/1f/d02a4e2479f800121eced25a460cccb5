@@ -1,0 +1,5 @@
+package com.buildcoolrobots.games.pgcgame.CoreTypes;
+
+public enum Enums {
+
+}
