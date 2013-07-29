@@ -1,0 +1,5 @@
+package com.buildcoolrobots.games.pgcgame.Powerups;
+
+public class BasePowerup {
+
+}

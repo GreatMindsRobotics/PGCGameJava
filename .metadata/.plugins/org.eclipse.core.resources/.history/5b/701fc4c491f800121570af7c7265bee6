@@ -1,0 +1,5 @@
+package com.buildcoolrobots.games.pgcgame.Ships.Bullets;
+
+public class Bullet {
+
+}
