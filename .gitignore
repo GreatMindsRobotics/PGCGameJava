@@ -23,5 +23,8 @@
 .metadata/.plugins/org.eclipse.jdt.core/savedIndexNames.txt
 .metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml
 .metadata/.plugins/org.eclipse.ui.workbench/workingsets.xml
-bin/jarlist.cache
+
+# exclude compiled binaries
+/bin
+
 
