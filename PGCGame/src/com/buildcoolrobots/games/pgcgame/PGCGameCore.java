@@ -1,5 +1,7 @@
 package com.buildcoolrobots.games.pgcgame;
 
+import me.pagekite.glen3b.gjlib.ExtendedSprite;
+
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
@@ -8,12 +10,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.*;
-import com.buildcoolrobots.games.pgcgame.CoreTypes.GameContent;
 
 public class PGCGameCore implements ApplicationListener {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
-	private Sprite sprite;
 		
 	@Override
 	public void create() {		
@@ -26,19 +26,19 @@ public class PGCGameCore implements ApplicationListener {
 		
 		loadContent();
 		
-		//sprite = new Sprite(GameContent.GameAssets().Images().Ships().Ship(ShipTypes.PLAYERSHIP));
-		sprite = new Sprite(ShipTypes.PLAYERSHIP.GameTexture());
 		
-		
-		sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
-
-		sprite.setPosition(width / 2, height / 2);
 	}
 
 	@SuppressWarnings("unused")
 	private void loadContent() {
 		//Pre-load images
 		for(IGameObject gameObject : ShipTypes.values()) {
+			//Looping through the enum values causes type instantiation and texture load
+		}
+		for(IGameScreen gameScreen : ScreenType.values()) {
+			//Looping through the enum values causes type instantiation and texture load
+		}
+		for(IGameLevel gameLevel : GameLevel.values()) {
 			//Looping through the enum values causes type instantiation and texture load
 		}
 	}
@@ -54,9 +54,8 @@ public class PGCGameCore implements ApplicationListener {
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		
 		batch.setProjectionMatrix(camera.combined);
-		
+				
 		batch.begin();
-		sprite.draw(batch);
 		batch.end();
 	}
 
