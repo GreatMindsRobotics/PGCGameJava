@@ -1,7 +1,0 @@
-package com.buildcoolrobots.games.pgcgame.CoreTypes;
-
-public static class Enums {
-	public enum ScreenType {
-		
-	}
-}
