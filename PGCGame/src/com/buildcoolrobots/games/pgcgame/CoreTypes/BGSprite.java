@@ -5,6 +5,7 @@ import javax.management.InstanceNotFoundException;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Vector2;
 
 public class BGSprite extends Sprite {
 	private static BGSprite _currentBG = null;
@@ -26,5 +27,19 @@ public class BGSprite extends Sprite {
         }
 
         return _currentBG;
+      
 	}
+	
+	Vector2 Speed = new Vector2(1,0);
+	public void LoadContent(Vector2 position, Vector2 speed, Texture background) {
+		this.setPosition(position.x, position.y);
+		this.setTexture(background);
+		
+		position += speed;
+		
+		if (position.x + background.getWidth() <= this.getWidth()) {
+			position.x = 0;
+		}
+	}
+	
 }
