@@ -37,14 +37,14 @@ public class GameContent {
 			public Ships() {
 				_ships = new EnumMap<ShipTypes, Texture>(ShipTypes.class);
 				
-				_ships.put(ShipTypes.PLAYERSHIP, new Texture(Gdx.files.internal("Images/PurpShipRotated.png")));
-				_ships.put(ShipTypes.ENEMYDRONE1, new Texture(Gdx.files.internal("Images/EnemyDrone.png")));
-				_ships.put(ShipTypes.ENEMYDRONE2, new Texture(Gdx.files.internal("Images/EnemyDrone2.png")));
+				_ships.put(ShipTypes.PLAYERSHIP, new Texture(Gdx.files.internal("Images/Player/PurpShipRotated.png")));
+				_ships.put(ShipTypes.ENEMYDRONE1, new Texture(Gdx.files.internal("Images/Enemies/EnemyDrone.png")));
+				_ships.put(ShipTypes.ENEMYDRONE2, new Texture(Gdx.files.internal("Images/Enemies/EnemyDrone2.png")));
 			}
 			
 			private EnumMap<ShipTypes, Texture> _ships;
 
-			public final Texture Bullet = new Texture(Gdx.files.internal("Images/SingleBullet.png"));			
+			public final Texture Bullet = new Texture(Gdx.files.internal("Images/Bullets/SingleBullet.png"));			
 			
 			public Texture Ship(ShipTypes ship) {
 				return _ships.get(ship);
