@@ -26,7 +26,7 @@ public class PGCGameCore implements ApplicationListener {
 		
 		loadContent();
 		
-		sprite = new Sprite(GameContent.GameAssets().Images().Ships().Ship(ShipTypes.PLAYERSHIP));
+		//sprite = new Sprite(GameContent.GameAssets().Images().Ships().Ship(ShipTypes.PLAYERSHIP));
 		sprite = new Sprite(ShipTypes.PLAYERSHIP.GameTexture());
 		
 		
