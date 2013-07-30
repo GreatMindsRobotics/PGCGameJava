@@ -1,6 +1,6 @@
 package com.buildcoolrobots.games.pgcgame.CoreTypes;
 
-public class Enums {
+public class Enums_ {
 	public enum ScreenType {
 		TitleScreen,
 		MainMenu
@@ -13,5 +13,7 @@ public class Enums {
         Level4,
         Level5
 	}
+	
+
 	
 }

@@ -1,26 +1,54 @@
 package com.buildcoolrobots.games.pgcgame.CoreTypes;
 
+import java.util.EnumMap;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.*;
 
 public class GameContent {
-	public static class Ships {
-		Texture enemyDrone1;
-		Texture enemyDrone2;
-		Texture playerShip;
-		
-		Ships (){
-			playerShip = new Texture(Gdx.files.internal("Images/PurpShipRotated"));
-			enemyDrone1 = new Texture(Gdx.files.internal("Images/EnemyDrone"));
-			enemyDrone2 = new Texture(Gdx.files.internal("Images/EnemyDrone2"));
-		}
+	private static GameContent _gameAssets = new GameContent();
+	
+	private GameContent()  {			
+		_images = this.new Images();		
+		_gameAssets = this;
 	}
 	
-	public static class Bullet {
-		Texture bullet;
-		
-		Bullet() {
-			bullet = new Texture(Gdx.files.internal("Images/SingleBullet"));
-		}
+	public static GameContent GameAssets() {
+		return _gameAssets;
 	}
+	
+	private Images _images;	
+	public Images Images() {
+		return _images;
+	}
+	
+	public class Images {
+		public Images() {
+			_ships = this.new Ships();
+		}
+		
+		private Ships _ships;
+		public Ships Ships() {
+			return _ships;
+		}
+		
+		public class Ships {
+			public Ships() {
+				_ships = new EnumMap<ShipTypes, Texture>(ShipTypes.class);
+				
+				_ships.put(ShipTypes.PLAYERSHIP, new Texture(Gdx.files.internal("Images/PurpShipRotated.png")));
+				_ships.put(ShipTypes.ENEMYDRONE1, new Texture(Gdx.files.internal("Images/EnemyDrone.png")));
+				_ships.put(ShipTypes.ENEMYDRONE2, new Texture(Gdx.files.internal("Images/EnemyDrone2.png")));
+			}
+			
+			private EnumMap<ShipTypes, Texture> _ships;
+
+			public final Texture Bullet = new Texture(Gdx.files.internal("Images/SingleBullet.png"));			
+			
+			public Texture Ship(ShipTypes ship) {
+				return _ships.get(ship);
+			}
+		}		
+	}	
 }
