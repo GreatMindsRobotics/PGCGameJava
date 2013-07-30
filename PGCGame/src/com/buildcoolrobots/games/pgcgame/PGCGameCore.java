@@ -13,6 +13,7 @@ import com.buildcoolrobots.games.pgcgame.CoreTypes.GameContent;
 public class PGCGameCore implements ApplicationListener {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
+	private Sprite sprite;
 		
 	@Override
 	public void create() {		
@@ -24,15 +25,22 @@ public class PGCGameCore implements ApplicationListener {
 		batch = new SpriteBatch();
 		
 		loadContent();
+		
+		//sprite = new Sprite(GameContent.GameAssets().Images().Ships().Ship(ShipTypes.PLAYERSHIP));
+		sprite = new Sprite(ShipTypes.PLAYERSHIP.GameTexture());
+		
+		
+		sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
+
+		sprite.setPosition(width / 2, height / 2);
 	}
 
 	@SuppressWarnings("unused")
 	private void loadContent() {
 		//Pre-load images
-		//Looping through the enum values causes type instantiation and texture load
-		for(IGameObject gameObject : ShipTypes.values()) {}
-		for(IGameScreen gameScreen : ScreenType.values()) {}
-		for(IGameLevel gameLevel : GameLevel.values()) {}
+		for(IGameObject gameObject : ShipTypes.values()) {
+			//Looping through the enum values causes type instantiation and texture load
+		}
 	}
 	
 	@Override
@@ -48,6 +56,7 @@ public class PGCGameCore implements ApplicationListener {
 		batch.setProjectionMatrix(camera.combined);
 		
 		batch.begin();
+		sprite.draw(batch);
 		batch.end();
 	}
 
