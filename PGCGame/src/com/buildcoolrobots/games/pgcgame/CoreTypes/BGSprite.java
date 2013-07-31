@@ -14,7 +14,7 @@ public class BGSprite extends Sprite {
 	
 	public BGSprite(Texture texture) throws InstanceAlreadyExistsException {
 		super(texture);
-		
+
 		if(_currentBG != null) {
 			throw new InstanceAlreadyExistsException("This class is a singleton; use BGSprite.getInstance()");
 		}
@@ -41,9 +41,9 @@ public class BGSprite extends Sprite {
 	public void render() {
 		this.setPosition(this.getX() - Speed.x, this.getY());
 		
-				if (this.getX() + this.getTexture().getWidth() <= this.getWidth()) {
-					this.setX(0);
-				}
+		if (this.getX() + this.getTexture().getWidth() <= this.getWidth()) {
+			this.setX(0);
+		}
 	}
 	
 }
