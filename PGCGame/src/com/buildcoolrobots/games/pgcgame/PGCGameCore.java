@@ -22,6 +22,7 @@ public class PGCGameCore implements ApplicationListener {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	
+	private TitleScreen titleScreen; 
 	
 	@Override
 	public void create() {		
@@ -34,6 +35,7 @@ public class PGCGameCore implements ApplicationListener {
 		
 		loadContent();
 				
+		titleScreen = new TitleScreen(new SpriteManager(), batch);		
 		
 	}
 
@@ -56,15 +58,27 @@ public class PGCGameCore implements ApplicationListener {
 		batch.dispose();
 	}
 
-	@Override
-	public void render() {		
+	private void update() {
+		titleScreen.update(Gdx.graphics.getDeltaTime());
+		
+	}
+	
+	private void draw() {
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);	
 		
-		batch.setProjectionMatrix(camera.combined);
-				
-		batch.begin();
+		batch.setProjectionMatrix(camera.combined);		
+			
+		batch.begin();		
+		titleScreen.draw();		
 		batch.end();
+		
+	}
+	
+	@Override
+	public void render() {
+		update();
+		draw();
 	}
 	
 	
