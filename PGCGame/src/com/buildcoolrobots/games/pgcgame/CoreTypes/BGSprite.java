@@ -10,6 +10,8 @@ import com.badlogic.gdx.math.Vector2;
 public class BGSprite extends Sprite {
 	private static BGSprite _currentBG = null;
 	
+	Vector2 Speed = new Vector2(1,0);
+	
 	public BGSprite(Texture texture) throws InstanceAlreadyExistsException {
 		super(texture);
 		
@@ -30,16 +32,18 @@ public class BGSprite extends Sprite {
       
 	}
 	
-	Vector2 Speed = new Vector2(1,0);
-	public void LoadContent(Vector2 position, Vector2 speed, Texture background) {
+	
+	public void LoadContent(Vector2 position, Texture background) {
 		this.setPosition(position.x, position.y);
 		this.setTexture(background);
+	}
+	
+	public void render() {
+		this.setPosition(this.getX() - Speed.x, this.getY());
 		
-		//position += speed;
-		
-		if (position.x + background.getWidth() <= this.getWidth()) {
-			position.x = 0;
-		}
+				if (this.getX() + this.getTexture().getWidth() <= this.getWidth()) {
+					this.setX(0);
+				}
 	}
 	
 }
