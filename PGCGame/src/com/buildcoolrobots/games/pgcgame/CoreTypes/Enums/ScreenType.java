@@ -5,8 +5,8 @@ import com.badlogic.gdx.graphics.Texture;
 
 public enum ScreenType implements IGameScreen {
 	
-	TITLESCREEN (""),
-	MAINMENU ("");
+	TITLESCREEN (null),
+	MAINMENU (null);
 	
 	 private ScreenType(String screenTexturePath) {
 		 _screenTexture = screenTexturePath == null ? null : new Texture(Gdx.files.internal(screenTexturePath));

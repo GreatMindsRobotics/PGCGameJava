@@ -5,10 +5,10 @@ import com.badlogic.gdx.graphics.Texture;
 
 public enum GameLevel implements IGameLevel{
 	LEVEL1 (null),
-	LEVEL2 (""),
-	LEVEL3 (""),
-	LEVEL4 (""),
-	LEVEL5 ("");
+	LEVEL2 (null),
+	LEVEL3 (null),
+	LEVEL4 (null),
+	LEVEL5 (null);
 	
 	private GameLevel(String MapTexturePath) {
 		_mapTexture = MapTexturePath == null ? null : new Texture(Gdx.files.internal(MapTexturePath));

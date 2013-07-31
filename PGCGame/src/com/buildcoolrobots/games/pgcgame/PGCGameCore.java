@@ -1,20 +1,29 @@
 package com.buildcoolrobots.games.pgcgame;
 
+import me.pagekite.glen3b.gjlib.ExtendedLabel;
 import me.pagekite.glen3b.gjlib.ExtendedSprite;
+import me.pagekite.glen3b.gjlib.SpriteManager;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.*;
+import com.buildcoolrobots.games.pgcgame.Screens.TitleScreen;
 
 public class PGCGameCore implements ApplicationListener {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
-		
+	
+	private TitleScreen titleScreen;
+	
 	@Override
 	public void create() {		
 		float width = Gdx.graphics.getWidth();
@@ -25,8 +34,9 @@ public class PGCGameCore implements ApplicationListener {
 		batch = new SpriteBatch();
 		
 		loadContent();
-		
-		
+				
+		titleScreen = new TitleScreen(new SpriteManager(), batch);
+		titleScreen.show();			
 	}
 
 	@SuppressWarnings("unused")
@@ -51,13 +61,19 @@ public class PGCGameCore implements ApplicationListener {
 	@Override
 	public void render() {		
 		Gdx.gl.glClearColor(1, 1, 1, 1);
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);	
+		
+		titleScreen.update(Gdx.graphics.getDeltaTime());
 		
 		batch.setProjectionMatrix(camera.combined);
 				
 		batch.begin();
+		titleScreen.draw();
 		batch.end();
 	}
+	
+	
+	
 
 	@Override
 	public void resize(int width, int height) {

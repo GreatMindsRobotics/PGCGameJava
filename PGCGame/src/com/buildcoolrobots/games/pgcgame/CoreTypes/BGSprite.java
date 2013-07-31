@@ -35,7 +35,7 @@ public class BGSprite extends Sprite {
 		this.setPosition(position.x, position.y);
 		this.setTexture(background);
 		
-		position += speed;
+		//position += speed;
 		
 		if (position.x + background.getWidth() <= this.getWidth()) {
 			position.x = 0;
