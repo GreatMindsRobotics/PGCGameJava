@@ -8,10 +8,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 
 public enum ScreenType implements IGameScreen {
 	
-	TITLESCREEN (null, "Fonts/PGCTitleFont.fnt", "Fonts/PGCTitleFont.png"),
+	TITLESCREEN ("Images/Backgrounds/background.png", null, null),
 	MAINMENU (null, null, null);
+	 
 	
-	 private ScreenType(String screenTexturePath, String screenLabelFntFile, String screenLabelPngFile) {
+	private ScreenType(String screenTexturePath, String screenLabelFntFile, String screenLabelPngFile) {
 		 _screenTexture = screenTexturePath == null ? null : new Texture(Gdx.files.internal(screenTexturePath));
 		 
 		 if(screenLabelFntFile != null && screenLabelPngFile != null) {
@@ -22,7 +23,7 @@ public enum ScreenType implements IGameScreen {
 		 }
 			 
 	 }
-	
+	 
 	private final Texture _screenTexture;
 	private final LabelStyle _screenLabel;
 
