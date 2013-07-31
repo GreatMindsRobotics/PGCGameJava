@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseScreen;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ShipTypes;
 
 public class TitleScreen extends BaseScreen {
@@ -24,10 +25,8 @@ public class TitleScreen extends BaseScreen {
 		ExtendedSprite enemyDrone = new ExtendedSprite(ShipTypes.ENEMYDRONE1.GameTexture());
 		enemyDrone.setPosition(200, 200);
 		
-		LabelStyle labelStyle = new LabelStyle(new BitmapFont(Gdx.files.internal("Fonts/PGCTitleFont.fnt"), Gdx.files.internal("Fonts/PGCTitleFont.png"), false), Color.WHITE);		
-		ExtendedLabel titleText = new ExtendedLabel("Plequarius: Galactic Commanders", labelStyle);
+		ExtendedLabel titleText = new ExtendedLabel("Plequarius: Galactic Commanders", ScreenType.TITLESCREEN.ScreenLabelStyle());
 		titleText.setPosition((Gdx.graphics.getWidth() - titleText.getWidth()) / 2, Gdx.graphics.getHeight() - titleText.getHeight() - 50);		
-		
 		allSprites.add(enemyDrone);
 		allSprites.add(playerShip);
 		allSprites.add(titleText);
