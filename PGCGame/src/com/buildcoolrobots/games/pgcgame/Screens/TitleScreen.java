@@ -15,21 +15,8 @@ import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ShipTypes;
 
 public class TitleScreen extends BaseScreen {
 
-	public TitleScreen(SpriteManager allSprites, SpriteBatch target) {
-		super(allSprites, target);
-		
-		ExtendedSprite playerShip = new ExtendedSprite(ShipTypes.PLAYERSHIP.GameTexture());
-		playerShip.setPosition(100,  100);
-		playerShip.xSpeed = 0.5f;
-		
-		ExtendedSprite enemyDrone = new ExtendedSprite(ShipTypes.ENEMYDRONE1.GameTexture());
-		enemyDrone.setPosition(200, 200);
-		
-		ExtendedLabel titleText = new ExtendedLabel("Plequarius: Galactic Commanders", ScreenType.TITLESCREEN.ScreenLabelStyle());
-		titleText.setPosition((Gdx.graphics.getWidth() - titleText.getWidth()) / 2, Gdx.graphics.getHeight() - titleText.getHeight() - 50);		
-		allSprites.add(enemyDrone);
-		allSprites.add(playerShip);
-		allSprites.add(titleText);
+	public TitleScreen(SpriteManager allSprites, SpriteBatch spriteBatch) {
+		super(allSprites, spriteBatch);
 
 		
 	}
