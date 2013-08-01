@@ -16,6 +16,9 @@ import com.buildcoolrobots.games.pgcgame.Ships.Enemies.BaseEnemyShip;
 
 public abstract class StateManager {
 	
+	// Debug Features
+    public static boolean _titleScreenBGSpriteDebug = false;
+
 	// Private Fields
     public static int HealthPacks = 0;
     private static Stack<ScreenType> _screenStack = new Stack<ScreenType>();
@@ -82,7 +85,6 @@ public abstract class StateManager {
     public static void setEnemyID(UUID EnemyID) {
     	_enemyID = EnemyID;
     }
-    
 
     public static void Reset()
     {
