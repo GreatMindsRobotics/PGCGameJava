@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameLevel;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ShipTypes;
+import com.buildcoolrobots.games.pgcgame.Screens.TitleScreen;
 import com.buildcoolrobots.games.pgcgame.Ships.Bullets.Bullet;
 import com.buildcoolrobots.games.pgcgame.Ships.Enemies.BaseEnemyShip;
 
@@ -39,8 +40,7 @@ public abstract class StateManager {
     
     public static final ArrayList<BaseEnemyShip> ActiveShips = new ArrayList<BaseEnemyShip>();
     
-    public static int Lives = 5;
-    
+    public static int SpaceLives = 5;   
     private static GameLevel _level = GameLevel.LEVEL1;
     public static GameLevel CurrentLevel = GameLevel.LEVEL1;
     public static boolean NextLevel = false;
@@ -86,14 +86,13 @@ public abstract class StateManager {
     public static void setEnemyID(UUID EnemyID) {
     	_enemyID = EnemyID;
     }
-
+    
+    //TODO: Make a musicenabledchanged event
     
     public static void GoBackScreen() {
     	_screenStack.pop();
     	if (_screenStack.size() == 0) {
-    		//TODO: Make exit function
-    		//StateManager.Exit();
-    		
+    		Gdx.app.exit();
     		return;
     	}
     	_screenState = _screenStack.peek();
@@ -101,11 +100,22 @@ public abstract class StateManager {
     }
     
     public static void SwitchScreen(ScreenType screenType) {
-    	//TODO: Rehaan work in progress
     	for(BaseScreen screen: AllScreens.getAllScreens()) {
-    		//TODO: Create an arraylist of all screen
     		screen.hide();
     	}
+    	
+    	BaseScreen activeScreen = AllScreens.getScreen(screenType);
+    	
+    	switch (screenType) {
+    		case TITLESCREEN:
+    			activeScreen = (TitleScreen)activeScreen;
+    			break;
+    			
+    			
+    		default:
+    			break;
+    	}
+    	activeScreen.show();	
     } 
     
     public static void Reset()
@@ -118,7 +128,7 @@ public abstract class StateManager {
         _spaceBucks = 200000;
         IsWSFirstUpdate = true;
         _enemyID = UUID.randomUUID();
-        Lives = 5;
+        SpaceLives = 5;
     }
     
     
