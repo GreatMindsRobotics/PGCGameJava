@@ -17,7 +17,7 @@ import com.buildcoolrobots.games.pgcgame.Ships.Enemies.BaseEnemyShip;
 public abstract class StateManager {
 	
 	// Debug Features
-    public static boolean _titleScreenBGSpriteDebug = false;
+    public static boolean TitleScreenBGSpriteDebug = false;
 
 	// Private Fields
     public static int HealthPacks = 0;
@@ -25,6 +25,7 @@ public abstract class StateManager {
     private static ScreenType _screenState = ScreenType.TITLESCREEN;
     private static UUID _enemyID = UUID.randomUUID();
     private static int _spaceBucks = 200000;
+    private static ScreenManager AllScreens = new ScreenManager();
     
     // Public Fields
     public static ArrayList<Bullet> LegitBullets = new ArrayList<Bullet>();
@@ -38,11 +39,11 @@ public abstract class StateManager {
     
     public static final ArrayList<BaseEnemyShip> ActiveShips = new ArrayList<BaseEnemyShip>();
     
-    public static int lives = 5;
+    public static int Lives = 5;
     
     private static GameLevel _level = GameLevel.LEVEL1;
     public static GameLevel CurrentLevel = GameLevel.LEVEL1;
-    public static boolean nextLevel = false;
+    public static boolean NextLevel = false;
     
     
     //public static ScreenManager AllScreens;
@@ -86,17 +87,38 @@ public abstract class StateManager {
     	_enemyID = EnemyID;
     }
 
+    
+    public static void GoBackScreen() {
+    	_screenStack.pop();
+    	if (_screenStack.size() == 0) {
+    		//TODO: Make exit function
+    		//StateManager.Exit();
+    		
+    		return;
+    	}
+    	_screenState = _screenStack.peek();
+    	SwitchScreen(_screenState);	
+    }
+    
+    public static void SwitchScreen(ScreenType screenType) {
+    	//TODO: Rehaan work in progress
+    	for(BaseScreen screen: AllScreens.getAllScreens()) {
+    		//TODO: Create an arraylist of all screen
+    		screen.hide();
+    	}
+    } 
+    
     public static void Reset()
     {
         //Screens.Shop.firstShop = true;
-        nextLevel = false;
+        NextLevel = false;
         _level = GameLevel.LEVEL1;
         SpacePoints = 0;
         Stack<ScreenType> _screenStack = new Stack<ScreenType>();
         _spaceBucks = 200000;
         IsWSFirstUpdate = true;
         _enemyID = UUID.randomUUID();
-        lives = 5;
+        Lives = 5;
     }
     
     
