@@ -7,11 +7,8 @@ import me.pagekite.glen3b.gjlib.ExtendedSprite;
 import me.pagekite.glen3b.gjlib.SpriteManager;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.math.Vector2;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseScreen;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
@@ -21,6 +18,7 @@ public class TitleScreen extends BaseScreen {
 	
 	private ExtendedSprite background;
 	private ExtendedSprite background2;
+	private ExtendedSprite gameTitle;
 	private ExtendedSprite ship;
 	
 	Random rand = new Random();
@@ -30,9 +28,9 @@ public class TitleScreen extends BaseScreen {
 		
 		StateManager.TitleScreenBGSpriteDebug = false;
 		
-		ExtendedLabel titleText = new ExtendedLabel("Plequarius: Galactic Commanders", ScreenType.TITLESCREEN.ScreenLabelStyle());
-		titleText.setPosition((Gdx.graphics.getWidth() - titleText.getWidth()) / 2, Gdx.graphics.getHeight() - titleText.getHeight() - 50);
-		
+		gameTitle = new ExtendedSprite(ScreenType.TEMPSCREEN.ScreenTexture());
+		gameTitle.setPosition(Gdx.graphics.getWidth() / 2 - gameTitle.getWidth() / 2, Gdx.graphics.getHeight() - 100);
+		gameTitle.setScale(new Vector2 (1.3f, 1.3f));
 		
 		background = new ExtendedSprite(ScreenType.TITLESCREEN.ScreenTexture());
 		background.setPosition(0, 0);
@@ -53,22 +51,21 @@ public class TitleScreen extends BaseScreen {
 		ship.ySpeed = 2f;
 		ship.setRotation(25);
 		
-		
-		
 		allSprites.add(background);
 		allSprites.add(background2);
 		allSprites.add(ship);
-		allSprites.add(titleText);
+		allSprites.add(gameTitle);
 	}
 	
 	@Override
 	public void update(float deltaTime) {
 		super.update(deltaTime);
 		
-		if (ship.getX() > 100 && ship.getX() < Gdx.graphics.getWidth()) {
+		if (ship.getX() > 175 && ship.getX() < Gdx.graphics.getWidth()) {
 			ship.xSpeed *= 1.035f;
-			if (ship.getRotation() >= 8) {
-				ship.rotate(-.8f);
+			ship.ySpeed *= 0;
+			if (ship.getRotation() >= 1) {
+				ship.rotate(-1f);
 			}
 		}
 		
