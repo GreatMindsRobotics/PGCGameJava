@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseScreen;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ShipTypes;
 
@@ -28,7 +29,7 @@ public class TitleScreen extends BaseScreen {
 		
 		StateManager.TitleScreenBGSpriteDebug = false;
 		
-		gameTitle = new ExtendedSprite(ScreenType.TEMPSCREEN.ScreenTexture());
+		gameTitle = new ExtendedSprite(GameImage.GAMETITLE.ImageTexture());
 		gameTitle.setPosition(Gdx.graphics.getWidth() / 2 - gameTitle.getWidth() / 2, Gdx.graphics.getHeight() - 100);
 		gameTitle.setScale(new Vector2 (1.3f, 1.3f));
 		

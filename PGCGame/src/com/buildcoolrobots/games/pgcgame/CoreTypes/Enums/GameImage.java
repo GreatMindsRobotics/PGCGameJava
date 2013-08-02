@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 
 public enum GameImage implements IGameImage{
 
+	GAMETITLE ("Images/Backgrounds/gametitle.png", null, null),
 	PLAYBUTTON ("Images/Controls/DefaultButton.png", "Fonts/PGCTitleFont.fnt", "Fonts/PGCTitleFont.png");
 	
 	private GameImage(String ImagePath, String textLabelStyleFntFile, String textLabelStylePngFile) {
