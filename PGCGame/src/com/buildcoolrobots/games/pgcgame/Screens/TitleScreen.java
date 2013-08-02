@@ -7,11 +7,8 @@ import me.pagekite.glen3b.gjlib.ExtendedSprite;
 import me.pagekite.glen3b.gjlib.SpriteManager;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.math.Vector2;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseScreen;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
@@ -21,6 +18,7 @@ public class TitleScreen extends BaseScreen {
 	
 	private ExtendedSprite background;
 	private ExtendedSprite background2;
+	private ExtendedSprite gameTitle;
 	private ExtendedSprite ship;
 	
 	Random rand = new Random();
@@ -29,6 +27,10 @@ public class TitleScreen extends BaseScreen {
 		super(allSprites, spriteBatch);
 		
 		StateManager.TitleScreenBGSpriteDebug = false;
+		
+		gameTitle = new ExtendedSprite(ScreenType.TEMPSCREEN.ScreenTexture());
+		gameTitle.setPosition(Gdx.graphics.getWidth() / 2 - gameTitle.getWidth() / 2, Gdx.graphics.getHeight() - 100);
+		gameTitle.setScale(new Vector2 (1.3f, 1.3f));
 		
 		background = new ExtendedSprite(ScreenType.TITLESCREEN.ScreenTexture());
 		background.setPosition(0, 0);
@@ -44,26 +46,35 @@ public class TitleScreen extends BaseScreen {
 		background2.xSpeed = -1f;
 		
 		ship = new ExtendedSprite(ShipTypes.PLAYERSHIP.GameTexture());
-		ship.setPosition(-300, -100);
-		ship.xSpeed = 3;
-		ship.ySpeed = 1;
+		ship.setPosition(-200, -100);
+		ship.xSpeed = 3f;
+		ship.ySpeed = 2f;
+		ship.setRotation(25);
 		
 		allSprites.add(background);
 		allSprites.add(background2);
 		allSprites.add(ship);
+		allSprites.add(gameTitle);
 	}
 	
 	@Override
 	public void update(float deltaTime) {
 		super.update(deltaTime);
 		
-		ship.xSpeed *= 1.018;
-		ship.ySpeed *= 1.018;
+		if (ship.getX() > 175 && ship.getX() < Gdx.graphics.getWidth()) {
+			ship.xSpeed *= 1.035f;
+			ship.ySpeed *= 0;
+			if (ship.getRotation() >= 1) {
+				ship.rotate(-1f);
+			}
+		}
 		
 		if (ship.getX() > Gdx.graphics.getWidth()) {
-			ship.setPosition(-100, rand.nextInt(Gdx.graphics.getHeight() - 100));
-			ship.xSpeed = 3;
-			ship.ySpeed = rand.nextInt(5) - 3;
+			ship.setPosition(-500, -300);
+			ship.xSpeed = 3f;
+			ship.ySpeed = 2f;
+			
+			ship.setRotation(25);
 		}
 		
 		if (background.getX() + background.getWidth() <= 0) {
