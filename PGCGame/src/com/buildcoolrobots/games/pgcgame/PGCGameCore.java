@@ -15,6 +15,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.BGSprite;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.*;
 import com.buildcoolrobots.games.pgcgame.Screens.TitleScreen;
 
@@ -79,6 +80,8 @@ public class PGCGameCore implements ApplicationListener {
 	public void render() {
 		update();
 		draw();
+		
+		BGSprite.scrollingBackgroundUpdate();
 	}
 	
 	
