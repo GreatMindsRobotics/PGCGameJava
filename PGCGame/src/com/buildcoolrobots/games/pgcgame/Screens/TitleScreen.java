@@ -30,6 +30,10 @@ public class TitleScreen extends BaseScreen {
 		
 		StateManager.TitleScreenBGSpriteDebug = false;
 		
+		ExtendedLabel titleText = new ExtendedLabel("Plequarius: Galactic Commanders", ScreenType.TITLESCREEN.ScreenLabelStyle());
+		titleText.setPosition((Gdx.graphics.getWidth() - titleText.getWidth()) / 2, Gdx.graphics.getHeight() - titleText.getHeight() - 50);
+		
+		
 		background = new ExtendedSprite(ScreenType.TITLESCREEN.ScreenTexture());
 		background.setPosition(0, 0);
 		background.xSpeed = -1f;
@@ -44,26 +48,36 @@ public class TitleScreen extends BaseScreen {
 		background2.xSpeed = -1f;
 		
 		ship = new ExtendedSprite(ShipTypes.PLAYERSHIP.GameTexture());
-		ship.setPosition(-300, -100);
-		ship.xSpeed = 3;
-		ship.ySpeed = 1;
+		ship.setPosition(-200, -100);
+		ship.xSpeed = 3f;
+		ship.ySpeed = 2f;
+		ship.setRotation(25);
+		
+		
 		
 		allSprites.add(background);
 		allSprites.add(background2);
 		allSprites.add(ship);
+		allSprites.add(titleText);
 	}
 	
 	@Override
 	public void update(float deltaTime) {
 		super.update(deltaTime);
 		
-		ship.xSpeed *= 1.018;
-		ship.ySpeed *= 1.018;
+		if (ship.getX() > 100 && ship.getX() < Gdx.graphics.getWidth()) {
+			ship.xSpeed *= 1.035f;
+			if (ship.getRotation() >= 8) {
+				ship.rotate(-.8f);
+			}
+		}
 		
 		if (ship.getX() > Gdx.graphics.getWidth()) {
-			ship.setPosition(-100, rand.nextInt(Gdx.graphics.getHeight() - 100));
-			ship.xSpeed = 3;
-			ship.ySpeed = rand.nextInt(5) - 3;
+			ship.setPosition(-500, -300);
+			ship.xSpeed = 3f;
+			ship.ySpeed = 2f;
+			
+			ship.setRotation(25);
 		}
 		
 		if (background.getX() + background.getWidth() <= 0) {

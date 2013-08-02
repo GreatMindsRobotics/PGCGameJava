@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 
 public enum ScreenType implements IGameScreen {
 	
-	TITLESCREEN ("Images/Backgrounds/background.png", null, null),
+	TITLESCREEN ("Images/Backgrounds/background.png", "Fonts/PGCTitleFont.fnt", "Fonts/PGCTitleFont.png"),
 	MAINMENU (null, null, null);
 	 
 	
