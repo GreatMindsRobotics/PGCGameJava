@@ -2,6 +2,8 @@ package com.buildcoolrobots.games.pgcgame.Screens;
 
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 import me.pagekite.glen3b.gjlib.ExtendedLabel;
 import me.pagekite.glen3b.gjlib.ExtendedSprite;
 import me.pagekite.glen3b.gjlib.SpriteManager;
@@ -23,7 +25,6 @@ public class TitleScreen extends BaseScreen {
 	private ExtendedSprite PlayButton;
 	private ExtendedLabel PlayButtonText;
 	
-	Random rand = new Random();
 	
 	public TitleScreen(SpriteManager allSprites, SpriteBatch spriteBatch) {
 		super(allSprites, spriteBatch);
@@ -41,11 +42,11 @@ public class TitleScreen extends BaseScreen {
 		ship.setRotation(25);
 		
 		PlayButton = new ExtendedSprite(GameImage.MAINMENUPLAYBUTTON.ImageTexture());
-		PlayButton.setPosition(Gdx.graphics.getWidth() / 2 - PlayButton.getWidth()/2, 100);
+		PlayButton.setPosition(Gdx.graphics.getWidth()/2 - PlayButton.getWidth()/2, Gdx.graphics.getHeight()/2 - PlayButton.getHeight());
 		PlayButton.setScale(new Vector2(1f, 1f));
 		
 		PlayButtonText = new ExtendedLabel("Play", GameImage.MAINMENUPLAYBUTTON.ImageText());
-		PlayButtonText.setPosition(PlayButton.getX() + PlayButtonText.getWidth()/2 + 50, 115);
+		PlayButtonText.setPosition(Gdx.graphics.getWidth()/2 - PlayButtonText.getWidth()/2, Gdx.graphics.getHeight()/2 - PlayButton.getHeight() + PlayButtonText.getHeight()/2);
 		
 		BGSprite.scrollingBackground(allSprites);
 		
@@ -58,8 +59,12 @@ public class TitleScreen extends BaseScreen {
 	@Override
 	public void update(float deltaTime) {
 		super.update(deltaTime);
-		
-		if (ship.getX() > 175 && ship.getX() < Gdx.graphics.getWidth()) {
+		if (Gdx.input.isTouched() && 
+			Gdx.input.getX() >= PlayButton.getX() && Gdx.input.getX() <= PlayButton.getX() + PlayButton.getWidth() &&
+			(Gdx.graphics.getHeight() - Gdx.input.getY()) >= PlayButton.getY() && (Gdx.graphics.getHeight() - Gdx.input.getY()) <= PlayButton.getY() + PlayButton.getHeight()) {
+			JOptionPane.showMessageDialog(null, "workin bro");
+		}
+		if (ship.getX() > 50 && ship.getX() < Gdx.graphics.getWidth()) {
 			ship.xSpeed *= 1.035f;
 			ship.ySpeed *= 0;
 			if (ship.getRotation() >= 1) {
