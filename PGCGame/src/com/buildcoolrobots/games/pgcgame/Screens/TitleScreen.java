@@ -60,8 +60,9 @@ public class TitleScreen extends BaseScreen {
 		if (Gdx.input.isTouched() && 
 			Gdx.input.getX() >= PlayButton.getX() && Gdx.input.getX() <= PlayButton.getX() + PlayButton.getWidth() &&
 			(Gdx.graphics.getHeight() - Gdx.input.getY()) >= PlayButton.getY() && (Gdx.graphics.getHeight() - Gdx.input.getY()) <= PlayButton.getY() + PlayButton.getHeight()) {
-			JOptionPane.showMessageDialog(null, "workin bro");
-		}
+			
+			StateManager.SwitchScreen(ScreenType.MAINMENU);
+			}
 		if (ship.getX() > 50 && ship.getX() < Gdx.graphics.getWidth()) {
 			ship.xSpeed *= 1.035f;
 			ship.ySpeed *= 0;

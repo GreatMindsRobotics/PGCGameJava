@@ -67,7 +67,7 @@ public class PGCGameCore implements ApplicationListener {
 		if(StateManager.DebugData.AllowScreenSwitching) {
 			if(Gdx.input.isKeyPressed(Input.Keys.F1)) {
 				StateManager.SwitchScreen(ScreenType.TITLESCREEN);
-			} else if (Gdx.input.isButtonPressed(Input.Keys.F2)) {
+			} else if (Gdx.input.isKeyPressed(Input.Keys.F2)) {
 				StateManager.SwitchScreen(ScreenType.MAINMENU);
 			}				
 		}		
