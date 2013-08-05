@@ -10,7 +10,6 @@ import com.badlogic.gdx.math.Rectangle;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameLevel;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ShipTypes;
-import com.buildcoolrobots.games.pgcgame.Screens.TitleScreen;
 import com.buildcoolrobots.games.pgcgame.Ships.Bullets.Bullet;
 import com.buildcoolrobots.games.pgcgame.Ships.Enemies.BaseEnemyShip;
 

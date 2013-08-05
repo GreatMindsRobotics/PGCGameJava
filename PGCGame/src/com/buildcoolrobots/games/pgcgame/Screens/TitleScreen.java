@@ -1,7 +1,5 @@
 package com.buildcoolrobots.games.pgcgame.Screens;
 
-import java.util.Random;
-
 import javax.swing.JOptionPane;
 
 import me.pagekite.glen3b.gjlib.ExtendedLabel;
