@@ -25,13 +25,13 @@ public abstract class StateManager {
     private static Stack<ScreenType> _screenStack = new Stack<ScreenType>();
     private static ScreenType _screenState = ScreenType.TITLESCREEN;
     private static UUID _enemyID = UUID.randomUUID();
-    private static int _spaceBucks = 200000;
-    private static ScreenManager AllScreens = new ScreenManager();
+    private static int _spaceBucks = 200000;    
     
     // Public Fields
     public static ArrayList<Bullet> LegitBullets = new ArrayList<Bullet>();
     public static boolean IsWSFirstUpdate = true;
     public static final Rectangle WorldSize = new Rectangle(0, 0, (Gdx.graphics.getWidth()) * 5, Gdx.graphics.getHeight());
+    public static ScreenManager AllScreens = new ScreenManager();
     
     public static ShipTypes SelectedShip;
     //public static ShipTier SelectedTier;
@@ -104,17 +104,7 @@ public abstract class StateManager {
     		screen.hide();
     	}
     	
-    	BaseScreen activeScreen = AllScreens.getScreen(screenType);
-    	
-    	switch (screenType) {
-    		case TITLESCREEN:
-    			activeScreen = (TitleScreen)activeScreen;
-    			break;
-    			
-    			
-    		default:
-    			break;
-    	}
+    	BaseScreen activeScreen = AllScreens.getScreen(screenType);    	
     	activeScreen.show();	
     } 
     
@@ -134,6 +124,7 @@ public abstract class StateManager {
     
     
 	public static class DebugData {
+		public static Boolean AllowScreenSwitching = true;
 	}
 	
 	public static class Options {

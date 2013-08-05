@@ -15,9 +15,20 @@ import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 
 public class MainMenu extends BaseScreen {
 
-	public MainMenu(SpriteManager allSprites, SpriteBatch target) {
-		super(allSprites, target);
+	public MainMenu(SpriteManager allSprites, SpriteBatch target, ScreenType screenType) {
+		super(allSprites, target, screenType);
+		
+		ExtendedSprite PlayButton = new ExtendedSprite(GameImage.MAINMENUPLAYBUTTON.ImageTexture());
+		PlayButton.setPosition(Gdx.graphics.getWidth() / 2 - PlayButton.getWidth()/2, 100);
+		PlayButton.setScale(new Vector2(1f, 1f));
 
+		
+		ExtendedLabel PlayButtonText = new ExtendedLabel("Play", GameImage.MAINMENUPLAYBUTTON.ImageText());
+		PlayButtonText.setPosition(Gdx.graphics.getWidth() / 2 - PlayButton.getWidth()/2 + PlayButtonText.getWidth()/2, 110);
+		//PlayButtonText.setFontScale(1.70f, .70f);
+		
+		allSprites.add(PlayButton);
+		allSprites.add(PlayButtonText);
 	}
 
 }

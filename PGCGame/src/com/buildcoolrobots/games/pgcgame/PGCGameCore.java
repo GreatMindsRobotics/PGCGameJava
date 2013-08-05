@@ -6,6 +6,7 @@ import me.pagekite.glen3b.gjlib.SpriteManager;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -16,14 +17,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.BGSprite;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseScreen;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.*;
+import com.buildcoolrobots.games.pgcgame.Screens.MainMenu;
 import com.buildcoolrobots.games.pgcgame.Screens.TitleScreen;
 
 public class PGCGameCore implements ApplicationListener {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
-	
-	private TitleScreen titleScreen; 
 	
 	@Override
 	public void create() {		
@@ -36,7 +38,12 @@ public class PGCGameCore implements ApplicationListener {
 		
 		loadContent();
 				
-		titleScreen = new TitleScreen(new SpriteManager(), batch);		
+		
+		
+		TitleScreen titleScreen = new TitleScreen(new SpriteManager(), batch, ScreenType.TITLESCREEN);
+		MainMenu mainMenuScreen = new MainMenu(new SpriteManager(), batch, ScreenType.MAINMENU);
+
+		StateManager.AllScreens.getScreen(ScreenType.MAINMENU).hide();
 		
 	}
 
@@ -60,8 +67,18 @@ public class PGCGameCore implements ApplicationListener {
 	}
 
 	private void update() {
-		titleScreen.update(Gdx.graphics.getDeltaTime());
-		
+		//Update all created screens; if screen is not active, it is the screen's responsibility to not run update unnecessarily
+		for(BaseScreen screen : StateManager.AllScreens.getAllScreens()) {
+			screen.update(Gdx.graphics.getDeltaTime());
+		}
+				
+		if(StateManager.DebugData.AllowScreenSwitching) {
+			if(Gdx.input.isKeyPressed(Input.Keys.F1)) {
+				StateManager.SwitchScreen(ScreenType.TITLESCREEN);
+			} else if (Gdx.input.isButtonPressed(Input.Keys.F2)) {
+				StateManager.SwitchScreen(ScreenType.MAINMENU);
+			}				
+		}		
 	}
 	
 	private void draw() {
@@ -71,7 +88,12 @@ public class PGCGameCore implements ApplicationListener {
 		batch.setProjectionMatrix(camera.combined);		
 			
 		batch.begin();		
-		titleScreen.draw();		
+
+		//Update all created screens; if screen is not active, it is the screen's responsibility to not run update unnecessarily
+		for(BaseScreen screen : StateManager.AllScreens.getAllScreens()) {
+			screen.draw();
+		}
+		
 		batch.end();
 		
 	}

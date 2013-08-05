@@ -6,24 +6,29 @@ import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 import com.sun.org.apache.xalan.internal.xsltc.runtime.Parameter;
 
 public class ScreenManager {
-	private ArrayList<BaseScreen> AllScreens;
+	private ArrayList<BaseScreen> _allScreens;
+	
 	public ScreenManager(BaseScreen... baseScreens) {
-		AllScreens = new ArrayList<BaseScreen>();
+		_allScreens = new ArrayList<BaseScreen>();
 		for (int i = 0; i < baseScreens.length; i++) {
-			AllScreens.add(i, baseScreens[i]);
+			_allScreens.add(i, baseScreens[i]);
 		}
 	}
+	
 	public ArrayList<BaseScreen> getAllScreens() {
-		return AllScreens;
+		return _allScreens;
 	}
-	public BaseScreen getScreen(ScreenType type){
-		String screen = type.toString();
-		//Ben winging it
-		for(int i = 0; i < AllScreens.size(); i++){
-			if(AllScreens.get(i).toString().equals(screen)){
-				return AllScreens.get(i);
+	
+	public BaseScreen getScreen(ScreenType screenType){
+		for(BaseScreen screen : _allScreens) {
+			if(screen.getScreenType() == screenType) {
+				return screen;
 			}
 		}
 		return null;
+	}
+	
+	public void setScreen(BaseScreen screen) {
+		_allScreens.add(screen);
 	}
 }

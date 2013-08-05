@@ -26,8 +26,8 @@ public class TitleScreen extends BaseScreen {
 	private ExtendedLabel PlayButtonText;
 	
 	
-	public TitleScreen(SpriteManager allSprites, SpriteBatch spriteBatch) {
-		super(allSprites, spriteBatch);
+	public TitleScreen(SpriteManager allSprites, SpriteBatch spriteBatch, ScreenType screenType) {
+		super(allSprites, spriteBatch, screenType);
 		
 		StateManager.TitleScreenBGSpriteDebug = false;
 		
