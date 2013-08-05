@@ -20,6 +20,8 @@ public class TitleScreen extends BaseScreen {
 	
 	private ExtendedSprite gameTitle;
 	private ExtendedSprite ship;
+	private ExtendedSprite PlayButton;
+	private ExtendedLabel PlayButtonText;
 	
 	Random rand = new Random();
 	
@@ -38,10 +40,19 @@ public class TitleScreen extends BaseScreen {
 		ship.ySpeed = 2f;
 		ship.setRotation(25);
 		
+		PlayButton = new ExtendedSprite(GameImage.MAINMENUPLAYBUTTON.ImageTexture());
+		PlayButton.setPosition(Gdx.graphics.getWidth() / 2 - PlayButton.getWidth()/2, 100);
+		PlayButton.setScale(new Vector2(1f, 1f));
+		
+		PlayButtonText = new ExtendedLabel("Play", GameImage.MAINMENUPLAYBUTTON.ImageText());
+		PlayButtonText.setPosition(PlayButton.getX() + PlayButtonText.getWidth()/2 + 50, 115);
+		
 		BGSprite.scrollingBackground(allSprites);
 		
 		allSprites.add(ship);
 		allSprites.add(gameTitle);
+		allSprites.add(PlayButton);
+		allSprites.add(PlayButtonText);
 	}
 	
 	@Override
