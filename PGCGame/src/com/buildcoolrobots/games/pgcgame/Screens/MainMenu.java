@@ -26,6 +26,8 @@ public class MainMenu extends BaseScreen {
 		PlayButtonText.setPosition(Gdx.graphics.getWidth() / 2 - PlayButton.getWidth()/2 + PlayButtonText.getWidth()/2, 110);
 		//PlayButtonText.setFontScale(1.70f, .70f);
 		
+		BGSprite.scrollingBackground(allSprites);
+		
 		allSprites.add(PlayButton);
 		allSprites.add(PlayButtonText);
 	}

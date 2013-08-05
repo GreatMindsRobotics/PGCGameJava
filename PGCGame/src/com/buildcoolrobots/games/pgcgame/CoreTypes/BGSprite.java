@@ -12,16 +12,7 @@ public class BGSprite extends Sprite {
 	
 	private BGSprite() {
 		super(ScreenType.TITLESCREEN.ScreenTexture());
-	}
-	
-	public static BGSprite getInstance() {
-        return _currentBG;      
-	}
-	
-	
-	private static ExtendedSprite background;
-	private static ExtendedSprite background2;
-	public static void scrollingBackground(SpriteManager allSprites) {		
+
 		background = new ExtendedSprite(ScreenType.TITLESCREEN.ScreenTexture());
 		background.setPosition(0, 0);
 		background.xSpeed = -1f;
@@ -34,7 +25,16 @@ public class BGSprite extends Sprite {
 			background2.setPosition(background.getX() + background.getWidth() + 1, 0);
 		}
 		background2.xSpeed = -1f;
-		
+	}
+	
+	public static BGSprite getInstance() {
+        return _currentBG;      
+	}
+	
+	
+	private static ExtendedSprite background;
+	private static ExtendedSprite background2;
+	public static void scrollingBackground(SpriteManager allSprites) {		
 		allSprites.add(background);
 		allSprites.add(background2);
 	}
