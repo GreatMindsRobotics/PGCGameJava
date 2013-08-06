@@ -2,7 +2,7 @@ package com.buildcoolrobots.games.pgcgame;
 
 import me.pagekite.glen3b.gjlib.SpriteManager;
 
-import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL10;
@@ -12,11 +12,12 @@ import com.buildcoolrobots.games.pgcgame.CoreTypes.BGSprite;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseScreen;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.*;
+import com.buildcoolrobots.games.pgcgame.Screens.CreditsScreen;
 import com.buildcoolrobots.games.pgcgame.Screens.MainMenu;
 import com.buildcoolrobots.games.pgcgame.Screens.SettingsScreen;
 import com.buildcoolrobots.games.pgcgame.Screens.TitleScreen;
 
-public class PGCGameCore implements ApplicationListener {
+public class PGCGameCore extends Game {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	
@@ -36,9 +37,13 @@ public class PGCGameCore implements ApplicationListener {
 		TitleScreen titleScreen = new TitleScreen(new SpriteManager(), batch, ScreenType.TITLESCREEN);
 		MainMenu mainMenuScreen = new MainMenu(new SpriteManager(), batch, ScreenType.MAINMENU);
 		SettingsScreen settingsScreen = new SettingsScreen(new SpriteManager(), batch, ScreenType.SETTINGSSCREEN);
+		CreditsScreen creditsScreen = new CreditsScreen(new SpriteManager(), batch, ScreenType.CREDITSSCREEN);
 		
 		settingsScreen.hide();
 		mainMenuScreen.hide();
+		creditsScreen.hide();
+		
+		this.setScreen(titleScreen);
 		
 	}
 
@@ -60,20 +65,29 @@ public class PGCGameCore implements ApplicationListener {
 	public void dispose() {
 		batch.dispose();
 	}
-
+	
 	private void update() {
 		//Update all created screens; if screen is not active, it is the screen's responsibility to not run update unnecessarily
+		BGSprite.scrollingBackgroundUpdate();
+		
 		for(BaseScreen screen : StateManager.AllScreens.getAllScreens()) {
 			screen.update(Gdx.graphics.getDeltaTime());
 		}
-				
+
+		//NOTE: Using this.setScreen increases background scrolling speed
 		if(StateManager.DebugData.AllowScreenSwitching) {
 			if(Gdx.input.isKeyPressed(Input.Keys.F1)) {
+				//this.setScreen(StateManager.AllScreens.getScreen(ScreenType.TITLESCREEN));
 				StateManager.SwitchScreen(ScreenType.TITLESCREEN);
 			} else if (Gdx.input.isKeyPressed(Input.Keys.F2)) {
+				//this.setScreen(StateManager.AllScreens.getScreen(ScreenType.MAINMENU));
 				StateManager.SwitchScreen(ScreenType.MAINMENU);
 			} else if (Gdx.input.isKeyPressed(Input.Keys.F3)) {
+				//this.setScreen(StateManager.AllScreens.getScreen(ScreenType.SETTINGSSCREEN));
 				StateManager.SwitchScreen(ScreenType.SETTINGSSCREEN);
+			} else if (Gdx.input.isKeyPressed(Input.Keys.F4)) {
+				//this.setScreen(StateManager.AllScreens.getScreen(ScreenType.CREDITSSCREEN));
+				StateManager.SwitchScreen(ScreenType.CREDITSSCREEN);
 			}
 		}		
 	}
@@ -98,9 +112,7 @@ public class PGCGameCore implements ApplicationListener {
 	@Override
 	public void render() {
 		update();
-		draw();
-		
-		BGSprite.scrollingBackgroundUpdate();
+		draw();		
 	}
 	
 	

@@ -12,4 +12,9 @@ public class LevelSelectScreen extends BaseSelectScreen{
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public void update(float deltaTime) {
+		super.update(deltaTime);
+	}
+	
 }

@@ -10,8 +10,9 @@ public enum ScreenType implements IGameScreen {
 	
 	TITLESCREEN (null, null, null),
 	MAINMENU (null, null, null),
-	SETTINGSSCREEN (null, null, null);
-	 
+	SETTINGSSCREEN (null, null, null),
+	CREDITSSCREEN (null, null, null);
+	
 	
 	private ScreenType(String screenTexturePath, String screenLabelFntFile, String screenLabelPngFile) {
 		 _screenTexture = screenTexturePath == null ? null : new Texture(Gdx.files.internal(screenTexturePath));
