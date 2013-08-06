@@ -11,14 +11,14 @@ import com.buildcoolrobots.games.pgcgame.Ships.Bullets.Bullet;
 
 public class BaseShip extends ExtendedSprite {
 
-	private Vector2 _speed;
+	protected Vector2 _movementSpeed;
 	private ArrayList<Bullet> _bullets;	
 	
 	public BaseShip(Vector2 position, Vector2 speed, Texture texture) {
 		super(texture);
 		
 		this.setPosition(position.x, position.y);		
-		_speed = speed;
+		_movementSpeed = speed;
 	}
 	
 	public void shoot() {

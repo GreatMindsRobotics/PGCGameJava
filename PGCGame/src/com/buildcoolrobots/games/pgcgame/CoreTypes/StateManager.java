@@ -113,7 +113,7 @@ public abstract class StateManager {
         NextLevel = false;
         _level = GameLevel.LEVEL1;
         SpacePoints = 0;
-        Stack<ScreenType> _screenStack = new Stack<ScreenType>();
+        _screenStack.clear();
         _spaceBucks = 200000;
         IsWSFirstUpdate = true;
         _enemyID = UUID.randomUUID();

@@ -1,7 +1,5 @@
 package com.buildcoolrobots.games.pgcgame.Screens;
 
-import javax.swing.JOptionPane;
-
 import me.pagekite.glen3b.gjlib.ExtendedLabel;
 import me.pagekite.glen3b.gjlib.ExtendedSprite;
 import me.pagekite.glen3b.gjlib.SpriteManager;
