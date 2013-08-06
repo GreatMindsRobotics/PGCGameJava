@@ -10,7 +10,8 @@ public enum GameImage implements IGameImage{
 
 	GAMETITLE ("Images/Backgrounds/gametitle.png", null, null),
 	MAINMENUPLAYBUTTON ("Images/Controls/DefaultButton.png", "Fonts/DefaultButtonFont.fnt", "Fonts/DefaultButtonFont.png"),
-	DEBUGFONT (null, "Fonts/PGCGameDebugFont.fnt", "Fonts/PGCGameDebugFont.png" );
+	DEBUGFONT (null, "Fonts/PGCGameDebugFont.fnt", "Fonts/PGCGameDebugFont.png" ),
+	SCROLLINGBACKGROUND ("Images/Backgrounds/background.png", null, null);
 	
 	private GameImage(String ImagePath, String textLabelStyleFntFile, String textLabelStylePngFile) {
 		_imageTexture = ImagePath == null ? null : new Texture(ImagePath);	 

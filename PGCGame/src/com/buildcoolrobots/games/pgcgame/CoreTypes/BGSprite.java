@@ -4,6 +4,7 @@ import me.pagekite.glen3b.gjlib.ExtendedSprite;
 import me.pagekite.glen3b.gjlib.SpriteManager;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 
 public class BGSprite extends Sprite {
@@ -11,13 +12,13 @@ public class BGSprite extends Sprite {
 	
 	
 	private BGSprite() {
-		super(ScreenType.TITLESCREEN.ScreenTexture());
+		super(GameImage.SCROLLINGBACKGROUND.ImageTexture());
 
-		background = new ExtendedSprite(ScreenType.TITLESCREEN.ScreenTexture());
+		background = new ExtendedSprite(GameImage.SCROLLINGBACKGROUND.ImageTexture());
 		background.setPosition(0, 0);
 		background.xSpeed = -1f;
 		
-		background2 = new ExtendedSprite(ScreenType.TITLESCREEN.ScreenTexture());
+		background2 = new ExtendedSprite(GameImage.SCROLLINGBACKGROUND.ImageTexture());
 		if (!StateManager.TitleScreenBGSpriteDebug) {
 			background2.setPosition(background.getX() + background.getWidth(), 0);
 		}

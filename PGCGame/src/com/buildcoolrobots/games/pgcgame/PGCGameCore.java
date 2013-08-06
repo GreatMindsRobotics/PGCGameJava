@@ -13,6 +13,7 @@ import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseScreen;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.*;
 import com.buildcoolrobots.games.pgcgame.Screens.MainMenu;
+import com.buildcoolrobots.games.pgcgame.Screens.SettingsScreen;
 import com.buildcoolrobots.games.pgcgame.Screens.TitleScreen;
 
 public class PGCGameCore implements ApplicationListener {
@@ -34,7 +35,9 @@ public class PGCGameCore implements ApplicationListener {
 		
 		TitleScreen titleScreen = new TitleScreen(new SpriteManager(), batch, ScreenType.TITLESCREEN);
 		MainMenu mainMenuScreen = new MainMenu(new SpriteManager(), batch, ScreenType.MAINMENU);
-
+		SettingsScreen settingsScreen = new SettingsScreen(new SpriteManager(), batch, ScreenType.SETTINGSSCREEN);
+		
+		settingsScreen.hide();
 		mainMenuScreen.hide();
 		
 	}
@@ -69,7 +72,9 @@ public class PGCGameCore implements ApplicationListener {
 				StateManager.SwitchScreen(ScreenType.TITLESCREEN);
 			} else if (Gdx.input.isKeyPressed(Input.Keys.F2)) {
 				StateManager.SwitchScreen(ScreenType.MAINMENU);
-			}				
+			} else if (Gdx.input.isKeyPressed(Input.Keys.F3)) {
+				StateManager.SwitchScreen(ScreenType.SETTINGSSCREEN);
+			}
 		}		
 	}
 	
