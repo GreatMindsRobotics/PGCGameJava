@@ -26,8 +26,6 @@ public class SettingsScreen extends BaseScreen {
 	
 	public SettingsScreen(SpriteManager allSprites, SpriteBatch target, ScreenType screenType) {
 		super(allSprites, target, screenType);
-
-		BGSprite.scrollingBackground(allSprites);
 		
 		Button1 = new ExtendedSprite(GameImage.SETTINGSSCREENBUTTON.ImageTexture());
 		Button1.setPosition(100, Gdx.graphics.getHeight() - 100);
@@ -50,5 +48,10 @@ public class SettingsScreen extends BaseScreen {
 		allSprites.add(Button4);
 		allSprites.add(Button5);
 
+	}
+
+	@Override
+	public void update(float deltaTime) {
+		super.update(deltaTime);
 	}
 }

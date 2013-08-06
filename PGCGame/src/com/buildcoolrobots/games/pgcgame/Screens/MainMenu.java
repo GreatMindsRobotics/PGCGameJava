@@ -32,5 +32,10 @@ public class MainMenu extends BaseScreen {
 		allSprites.add(PlayButton);
 		allSprites.add(PlayButtonText);
 	}
+	
+	@Override
+	public void update(float deltaTime) {
+		super.update(deltaTime);
+	}
 
 }

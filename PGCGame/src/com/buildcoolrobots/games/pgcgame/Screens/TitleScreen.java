@@ -53,11 +53,12 @@ public class TitleScreen extends BaseScreen {
 	@Override
 	public void update(float deltaTime) {
 		super.update(deltaTime);
+		
 		if (Gdx.input.isTouched() && 
 			Gdx.input.getX() >= PlayButton.getX() && Gdx.input.getX() <= PlayButton.getX() + PlayButton.getWidth() &&
 			Gdx.graphics.getHeight() - Gdx.input.getY() >= PlayButton.getY() && Gdx.graphics.getHeight() - Gdx.input.getY() <= PlayButton.getY() + PlayButton.getHeight()) {
 			
-			StateManager.SwitchScreen(ScreenType.MAINMENU);
+				StateManager.SwitchScreen(ScreenType.MAINMENU);
 			}
 		if (ship.getX() > 50 && ship.getX() < Gdx.graphics.getWidth()) {
 			ship.xSpeed *= 1.035f;
@@ -75,5 +76,4 @@ public class TitleScreen extends BaseScreen {
 			ship.setRotation(25);
 		}
 	}
-
 }

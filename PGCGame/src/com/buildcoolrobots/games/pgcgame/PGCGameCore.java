@@ -68,19 +68,26 @@ public class PGCGameCore extends Game {
 	
 	private void update() {
 		//Update all created screens; if screen is not active, it is the screen's responsibility to not run update unnecessarily
+		BGSprite.scrollingBackgroundUpdate();
+		
 		for(BaseScreen screen : StateManager.AllScreens.getAllScreens()) {
 			screen.update(Gdx.graphics.getDeltaTime());
 		}
-				
+
+		//NOTE: Using this.setScreen increases background scrolling speed
 		if(StateManager.DebugData.AllowScreenSwitching) {
 			if(Gdx.input.isKeyPressed(Input.Keys.F1)) {
-				this.setScreen(StateManager.AllScreens.getScreen(ScreenType.TITLESCREEN));
+				//this.setScreen(StateManager.AllScreens.getScreen(ScreenType.TITLESCREEN));
+				StateManager.SwitchScreen(ScreenType.TITLESCREEN);
 			} else if (Gdx.input.isKeyPressed(Input.Keys.F2)) {
-				this.setScreen(StateManager.AllScreens.getScreen(ScreenType.MAINMENU));
+				//this.setScreen(StateManager.AllScreens.getScreen(ScreenType.MAINMENU));
+				StateManager.SwitchScreen(ScreenType.MAINMENU);
 			} else if (Gdx.input.isKeyPressed(Input.Keys.F3)) {
-				this.setScreen(StateManager.AllScreens.getScreen(ScreenType.SETTINGSSCREEN));
+				//this.setScreen(StateManager.AllScreens.getScreen(ScreenType.SETTINGSSCREEN));
+				StateManager.SwitchScreen(ScreenType.SETTINGSSCREEN);
 			} else if (Gdx.input.isKeyPressed(Input.Keys.F4)) {
-				this.setScreen(StateManager.AllScreens.getScreen(ScreenType.CREDITSSCREEN));
+				//this.setScreen(StateManager.AllScreens.getScreen(ScreenType.CREDITSSCREEN));
+				StateManager.SwitchScreen(ScreenType.CREDITSSCREEN);
 			}
 		}		
 	}
@@ -105,9 +112,7 @@ public class PGCGameCore extends Game {
 	@Override
 	public void render() {
 		update();
-		draw();
-		
-		BGSprite.scrollingBackgroundUpdate();
+		draw();		
 	}
 	
 	

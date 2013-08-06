@@ -13,4 +13,8 @@ public abstract class BaseSelectScreen extends BaseScreen {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public void update(float deltaTime) {
+		super.update(deltaTime);
+	}
 }
