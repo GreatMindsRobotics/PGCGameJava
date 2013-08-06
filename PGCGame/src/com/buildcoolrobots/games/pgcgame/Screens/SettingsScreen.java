@@ -11,8 +11,6 @@ public class SettingsScreen extends BaseScreen {
 
 	public SettingsScreen(SpriteManager allSprites, SpriteBatch target, ScreenType screenType) {
 		super(allSprites, target, screenType);
-		// TODO Auto-generated constructor stub
-		BGSprite.scrollingBackground(allSprites);
 	}
 
 }

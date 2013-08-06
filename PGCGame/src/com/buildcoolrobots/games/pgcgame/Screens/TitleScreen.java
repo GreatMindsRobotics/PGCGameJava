@@ -43,9 +43,7 @@ public class TitleScreen extends BaseScreen {
 		
 		PlayButtonText = new ExtendedLabel("Play", GameImage.MAINMENUPLAYBUTTON.ImageText());
 		PlayButtonText.setPosition(Gdx.graphics.getWidth()/2 - PlayButtonText.getWidth()/2, Gdx.graphics.getHeight()/2 - PlayButton.getHeight() + PlayButtonText.getHeight()/2);
-		
-		BGSprite.scrollingBackground(allSprites);
-		
+				
 		allSprites.add(ship);
 		allSprites.add(gameTitle);
 		allSprites.add(PlayButton);

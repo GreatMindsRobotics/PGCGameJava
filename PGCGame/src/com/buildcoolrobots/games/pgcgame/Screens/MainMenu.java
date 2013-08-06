@@ -5,6 +5,7 @@ import me.pagekite.glen3b.gjlib.ExtendedSprite;
 import me.pagekite.glen3b.gjlib.SpriteManager;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.BGSprite;
@@ -26,7 +27,7 @@ public class MainMenu extends BaseScreen {
 		PlayButtonText.setPosition(Gdx.graphics.getWidth() / 2 - PlayButton.getWidth()/2 + PlayButtonText.getWidth()/2, 110);
 		//PlayButtonText.setFontScale(1.70f, .70f);
 		
-		BGSprite.scrollingBackground(allSprites);
+
 		
 		allSprites.add(PlayButton);
 		allSprites.add(PlayButtonText);
