@@ -55,7 +55,7 @@ public class TitleScreen extends BaseScreen {
 		super.update(deltaTime);
 		if (Gdx.input.isTouched() && 
 			Gdx.input.getX() >= PlayButton.getX() && Gdx.input.getX() <= PlayButton.getX() + PlayButton.getWidth() &&
-			(Gdx.graphics.getHeight() - Gdx.input.getY()) >= PlayButton.getY() && (Gdx.graphics.getHeight() - Gdx.input.getY()) <= PlayButton.getY() + PlayButton.getHeight()) {
+			Gdx.graphics.getHeight() - Gdx.input.getY() >= PlayButton.getY() && Gdx.graphics.getHeight() - Gdx.input.getY() <= PlayButton.getY() + PlayButton.getHeight()) {
 			
 			StateManager.SwitchScreen(ScreenType.MAINMENU);
 			}
