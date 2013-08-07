@@ -4,7 +4,6 @@ import me.pagekite.glen3b.gjlib.SpriteManager;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.BGSprite;

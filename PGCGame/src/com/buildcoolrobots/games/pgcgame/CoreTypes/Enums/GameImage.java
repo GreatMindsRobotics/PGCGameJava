@@ -11,10 +11,12 @@ public enum GameImage implements IGameImage{
 	GAMETITLE ("Images/Backgrounds/gametitle.png", null, null),
 	MAINMENUPLAYBUTTON ("Images/Controls/DefaultButton.png", "Fonts/DefaultButtonFont.fnt", "Fonts/DefaultButtonFont.png"),
 	MAINMENUSETTINGSBUTTON("Images/Controls/DefaultButton.png", "Fonts/DefaultButtonFont.fnt", "Fonts/DefaultButtonFont.png"),
+	MAINMENUCREDITSBUTTON("Images/Controls/DefaultButton.png", "Fonts/DefaultButtonFont.fnt", "Fonts/DefaultButtonFont.png"),
 	SETTINGSSCREENBUTTON ("Images/Controls/DefaultButton.png", "Fonts/DefaultButtonFont.fnt", "Fonts/DefaultButtonFont.png"),
 	DEBUGFONT (null, "Fonts/PGCGameDebugFont.fnt", "Fonts/PGCGameDebugFont.png" ),
 	GAMEDPAD ("Images/Controls/controlButtons360.png", null, null),
-	SCROLLINGBACKGROUND ("Images/Backgrounds/background.png", null, null);
+	SCROLLINGBACKGROUND ("Images/Backgrounds/background.png", null, null),
+	CREDITFONT(null, "Fonts/CreditFont.fnt", "Fonts/CreditFont.png" );
 	
 	private GameImage(String ImagePath, String textLabelStyleFntFile, String textLabelStylePngFile) {
 		_imageTexture = ImagePath == null ? null : new Texture(ImagePath);	 
