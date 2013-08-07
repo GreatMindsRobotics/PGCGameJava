@@ -20,7 +20,6 @@ public class TitleScreen extends BaseScreen {
 	private ExtendedSprite PlayButton;
 	private ExtendedLabel PlayButtonText;
 	
-	
 	public TitleScreen(SpriteManager allSprites, SpriteBatch spriteBatch, ScreenType screenType) {
 		super(allSprites, spriteBatch, screenType);
 		
