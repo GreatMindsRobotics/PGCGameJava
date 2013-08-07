@@ -8,6 +8,7 @@ import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 
 import me.pagekite.glen3b.gjlib.BasicScreen;
 import me.pagekite.glen3b.gjlib.ExtendedLabel;
+import me.pagekite.glen3b.gjlib.ExtendedSprite;
 import me.pagekite.glen3b.gjlib.SpriteManager;
 
 public abstract class BaseScreen extends BasicScreen {
@@ -18,6 +19,12 @@ public abstract class BaseScreen extends BasicScreen {
 		_screenType = screenType;
 		BGSprite.scrollingBackground(allSprites);
 
+		//If this screen has a background, set it
+		if(screenType.ScreenTexture() != null) {
+			allSprites.add(new ExtendedSprite(screenType.ScreenTexture()));			
+		}
+		
+		
 		//Show debug info if in debug mode
 		if(StateManager.DebugData.AllowScreenSwitching || StateManager.DebugData.ShowScreenName)
 		{
