@@ -46,6 +46,7 @@ public class PGCGameCore extends Game {
 		GameScreen gameScreen = new GameScreen(new SpriteManager(), batch, ScreenType.GAMESCREEN);
 		gameScreen.setAutoSpriteBatchManager(true);
 		
+		
 		settingsScreen.hide();
 		mainMenuScreen.hide();
 		creditsScreen.hide();
