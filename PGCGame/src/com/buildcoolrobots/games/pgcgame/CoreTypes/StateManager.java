@@ -46,11 +46,7 @@ public abstract class StateManager {
     private static GameLevel _level = GameLevel.LEVEL1;
     public static GameLevel CurrentLevel = GameLevel.LEVEL1;
     public static boolean NextLevel = false;
-    
-    
-    //public static ScreenManager AllScreens;
-    
-    
+       
     public static final Random RandomGenerator = new Random();
     
     //get and sets
@@ -102,16 +98,18 @@ public abstract class StateManager {
     }
     
     public static void SwitchScreen(ScreenType screenType) {
-    	/*
-    	for(BaseScreen screen: AllScreens.getAllScreens()) {
-    		screen.hide();
-    	}
-    	
-    	BaseScreen activeScreen = AllScreens.getScreen(screenType);    	
-    	activeScreen.show();	
-    	*/
     	PGC.setScreen(AllScreens.getScreen(screenType));
+    	_screenState = screenType;
     } 
+    
+    public static void SwitchScreen(int debugKey) {
+    	SwitchScreen(AllScreens.getScreenType(debugKey));
+    }
+    
+	public static void SwitchNextScreen() {		
+		SwitchScreen(AllScreens.getNextScreen());
+	}
+
     
     public static void Reset()
     {
@@ -136,6 +134,7 @@ public abstract class StateManager {
 	public static class Options {
 		
 	}
+
 	
 	
 }

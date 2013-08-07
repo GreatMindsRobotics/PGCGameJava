@@ -5,11 +5,10 @@ import me.pagekite.glen3b.gjlib.SpriteManager;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.BGSprite;
-import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseScreen;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.DebugInputProcessor;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.*;
 import com.buildcoolrobots.games.pgcgame.Screens.CreditsScreen;
@@ -20,6 +19,9 @@ import com.buildcoolrobots.games.pgcgame.Screens.TitleScreen;
 public class PGCGameCore extends Game {
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
+
+	//private DebugInputProcessor debugKeys;
+	private DebugInputProcessor debugKeys;
 	
 	@Override
 	public void create() {		
@@ -48,6 +50,9 @@ public class PGCGameCore extends Game {
 		this.setScreen(titleScreen);
 		StateManager.PGC = this;
 		
+		//Input processor
+		debugKeys = new DebugInputProcessor();		
+		Gdx.input.setInputProcessor(debugKeys);		
 	}
 
 	@SuppressWarnings("unused")
@@ -70,62 +75,20 @@ public class PGCGameCore extends Game {
 	}
 	
 	private void update() {
-		//Update all created screens; if screen is not active, it is the screen's responsibility to not run update unnecessarily
-		BGSprite.scrollingBackgroundUpdate();
-		/*
-		for(BaseScreen screen : StateManager.AllScreens.getAllScreens()) {
-			screen.update(Gdx.graphics.getDeltaTime());
-		}
-		*/
-
-		
-		//NOTE: Using this.setScreen increases background scrolling speed
-		if(StateManager.DebugData.AllowScreenSwitching) {
-			if(Gdx.input.isKeyPressed(Input.Keys.F1)) {
-				this.setScreen(StateManager.AllScreens.getScreen(ScreenType.TITLESCREEN));
-				//StateManager.SwitchScreen(ScreenType.TITLESCREEN);
-			} else if (Gdx.input.isKeyPressed(Input.Keys.F2)) {
-				this.setScreen(StateManager.AllScreens.getScreen(ScreenType.MAINMENU));
-				//StateManager.SwitchScreen(ScreenType.MAINMENU);
-			} else if (Gdx.input.isKeyPressed(Input.Keys.F3)) {
-				this.setScreen(StateManager.AllScreens.getScreen(ScreenType.SETTINGSSCREEN));
-				//StateManager.SwitchScreen(ScreenType.SETTINGSSCREEN);
-			} else if (Gdx.input.isKeyPressed(Input.Keys.F4)) {
-				this.setScreen(StateManager.AllScreens.getScreen(ScreenType.CREDITSSCREEN));
-				//StateManager.SwitchScreen(ScreenType.CREDITSSCREEN);
-			}
-		}
-				
+		//Update BGSprite - only call this method from here, not from each screen!
+		BGSprite.scrollingBackgroundUpdate();			
 	}
 	
 	private void draw() {
-		/*
-		Gdx.gl.glClearColor(1, 1, 1, 1);
-		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);	
-		
-		batch.setProjectionMatrix(camera.combined);		
-			
-		batch.begin();		
-
-		//Update all created screens; if screen is not active, it is the screen's responsibility to not run update unnecessarily
-		for(BaseScreen screen : StateManager.AllScreens.getAllScreens()) {
-			screen.draw();
-		}
-		
-		batch.end();
-		*/
-		
+		//Screens are rendered and updated by the Game class
+		super.render();
 	}
 	
 	@Override
 	public void render() {
-		//update();
 		update();
-		//draw();	
-		super.render();
+		draw();
 	}
-	
-	
 	
 
 	@Override

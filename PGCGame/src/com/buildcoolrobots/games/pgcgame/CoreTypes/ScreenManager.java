@@ -27,7 +27,20 @@ public class ScreenManager {
 		return null;
 	}
 	
+	public ScreenType getScreenType(Integer debugKey) {
+		for(BaseScreen screen : _allScreens) {
+			if(screen.getScreenType().DebugKey() == debugKey) {
+				return screen.getScreenType();
+			}
+		}
+		return null;
+	}
+	
 	public void setScreen(BaseScreen screen) {
 		_allScreens.add(screen);
+	}
+	
+	public ScreenType getNextScreen() {
+		return ScreenType.values()[(StateManager.getScreenState().ordinal() + 1) % ScreenType.values().length];
 	}
 }

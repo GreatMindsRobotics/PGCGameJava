@@ -5,7 +5,6 @@ import me.pagekite.glen3b.gjlib.SpriteManager;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
-import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 
 public class BGSprite extends Sprite {
 	private static final BGSprite _currentBG = new BGSprite();
