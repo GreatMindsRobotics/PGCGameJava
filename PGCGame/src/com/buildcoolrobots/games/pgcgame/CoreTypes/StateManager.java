@@ -101,6 +101,7 @@ public abstract class StateManager {
     	if(screenType != null) {
 	    	PGC.setScreen(AllScreens.getScreen(screenType));
 	    	_screenState = screenType;
+	    	
     	}
     } 
     
