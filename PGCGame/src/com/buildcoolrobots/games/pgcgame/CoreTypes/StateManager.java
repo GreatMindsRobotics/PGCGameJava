@@ -5,6 +5,7 @@ import java.util.Random;
 import java.util.Stack;
 import java.util.UUID;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameLevel;
@@ -27,6 +28,8 @@ public abstract class StateManager {
     private static int _spaceBucks = 200000;    
     
     // Public Fields
+    public static Game PGC;
+    
     public static ArrayList<Bullet> LegitBullets = new ArrayList<Bullet>();
     public static boolean IsWSFirstUpdate = true;
     public static final Rectangle WorldSize = new Rectangle(0, 0, (Gdx.graphics.getWidth()) * 5, Gdx.graphics.getHeight());
@@ -99,12 +102,15 @@ public abstract class StateManager {
     }
     
     public static void SwitchScreen(ScreenType screenType) {
+    	/*
     	for(BaseScreen screen: AllScreens.getAllScreens()) {
     		screen.hide();
     	}
     	
     	BaseScreen activeScreen = AllScreens.getScreen(screenType);    	
     	activeScreen.show();	
+    	*/
+    	PGC.setScreen(AllScreens.getScreen(screenType));
     } 
     
     public static void Reset()

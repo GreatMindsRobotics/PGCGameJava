@@ -31,19 +31,22 @@ public class PGCGameCore extends Game {
 		batch = new SpriteBatch();
 		
 		loadContent();
-				
-		
 		
 		TitleScreen titleScreen = new TitleScreen(new SpriteManager(), batch, ScreenType.TITLESCREEN);
+		titleScreen.setAutoSpriteBatchManager(true);
 		MainMenu mainMenuScreen = new MainMenu(new SpriteManager(), batch, ScreenType.MAINMENU);
+		mainMenuScreen.setAutoSpriteBatchManager(true);
 		SettingsScreen settingsScreen = new SettingsScreen(new SpriteManager(), batch, ScreenType.SETTINGSSCREEN);
+		settingsScreen.setAutoSpriteBatchManager(true);
 		CreditsScreen creditsScreen = new CreditsScreen(new SpriteManager(), batch, ScreenType.CREDITSSCREEN);
+		creditsScreen.setAutoSpriteBatchManager(true);
 		
 		settingsScreen.hide();
 		mainMenuScreen.hide();
 		creditsScreen.hide();
 		
 		this.setScreen(titleScreen);
+		StateManager.PGC = this;
 		
 	}
 
@@ -69,30 +72,34 @@ public class PGCGameCore extends Game {
 	private void update() {
 		//Update all created screens; if screen is not active, it is the screen's responsibility to not run update unnecessarily
 		BGSprite.scrollingBackgroundUpdate();
-		
+		/*
 		for(BaseScreen screen : StateManager.AllScreens.getAllScreens()) {
 			screen.update(Gdx.graphics.getDeltaTime());
 		}
+		*/
 
+		
 		//NOTE: Using this.setScreen increases background scrolling speed
 		if(StateManager.DebugData.AllowScreenSwitching) {
 			if(Gdx.input.isKeyPressed(Input.Keys.F1)) {
-				//this.setScreen(StateManager.AllScreens.getScreen(ScreenType.TITLESCREEN));
-				StateManager.SwitchScreen(ScreenType.TITLESCREEN);
+				this.setScreen(StateManager.AllScreens.getScreen(ScreenType.TITLESCREEN));
+				//StateManager.SwitchScreen(ScreenType.TITLESCREEN);
 			} else if (Gdx.input.isKeyPressed(Input.Keys.F2)) {
-				//this.setScreen(StateManager.AllScreens.getScreen(ScreenType.MAINMENU));
-				StateManager.SwitchScreen(ScreenType.MAINMENU);
+				this.setScreen(StateManager.AllScreens.getScreen(ScreenType.MAINMENU));
+				//StateManager.SwitchScreen(ScreenType.MAINMENU);
 			} else if (Gdx.input.isKeyPressed(Input.Keys.F3)) {
-				//this.setScreen(StateManager.AllScreens.getScreen(ScreenType.SETTINGSSCREEN));
-				StateManager.SwitchScreen(ScreenType.SETTINGSSCREEN);
+				this.setScreen(StateManager.AllScreens.getScreen(ScreenType.SETTINGSSCREEN));
+				//StateManager.SwitchScreen(ScreenType.SETTINGSSCREEN);
 			} else if (Gdx.input.isKeyPressed(Input.Keys.F4)) {
-				//this.setScreen(StateManager.AllScreens.getScreen(ScreenType.CREDITSSCREEN));
-				StateManager.SwitchScreen(ScreenType.CREDITSSCREEN);
+				this.setScreen(StateManager.AllScreens.getScreen(ScreenType.CREDITSSCREEN));
+				//StateManager.SwitchScreen(ScreenType.CREDITSSCREEN);
 			}
-		}		
+		}
+				
 	}
 	
 	private void draw() {
+		/*
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);	
 		
@@ -106,13 +113,16 @@ public class PGCGameCore extends Game {
 		}
 		
 		batch.end();
+		*/
 		
 	}
 	
 	@Override
 	public void render() {
+		//update();
 		update();
-		draw();		
+		//draw();	
+		super.render();
 	}
 	
 	
