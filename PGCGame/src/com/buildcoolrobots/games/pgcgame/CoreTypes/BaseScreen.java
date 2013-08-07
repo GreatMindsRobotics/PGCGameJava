@@ -45,18 +45,10 @@ public abstract class BaseScreen extends BasicScreen {
 	public ScreenType getScreenType() {
 		return _screenType;
 	}
-
+	
 	@Override
 	public void update(float deltaTime) {
-		super.update(deltaTime);
-		
-		/*
-		 * GJLib.BasicScreen should expose IsVisible as public
-		 * 
-		if(!(_updateWhenNotVisible || IsVisible)) {
-			return;
-		}
-		*/
+		super.update(deltaTime);		
 		
 	}
 
