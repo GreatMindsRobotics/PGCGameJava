@@ -98,8 +98,10 @@ public abstract class StateManager {
     }
     
     public static void SwitchScreen(ScreenType screenType) {
-    	PGC.setScreen(AllScreens.getScreen(screenType));
-    	_screenState = screenType;
+    	if(screenType != null) {
+	    	PGC.setScreen(AllScreens.getScreen(screenType));
+	    	_screenState = screenType;
+    	}
     } 
     
     public static void SwitchScreen(int debugKey) {
