@@ -6,13 +6,17 @@ import me.pagekite.glen3b.gjlib.SpriteManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
+
 import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseScreen;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ShipTypes;
-
+import com.buildcoolrobots.games.pgcgame.Ships.Allies.PlayerShip;
 
 public class GameScreen extends BaseScreen {
+
+	
 	ExtendedSprite dpadUp;
 	ExtendedSprite dpadDown;
 	ExtendedSprite dpadLeft;
@@ -20,7 +24,6 @@ public class GameScreen extends BaseScreen {
 	ExtendedSprite dpadCenter;
 	
 	ExtendedSprite Ship;
-	
 	public GameScreen(SpriteManager allSprites, SpriteBatch spriteBatch, ScreenType screenType) {
 		super(allSprites, spriteBatch, screenType);
 		
@@ -46,6 +49,9 @@ public class GameScreen extends BaseScreen {
 		allSprites.add(dpadDown);
 		allSprites.add(dpadLeft);
 		allSprites.add(dpadRight);
+
+
+
 	}
 	
 	boolean lastTouch = false;

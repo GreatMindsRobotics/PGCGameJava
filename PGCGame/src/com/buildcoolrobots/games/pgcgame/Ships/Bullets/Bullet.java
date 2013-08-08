@@ -1,7 +1,14 @@
 package com.buildcoolrobots.games.pgcgame.Ships.Bullets;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
+import me.pagekite.glen3b.gjlib.ExtendedSprite;
 
-public class Bullet extends Sprite {
+import com.badlogic.gdx.graphics.Texture;
+
+public class Bullet extends ExtendedSprite {
+
+	public Bullet(Texture texture) {
+		super(texture);
+		// TODO Auto-generated constructor stub
+	}
 
 }
