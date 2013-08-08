@@ -8,17 +8,22 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseScreen;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 
 public class MainMenu extends BaseScreen {
 
+	ExtendedSprite MainMenuPlayButton;
+	ExtendedSprite MainMenuSettingsButton;
+	ExtendedSprite MainMenuCreditsButton;
+	
 	public MainMenu(SpriteManager allSprites, SpriteBatch target, ScreenType screenType) {
 		super(allSprites, target, screenType);
 		
-		ExtendedSprite MainMenuPlayButton = new ExtendedSprite(GameImage.MAINMENUPLAYBUTTON.ImageTexture());
-		ExtendedSprite MainMenuSettingsButton = new ExtendedSprite(GameImage.MAINMENUSETTINGSBUTTON.ImageTexture());
-		ExtendedSprite MainMenuCreditsButton = new ExtendedSprite(GameImage.MAINMENUCREDITSBUTTON.ImageTexture());
+		MainMenuPlayButton = new ExtendedSprite(GameImage.MAINMENUPLAYBUTTON.ImageTexture());
+		MainMenuSettingsButton = new ExtendedSprite(GameImage.MAINMENUSETTINGSBUTTON.ImageTexture());
+		MainMenuCreditsButton = new ExtendedSprite(GameImage.MAINMENUCREDITSBUTTON.ImageTexture());
 		
 		MainMenuPlayButton.setPosition(Gdx.graphics.getWidth() / 2 - MainMenuPlayButton.getWidth() / 2, Gdx.graphics.getHeight() / 4);
 		MainMenuPlayButton.setScale(new Vector2(1f, 1f));
@@ -50,7 +55,21 @@ public class MainMenu extends BaseScreen {
 	@Override
 	public void update(float deltaTime) {
 		super.update(deltaTime);
-
+		if (Gdx.input.isTouched() && 
+				Gdx.input.getX() >= MainMenuSettingsButton.getX() && Gdx.input.getX() <= MainMenuSettingsButton.getX() + MainMenuSettingsButton.getWidth() &&
+				Gdx.graphics.getHeight() - Gdx.input.getY() >= MainMenuSettingsButton.getY() &&
+				Gdx.graphics.getHeight() - Gdx.input.getY() <= MainMenuSettingsButton.getY() + MainMenuSettingsButton.getHeight()) {
+				
+					StateManager.SwitchScreen(ScreenType.SETTINGSSCREEN);
+				}
+		
+		if (Gdx.input.isTouched() && 
+				Gdx.input.getX() >= MainMenuCreditsButton.getX() && Gdx.input.getX() <= MainMenuCreditsButton.getX() + MainMenuCreditsButton.getWidth() &&
+				Gdx.graphics.getHeight() - Gdx.input.getY() >= MainMenuCreditsButton.getY() &&
+				Gdx.graphics.getHeight() - Gdx.input.getY() <= MainMenuCreditsButton.getY() + MainMenuCreditsButton.getHeight()) {
+				
+					StateManager.SwitchScreen(ScreenType.CREDITSSCREEN);
 	}
 
+}
 }
