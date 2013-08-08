@@ -11,77 +11,131 @@ import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 
 public class CreditsScreen extends BaseScreen {
 
-	ExtendedLabel CLine1;
-	ExtendedLabel CLine2;	
-	ExtendedLabel CLine3;
-	ExtendedLabel CLine4;
-	ExtendedLabel CLine5;
-	ExtendedLabel CLine6;
-	ExtendedLabel CLine7;
-	ExtendedLabel CLine8;
-	ExtendedLabel CLine9;
-	ExtendedLabel CLine10;
-	ExtendedLabel CLine11;
+	ExtendedLabel CTLine;
+	
+	ExtendedLabel CW1;	
+	ExtendedLabel CW2;
+	ExtendedLabel CW3;
+	ExtendedLabel CW4;
+	ExtendedLabel CW5;
+	ExtendedLabel CW6;
+	
+	ExtendedLabel CA1;  // functional spec. and game management
+	ExtendedLabel CA2;  // class design, functionality, technical spec
+	ExtendedLabel CA3;  // ai programming
+	ExtendedLabel CA4;  // Xbox conversion
+	ExtendedLabel CA5;  // generl game programming
+	ExtendedLabel CA6;  //
+	
+	ExtendedLabel CN1AlexL;
+	ExtendedLabel CN2AlexaL;
+	ExtendedLabel CN3AndreaL;
+	ExtendedLabel CN4JeremiahT;
+	ExtendedLabel CN5KaiFH;
+	ExtendedLabel CN6MatthewP;
+	ExtendedLabel CN7MichaelK;
+	ExtendedLabel CN8GlenH;
+	ExtendedLabel CN9AndrewK;
+	ExtendedLabel CN10KevinF;
+    ExtendedLabel CN11JosephV;
+    ExtendedLabel CN12AlyssaF;
+    ExtendedLabel CN13RossT;
+    ExtendedLabel CN14BrandonU;
+    ExtendedLabel CN15PierreB;
+    ExtendedLabel CN16EedanS;
+    ExtendedLabel CN17RehaanI;
+    ExtendedLabel CN18BrandonF;
+    
+    
 	
 	private final int scrollSpeed = 1;
 	
 	public CreditsScreen(SpriteManager allSprites, SpriteBatch target, ScreenType screenType) {
 		super(allSprites, target, screenType);
-		CLine1 = new ExtendedLabel("Credits", GameImage.CREDITFONT.ImageText());
-		CLine2 = new ExtendedLabel("Week 1", GameImage.CREDITFONT.ImageText());
-		CLine3 = new ExtendedLabel("Functional Spec and Game Management", GameImage.CREDITFONT.ImageText());
-		CLine4 = new ExtendedLabel("Alex L.", GameImage.CREDITFONT.ImageText());
-		CLine5 = new ExtendedLabel("Alexa L.", GameImage.CREDITFONT.ImageText());
-		CLine6 = new ExtendedLabel("Andrea L.", GameImage.CREDITFONT.ImageText());
-		CLine7 = new ExtendedLabel("Jeremiah T.", GameImage.CREDITFONT.ImageText());
-		CLine8 = new ExtendedLabel("Kai F-H", GameImage.CREDITFONT.ImageText());
-		CLine9 = new ExtendedLabel("Matthew P.", GameImage.CREDITFONT.ImageText());
-		CLine10 = new ExtendedLabel("Michael K.", GameImage.CREDITFONT.ImageText());
-		CLine11 = new ExtendedLabel("", GameImage.CREDITFONT.ImageText());
+		CTLine = new ExtendedLabel("Credits", GameImage.CREDITFONT.ImageText());
+		CW1 = new ExtendedLabel("Week 1", GameImage.CREDITFONT.ImageText());
+		CA1 = new ExtendedLabel("Functional Spec and Game Management", GameImage.CREDITFONT.ImageText());
+		CN1AlexL = new ExtendedLabel("Alex L.", GameImage.CREDITFONT.ImageText());
+		CN2AlexaL = new ExtendedLabel("Alexa L.", GameImage.CREDITFONT.ImageText());
+		CN3AndreaL = new ExtendedLabel("Andrea L.", GameImage.CREDITFONT.ImageText());
+		CN4JeremiahT = new ExtendedLabel("Jeremiah T.", GameImage.CREDITFONT.ImageText());
+		CN5KaiFH = new ExtendedLabel("Kai F-H", GameImage.CREDITFONT.ImageText());
+		CN6MatthewP = new ExtendedLabel("Matthew P.", GameImage.CREDITFONT.ImageText());
+		CN7MichaelK = new ExtendedLabel("Michael K.", GameImage.CREDITFONT.ImageText());
+		
+		CW2 = new ExtendedLabel("Week 2", GameImage.CREDITFONT.ImageText());
+		CA2 = new ExtendedLabel("Class Design, Functionality, Technical Spec.", GameImage.CREDITFONT.ImageText());		
+		CN1AlexL = new ExtendedLabel("Alex L.", GameImage.CREDITFONT.ImageText());
+		CN8GlenH = new ExtendedLabel("Glen H.", GameImage.CREDITFONT.ImageText());
+		CN6MatthewP = new ExtendedLabel("Matthew P.", GameImage.CREDITFONT.ImageText());
+		CN7MichaelK = new ExtendedLabel("Michael K.", GameImage.CREDITFONT.ImageText());
+		
 		reset();
 		
-		allSprites.add(CLine1);
-		allSprites.add(CLine2);
-		allSprites.add(CLine3);
-		allSprites.add(CLine4);
-		allSprites.add(CLine5);
-		allSprites.add(CLine6);
-		allSprites.add(CLine7);
-		allSprites.add(CLine8);
-		allSprites.add(CLine9);
-		allSprites.add(CLine10);
-		allSprites.add(CLine11);
+		allSprites.add(CTLine);
+		
+		allSprites.add(CW1);
+		allSprites.add(CA1);
+		allSprites.add(CN1AlexL);
+		allSprites.add(CN2AlexaL);
+		allSprites.add(CN3AndreaL);
+		allSprites.add(CN4JeremiahT);
+		allSprites.add(CN5KaiFH);
+		allSprites.add(CN6MatthewP);
+		allSprites.add(CN7MichaelK);
+		
+		allSprites.add(CW2);
+		allSprites.add(CA2);
+		allSprites.add(CN1AlexL);
+		allSprites.add(CN8GlenH);
+		allSprites.add(CN6MatthewP);
+		allSprites.add(CN7MichaelK);
 	}
 	
 	public void reset() {
-		CLine1.setPosition(Gdx.graphics.getWidth()/2 - CLine1.getWidth() /3, +120 -120);
-		CLine2.setPosition(Gdx.graphics.getWidth()/2 - CLine2.getWidth() /3, -20 - 120);
-		CLine3.setPosition(Gdx.graphics.getWidth()/3 + 20 - CLine3.getWidth() /3, -60 - 120);
-		CLine4.setPosition(Gdx.graphics.getWidth()/2 - CLine4.getWidth() /3, -120 - 120);
-		CLine5.setPosition(Gdx.graphics.getWidth()/2 - CLine5.getWidth() /3, -180 - 120);
-		CLine6.setPosition(Gdx.graphics.getWidth()/2 - CLine6.getWidth() /3, -240 - 120);
-		CLine7.setPosition(Gdx.graphics.getWidth()/2 - CLine7.getWidth() /3, -300 - 120);
-		CLine8.setPosition(Gdx.graphics.getWidth()/2 - CLine8.getWidth() /3, -360 - 120);
-		CLine9.setPosition(Gdx.graphics.getWidth()/2 - CLine9.getWidth() /3, -420 - 120);
-		CLine10.setPosition(Gdx.graphics.getWidth()/2 - CLine10.getWidth() /3,-480 - 120);
-		CLine11.setPosition(Gdx.graphics.getWidth()/2 - CLine11.getWidth() /3,-540 - 120);
+		
+		CTLine.setPosition(Gdx.graphics.getWidth()/2 - CTLine.getWidth() /3, +150 -120);
+		
+		CW1.setPosition(Gdx.graphics.getWidth()/2 - CW1.getWidth() /3, + 30 - 120);
+		
+		CA1.setPosition(Gdx.graphics.getWidth()/3 + 20 - CA1.getWidth() /3, -60 - 120);
+		CN1AlexL.setPosition(Gdx.graphics.getWidth()/2 - CN1AlexL.getWidth() /3, -120 - 120);
+		CN2AlexaL.setPosition(Gdx.graphics.getWidth()/2 - CN2AlexaL.getWidth() /3, -180 - 120);
+		CN3AndreaL.setPosition(Gdx.graphics.getWidth()/2 - CN3AndreaL.getWidth() /3, -240 - 120);
+		CN4JeremiahT.setPosition(Gdx.graphics.getWidth()/2 - CN4JeremiahT.getWidth() /3, -300 - 120);
+		CN5KaiFH.setPosition(Gdx.graphics.getWidth()/2 - CN5KaiFH.getWidth() /3, -360 - 120);
+		CN6MatthewP.setPosition(Gdx.graphics.getWidth()/2 - CN6MatthewP.getWidth() /3, -420 - 120);
+		CN7MichaelK.setPosition(Gdx.graphics.getWidth()/2 - CN7MichaelK.getWidth() /3,-480 - 120);
+		
+		CW2.setPosition(Gdx.graphics.getWidth()/2 - CW2.getWidth() /3, - 780 ); 
+		
+		CA2.setPosition(Gdx.graphics.getWidth()/2 - CA2.getWidth() /3, - 870 );
+		CN1AlexL.setPosition(Gdx.graphics.getWidth()/2 - CN1AlexL.getWidth() /3, - 930);
+		CN8GlenH.setPosition(Gdx.graphics.getWidth()/2 - CN8GlenH.getWidth() /3, - 990);
+		CN6MatthewP.setPosition(Gdx.graphics.getWidth()/2 - CN6MatthewP.getWidth() /3, - 1050);
+		CN7MichaelK.setPosition(Gdx.graphics.getWidth()/2 - CN7MichaelK.getWidth() /3, - 1110);
 	}
 
 	@Override
 	public void update(float deltaTime) {
 		super.update(deltaTime);
 		
-		CLine1.setPosition(CLine1.getX(), CLine1.getY() + scrollSpeed);
-		CLine2.setPosition(CLine2.getX(), CLine2.getY() + scrollSpeed);
-		CLine3.setPosition(CLine3.getX(), CLine3.getY() + scrollSpeed);
-		CLine4.setPosition(CLine4.getX(), CLine4.getY() + scrollSpeed);
-		CLine5.setPosition(CLine5.getX(), CLine5.getY() + scrollSpeed);
-		CLine6.setPosition(CLine6.getX(), CLine6.getY() + scrollSpeed);
-		CLine7.setPosition(CLine7.getX(), CLine7.getY() + scrollSpeed);
-		CLine8.setPosition(CLine8.getX(), CLine8.getY() + scrollSpeed);
-		CLine9.setPosition(CLine9.getX(), CLine9.getY() + scrollSpeed);
-		CLine10.setPosition(CLine10.getX(), CLine10.getY() + scrollSpeed);
-		CLine11.setPosition(CLine11.getX(), CLine11.getY() + scrollSpeed);
+		CTLine.setPosition(CTLine.getX(), CTLine.getY() + scrollSpeed);
+		CW1.setPosition(CW1.getX(), CW1.getY() + scrollSpeed);
+		CA1.setPosition(CA1.getX(), CA1.getY() + scrollSpeed);
+		CN1AlexL.setPosition(CN1AlexL.getX(), CN1AlexL.getY() + scrollSpeed);
+		CN2AlexaL.setPosition(CN2AlexaL.getX(), CN2AlexaL.getY() + scrollSpeed);
+		CN3AndreaL.setPosition(CN3AndreaL.getX(), CN3AndreaL.getY() + scrollSpeed);
+		CN4JeremiahT.setPosition(CN4JeremiahT.getX(), CN4JeremiahT.getY() + scrollSpeed);
+		CN5KaiFH.setPosition(CN5KaiFH.getX(), CN5KaiFH.getY() + scrollSpeed);
+		CN6MatthewP.setPosition(CN6MatthewP.getX(), CN6MatthewP.getY() + scrollSpeed);
+		CN7MichaelK.setPosition(CN7MichaelK.getX(), CN7MichaelK.getY() + scrollSpeed);
+		CW2.setPosition(CW2.getX(), CW2.getY() + scrollSpeed);
+		CA2.setPosition(CA2.getX(), CA2.getY() + scrollSpeed);
+		CN1AlexL.setPosition(CN1AlexL.getX(), CN1AlexL.getY() + scrollSpeed);
+		CN8GlenH.setPosition(CN8GlenH.getX(), CN8GlenH.getY() + scrollSpeed);
+		CN6MatthewP.setPosition(CN6MatthewP.getX(), CN6MatthewP.getY() + scrollSpeed);
+		CN7MichaelK.setPosition(CN7MichaelK.getX(), CN7MichaelK.getY() + scrollSpeed);
 	}
 	
 	@Override
