@@ -13,7 +13,7 @@ public enum ScreenType implements IGameScreen {
 	MAINMENU (null, null, null, Input.Keys.F2),
 	SETTINGSSCREEN (null, null, null, Input.Keys.F3),
 	CREDITSSCREEN (null, null, null, Input.Keys.F4),
-	GAMESCREEN ("Images/Backgrounds/background.png", null, null, Input.Keys.F5);
+	GAMESCREEN (null, null, null, Input.Keys.F5);
 	
 	
 	private ScreenType(String screenTexturePath, String screenLabelFntFile, String screenLabelPngFile, int debugKey) {

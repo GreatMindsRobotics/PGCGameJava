@@ -7,6 +7,7 @@ import me.pagekite.glen3b.gjlib.SpriteManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseScreen;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 
@@ -22,6 +23,9 @@ public class SettingsScreen extends BaseScreen {
 	private ExtendedLabel ButtonLabel3;
 	private ExtendedLabel ButtonLabel4;
 	private ExtendedLabel ButtonLabel5;
+	
+	private ExtendedSprite backButton;
+	private ExtendedLabel backButtonLabel;
 	
 	boolean leftyMode = false;
 	boolean SFX = true;
@@ -71,6 +75,12 @@ public class SettingsScreen extends BaseScreen {
 		ButtonLabel5.setPosition(Button5.getX() + Button5.getWidth()/2 - ButtonLabel5.getWidth()/2 + 30, Button5.getY() + Button5.getHeight()/2 - 15);
 		ButtonLabel5.setFontScale(.75f, .75f);
 		
+		backButton = new ExtendedSprite(GameImage.SETTINGSSCREENBUTTON.ImageTexture());
+		backButton.setPosition(0,0);
+		
+		backButtonLabel = new ExtendedLabel("Back", GameImage.SETTINGSSCREENBUTTON.ImageText());
+		backButtonLabel.setPosition(backButton.getX() + backButton.getWidth()/2 - backButtonLabel.getWidth()/2, backButton.getY() + backButton.getHeight()/2 - 15);
+		
 		allSprites.add(Button1);
 		allSprites.add(ButtonLabel1);
 		allSprites.add(Button2);
@@ -81,7 +91,8 @@ public class SettingsScreen extends BaseScreen {
 		allSprites.add(ButtonLabel4);
 		allSprites.add(Button5);
 		allSprites.add(ButtonLabel5);
-
+		allSprites.add(backButton);
+		allSprites.add(backButtonLabel);
 	}
 	
 	@Override
@@ -136,6 +147,9 @@ public class SettingsScreen extends BaseScreen {
 					ButtonLabel4.setText("Difficulty: Easy");
 				}
 				lastTouch = true;
+			} else if (Gdx.input.getX() >= backButton.getX() && Gdx.input.getX() <= backButton.getX() + backButton.getWidth() &&
+			Gdx.graphics.getHeight() - Gdx.input.getY() >= backButton.getY() && Gdx.graphics.getHeight() - Gdx.input.getY() <= backButton.getY() + backButton.getHeight()) {
+				StateManager.SwitchScreen(ScreenType.MAINMENU);
 			}
 		}
 	}
