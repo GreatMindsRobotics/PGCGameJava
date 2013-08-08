@@ -11,6 +11,7 @@ import com.buildcoolrobots.games.pgcgame.CoreTypes.DebugInputProcessor;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.*;
 import com.buildcoolrobots.games.pgcgame.Screens.CreditsScreen;
+import com.buildcoolrobots.games.pgcgame.Screens.GameOverScreen;
 import com.buildcoolrobots.games.pgcgame.Screens.GameScreen;
 import com.buildcoolrobots.games.pgcgame.Screens.MainMenu;
 import com.buildcoolrobots.games.pgcgame.Screens.SettingsScreen;
@@ -45,14 +46,23 @@ public class PGCGameCore extends Game {
 		creditsScreen.setAutoSpriteBatchManager(true);
 		GameScreen gameScreen = new GameScreen(new SpriteManager(), batch, ScreenType.GAMESCREEN);
 		gameScreen.setAutoSpriteBatchManager(true);
+
 		TransitionScreen tscreen = new TransitionScreen(new SpriteManager(), batch, ScreenType.TransitionScreen);
 		tscreen.setAutoSpriteBatchManager(true);
+
+		GameOverScreen gameoverScreen = new GameOverScreen(new SpriteManager(), batch, ScreenType.GAMEOVERSCREEN);
+		gameoverScreen.setAutoSpriteBatchManager(true);
+		
+
 		
 		settingsScreen.hide();
 		mainMenuScreen.hide();
 		creditsScreen.hide();
 		gameScreen.hide();
+
 		tscreen.hide();
+
+		gameoverScreen.hide();
 		
 		this.setScreen(titleScreen);
 		StateManager.PGC = this;
