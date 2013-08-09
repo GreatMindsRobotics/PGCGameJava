@@ -17,6 +17,7 @@ import com.buildcoolrobots.games.pgcgame.Screens.MainMenu;
 import com.buildcoolrobots.games.pgcgame.Screens.SettingsScreen;
 import com.buildcoolrobots.games.pgcgame.Screens.TitleScreen;
 import com.buildcoolrobots.games.pgcgame.Screens.TransitionScreen;
+import com.buildcoolrobots.games.pgcgame.Screens.SelectScreens.LevelSelectScreen;
 
 public class PGCGameCore extends Game {
 	private OrthographicCamera camera;
@@ -46,23 +47,20 @@ public class PGCGameCore extends Game {
 		creditsScreen.setAutoSpriteBatchManager(true);
 		GameScreen gameScreen = new GameScreen(new SpriteManager(), batch, ScreenType.GAMESCREEN);
 		gameScreen.setAutoSpriteBatchManager(true);
-
 		TransitionScreen tscreen = new TransitionScreen(new SpriteManager(), batch, ScreenType.TransitionScreen);
 		tscreen.setAutoSpriteBatchManager(true);
-
 		GameOverScreen gameoverScreen = new GameOverScreen(new SpriteManager(), batch, ScreenType.GAMEOVERSCREEN);
 		gameoverScreen.setAutoSpriteBatchManager(true);
-		
-
+		LevelSelectScreen levelSelectScreen = new LevelSelectScreen(new SpriteManager(), batch, ScreenType.LEVELSELECTSCREEN);
+        levelSelectScreen.setAutoSpriteBatchManager(true);
 		
 		settingsScreen.hide();
 		mainMenuScreen.hide();
 		creditsScreen.hide();
 		gameScreen.hide();
-
 		tscreen.hide();
-
 		gameoverScreen.hide();
+		levelSelectScreen.hide();
 		
 		this.setScreen(titleScreen);
 		StateManager.PGC = this;

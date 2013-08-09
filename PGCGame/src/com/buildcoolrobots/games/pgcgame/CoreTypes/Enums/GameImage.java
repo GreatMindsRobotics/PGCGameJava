@@ -16,6 +16,7 @@ public enum GameImage implements IGameImage{
 	GAMEOVERFONT (null, "Fonts/GameOverFont.fnt", "Fonts/GameOverFont.png"),
 	DEBUGFONT (null, "Fonts/PGCGameDebugFont.fnt", "Fonts/PGCGameDebugFont.png" ),
 	SCROLLINGBACKGROUND ("Images/Backgrounds/background.png", null, null),
+
 	TRANSITIONBACKGROUND("Images/Backgrounds/SpaceShopBackground.png", null, null),
 	CREDITFONT(null, "Fonts/CreditFont.fnt", "Fonts/CreditFont.png"),
 	
@@ -28,7 +29,11 @@ public enum GameImage implements IGameImage{
 	CONTROL_S ("Images/Controls/DpadButtons/Control_S.png", null, null),
 	CONTROL_SW ("Images/Controls/DpadButtons/Control_SW.png", null, null),
 	CONTROL_W ("Images/Controls/DpadButtons/Control_W.png", null, null),
-	CONTROL_NW ("Images/Controls/DpadButtons/Control_NW.png", null, null);
+	CONTROL_NW ("Images/Controls/DpadButtons/Control_NW.png", null, null),
+	
+	LEVELSELECTRIGHTBUTTON("Images/Controls/DefaultButton.png", "Fonts/DefaultButtonFont.fnt", "Fonts/DefaultButtonFont.png"),
+	LEVELSELECTLEFTBUTTON("Images/Controls/DefaultButton.png", "Fonts/DefaultButtonFont.fnt", "Fonts/DefaultButtonFont.png"),
+	LEVELSELECTBACKBUTTON("Images/Controls/DefaultButton.png", "Fonts/DefaultButtonFont.fnt", "Fonts/DefaultButtonFont.png");
 
 	
 	private GameImage(String ImagePath, String textLabelStyleFntFile, String textLabelStylePngFile) {

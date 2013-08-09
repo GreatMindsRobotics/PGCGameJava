@@ -14,12 +14,9 @@ public enum ScreenType implements IGameScreen {
 	SETTINGSSCREEN (null, null, null, Input.Keys.F3),
 	CREDITSSCREEN (null, null, null, Input.Keys.F4),
 	GAMESCREEN (null, null, null, Input.Keys.F5),
-
+	GAMEOVERSCREEN (null, null, null, Input.Keys.F6),
 	TransitionScreen (null,null,null, Input.Keys.F7),
-
-	GAMEOVERSCREEN (null, null, null, Input.Keys.F6);
-
-
+    LEVELSELECTSCREEN (null, null, null, Input.Keys.F9);
 	
 	private ScreenType(String screenTexturePath, String screenLabelFntFile, String screenLabelPngFile, int debugKey) {
 		 _screenTexture = screenTexturePath == null ? null : new Texture(Gdx.files.internal(screenTexturePath));
