@@ -20,6 +20,7 @@ public enum GameImage implements IGameImage{
 	GAMEDPADRIGHT ("Images/Controls/DpadButtons/rightArrow.png", null, null),
 	GAMEDPADCENTER ("Images/Controls/DpadButtons/center.png", null, null),
 	SCROLLINGBACKGROUND ("Images/Backgrounds/background.png", null, null),
+	TRANSITIONBACKGROUND("Images/Backgrounds/SpaceShopBackground.png", null, null),
 	CREDITFONT(null, "Fonts/CreditFont.fnt", "Fonts/CreditFont.png" );
 	
 	private GameImage(String ImagePath, String textLabelStyleFntFile, String textLabelStylePngFile) {
