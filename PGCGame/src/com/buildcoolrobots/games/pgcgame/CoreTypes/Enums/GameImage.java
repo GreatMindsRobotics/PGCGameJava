@@ -13,6 +13,7 @@ public enum GameImage implements IGameImage{
 	MAINMENUSETTINGSBUTTON("Images/Controls/DefaultButton.png", "Fonts/DefaultButtonFont.fnt", "Fonts/DefaultButtonFont.png"),
 	MAINMENUCREDITSBUTTON("Images/Controls/DefaultButton.png", "Fonts/DefaultButtonFont.fnt", "Fonts/DefaultButtonFont.png"),
 	SETTINGSSCREENBUTTON ("Images/Controls/DefaultButton.png", "Fonts/DefaultButtonFont.fnt", "Fonts/DefaultButtonFont.png"),
+	GAMEOVERFONT (null, "Fonts/GameOverFont.fnt", "Fonts/GameOverFont.png"),
 	DEBUGFONT (null, "Fonts/PGCGameDebugFont.fnt", "Fonts/PGCGameDebugFont.png" ),
 	GAMEDPADUP ("Images/Controls/DpadButtons/upArrow.png", null, null),
 	GAMEDPADDOWN ("Images/Controls/DpadButtons/downArrow.png", null, null),
