@@ -64,7 +64,7 @@ public class CreditsScreen extends BaseScreen {
 		CN7MichaelK = new ExtendedLabel("Michael K.", GameImage.CREDITFONT.ImageText());
 		
 		CW2 = new ExtendedLabel("Week 2", GameImage.CREDITFONT.ImageText());
-		CA2 = new ExtendedLabel("Class Design, Functionality, Technical Spec.", GameImage.CREDITFONT.ImageText());		
+		CA2 = new ExtendedLabel("Class Design,Functionality,Technical Spec.", GameImage.CREDITFONT.ImageText());		
 		CN1AlexL = new ExtendedLabel("Alex L.", GameImage.CREDITFONT.ImageText());
 		CN8GlenH = new ExtendedLabel("Glen H.", GameImage.CREDITFONT.ImageText());
 		CN6MatthewP = new ExtendedLabel("Matthew P.", GameImage.CREDITFONT.ImageText());
@@ -109,7 +109,7 @@ public class CreditsScreen extends BaseScreen {
 		
 		CW2.setPosition(Gdx.graphics.getWidth()/2 - CW2.getWidth() /3, - 780 ); 
 		
-		CA2.setPosition(Gdx.graphics.getWidth()/2 - CA2.getWidth() /3, - 870 );
+		CA2.setPosition(Gdx.graphics.getWidth()/2 - 120 - CA2.getWidth() /3, - 870 );
 		CN1AlexL.setPosition(Gdx.graphics.getWidth()/2 - CN1AlexL.getWidth() /3, - 930);
 		CN8GlenH.setPosition(Gdx.graphics.getWidth()/2 - CN8GlenH.getWidth() /3, - 990);
 		CN6MatthewP.setPosition(Gdx.graphics.getWidth()/2 - CN6MatthewP.getWidth() /3, - 1050);
