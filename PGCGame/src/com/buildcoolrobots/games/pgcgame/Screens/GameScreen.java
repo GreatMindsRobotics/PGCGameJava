@@ -43,7 +43,7 @@ public class GameScreen extends BaseScreen {
 	public void update(float deltaTime) {
 		super.update(deltaTime);
 		if (Gdx.input.isTouched()) {
-			coor = "" + Gdx.input.getX() + "," + Gdx.input.getY();
+			coor = "" + Gdx.input.getX() + "," + (Gdx.graphics.getHeight() - Gdx.input.getY());
 			xy.setText(coor);
 		}
 	}

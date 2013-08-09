@@ -20,6 +20,7 @@ public class DPad extends ExtendedSprite {
 	// 6 - North
 	// 7 - NorthEast
 	Rectangle dirRectangle[];
+	
 	private static Texture baseTexture = GameImage.CONTROL_DIRECTIONAL.ImageTexture();
 
 	public DPad() {
@@ -27,20 +28,29 @@ public class DPad extends ExtendedSprite {
 		dirRectangle = new Rectangle[8];
 
 		// assuming if bottom left
+		
 		dirRectangle[0] = new Rectangle(0, 0, baseTexture.getWidth() / 3,
+				baseTexture.getHeight() / 3);
+		dirRectangle[1] = new Rectangle(baseTexture.getWidth()/3, 0, baseTexture.getWidth() / 3,
+				baseTexture.getHeight() / 3);
+		dirRectangle[2] = new Rectangle((baseTexture.getWidth()/3) *2, 0, baseTexture.getWidth() / 3,
+				baseTexture.getHeight() / 3);
+		dirRectangle[3] = new Rectangle(0, baseTexture.getHeight() / 3, baseTexture.getWidth() / 3,
 				baseTexture.getHeight() / 3);
 
 	}
 
 	public void update(float deltaTime) {
 		super.update(deltaTime);
-		if (Gdx.input.isTouched()
-				&& Gdx.input.getX() >= dirRectangle[0].getX()
-				&& Gdx.input.getX() <= dirRectangle[0].getX() + dirRectangle[0].getWidth()
-				&& Gdx.graphics.getHeight() - Gdx.input.getY() >= dirRectangle[0].getY()
-				&& Gdx.graphics.getHeight() - Gdx.input.getY() <= dirRectangle[0].getY()
+		for (int i = 0; i < 4; i++) {
+			if (Gdx.input.isTouched()
+				&& Gdx.input.getX() >= dirRectangle[i].getX()
+				&& Gdx.input.getX() <= dirRectangle[i].getX() + dirRectangle[i].getWidth()
+				&& Gdx.graphics.getHeight() - Gdx.input.getY() >= dirRectangle[i].getY()
+				&& Gdx.graphics.getHeight() - Gdx.input.getY() <= dirRectangle[i].getY()
 						+ dirRectangle[0].getHeight()) {
-				JOptionPane.showMessageDialog(null, "Workin bro");
+				JOptionPane.showMessageDialog(null,"workin bro: " + i);
+			}
 		}
 	}
 
