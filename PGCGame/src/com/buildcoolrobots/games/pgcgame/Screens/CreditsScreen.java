@@ -1,3 +1,4 @@
+
 package com.buildcoolrobots.games.pgcgame.Screens;
 
 import me.pagekite.glen3b.gjlib.ExtendedLabel;
@@ -49,6 +50,18 @@ public class CreditsScreen extends BaseScreen {
 	ExtendedLabel W3KevinF;
     ExtendedLabel W3JosephV;
     // WEEK 4
+    ExtendedLabel W4AlexL;
+    ExtendedLabel W4AndrewK;
+    ExtendedLabel W4MichaelK;
+    ExtendedLabel W4GlenH;
+    ExtendedLabel W4PierreB;
+    ExtendedLabel W4KevinF;
+    ExtendedLabel W4JosephV;
+    ExtendedLabel W4JeremiahT;
+    ExtendedLabel W4EedanS;
+    // WEEK 5
+    
+    
     ExtendedLabel CN12AlyssaF;
     ExtendedLabel CN13RossT;
     ExtendedLabel CN14BrandonU;
@@ -94,6 +107,18 @@ public class CreditsScreen extends BaseScreen {
 		W3JeremiahT = new ExtendedLabel("Jeremaih T.", GameImage.CREDITFONT.ImageText());
 		W3JosephV = new ExtendedLabel("Joseph V.", GameImage.CREDITFONT.ImageText());
 		
+		CW4 = new ExtendedLabel("Week 4", GameImage.CREDITFONT.ImageText());
+		CA4 = new ExtendedLabel("Xbox Conversion", GameImage.CREDITFONT.ImageText());
+		W4AlexL = new ExtendedLabel("Alex L.", GameImage.CREDITFONT.ImageText());
+		W4AndrewK = new ExtendedLabel("Andrew K.", GameImage.CREDITFONT.ImageText());
+		W4EedanS = new ExtendedLabel("Eedan S.",GameImage.CREDITFONT.ImageText());
+		W4GlenH = new ExtendedLabel("Glen H.", GameImage.CREDITFONT.ImageText());
+		W4JeremiahT = new ExtendedLabel("Jeremiah T.", GameImage.CREDITFONT.ImageText());
+		W4JosephV = new ExtendedLabel("Joseph V.", GameImage.CREDITFONT.ImageText());
+		W4KevinF = new ExtendedLabel("Kevin F.", GameImage.CREDITFONT.ImageText());
+		W4MichaelK = new ExtendedLabel("Michael K.", GameImage.CREDITFONT.ImageText());
+		W4PierreB = new ExtendedLabel("Pierre B.", GameImage.CREDITFONT.ImageText());
+		
 		reset();
 		
 		allSprites.add(CTLine);
@@ -125,6 +150,18 @@ public class CreditsScreen extends BaseScreen {
 		allSprites.add(W3MichaelK);
 	    allSprites.add(W3JeremiahT);
 	    allSprites.add(W3JosephV);
+	    
+	    allSprites.add(CW4);
+	    allSprites.add(CA4);
+	    allSprites.add(W4AlexL);
+	    allSprites.add(W4AndrewK);
+	    allSprites.add(W4EedanS);
+	    allSprites.add(W4GlenH);
+	    allSprites.add(W4JeremiahT);
+	    allSprites.add(W4JosephV);
+	    allSprites.add(W4KevinF);
+	    allSprites.add(W4MichaelK);
+	    allSprites.add(W4PierreB);
 	}
 	
 	public void reset() {
@@ -160,7 +197,19 @@ public class CreditsScreen extends BaseScreen {
 		W3MatthewP.setPosition(Gdx.graphics.getWidth()/2 - W3MatthewP.getWidth() / 3, - 1680);
 		W3MichaelK.setPosition(Gdx.graphics.getWidth()/2 - W3MichaelK.getWidth() / 3, - 1740);
 		W3JeremiahT.setPosition(Gdx.graphics.getWidth()/2 - W3JeremiahT.getWidth() / 3, - 1800);
-		W3JosephV.setPosition(Gdx.graphics.getWidth()/2 - W3JosephV.getWidth() / 3, -1860);
+		W3JosephV.setPosition(Gdx.graphics.getWidth()/2 - W3JosephV.getWidth() / 3, - 1860);
+		
+		CW4.setPosition(Gdx.graphics.getWidth()/2 - CW4.getWidth() / 3, - 2140);
+		CA4.setPosition(Gdx.graphics.getWidth()/2 - CA4.getWidth() / 3, - 2230);
+		W4AlexL.setPosition(Gdx.graphics.getWidth()/2 - W4AlexL.getWidth() / 3, - 2290);
+		W4AndrewK.setPosition(Gdx.graphics.getWidth()/2 - W4AndrewK.getWidth() / 3, - 2350);
+		W4EedanS.setPosition(Gdx.graphics.getWidth()/2 - W4EedanS.getWidth() / 3, - 2410);
+		W4GlenH.setPosition(Gdx.graphics.getWidth()/2 - W4GlenH.getWidth() / 3, - 2470);
+		W4JeremiahT.setPosition(Gdx.graphics.getWidth()/2 - W4JeremiahT.getWidth() / 3, - 2530);
+		W4JosephV.setPosition(Gdx.graphics.getWidth()/2 - W4JosephV.getWidth() / 3, - 2590);
+		W4KevinF.setPosition(Gdx.graphics.getWidth()/2 - W4KevinF.getWidth() / 3, - 2650);
+		W4MichaelK.setPosition(Gdx.graphics.getWidth()/2 - W4MichaelK.getWidth() / 3, - 2710);
+		W4PierreB.setPosition(Gdx.graphics.getWidth()/2 - W4PierreB.getWidth() / 3, - 2770);
 	}
 
 	@Override
@@ -195,6 +244,18 @@ public class CreditsScreen extends BaseScreen {
 		W3MichaelK.setPosition(W3MichaelK.getX(), W3MichaelK.getY() + scrollSpeed);
 		W3JeremiahT.setPosition(W3JeremiahT.getX(), W3JeremiahT.getY() + scrollSpeed);
 		W3JosephV.setPosition(W3JosephV.getX(), W3JosephV.getY() + scrollSpeed);
+		
+		CW4.setPosition(CW4.getX(), CW4.getY() + scrollSpeed);
+		CA4.setPosition( CA4.getX(), CA4.getY() + scrollSpeed);
+		W4AlexL.setPosition(W4AlexL.getX(), W4AlexL.getY() + scrollSpeed);
+		W4AndrewK.setPosition(W4AndrewK.getX(), W4AndrewK.getY() + scrollSpeed);
+		W4EedanS.setPosition(W4EedanS.getX(), W4EedanS.getY() + scrollSpeed);
+		W4GlenH.setPosition(W4GlenH.getX(), W4GlenH.getY() + scrollSpeed);
+		W4JeremiahT.setPosition(W4JeremiahT.getX(), W4JeremiahT.getY() + scrollSpeed);
+		W4JosephV.setPosition(W4JosephV.getX(), W4JosephV.getY() + scrollSpeed);
+		W4KevinF.setPosition(W4KevinF.getX(), W4KevinF.getY() + scrollSpeed);
+		W4MichaelK.setPosition(W4MichaelK.getX(), W4MichaelK.getY() + scrollSpeed);
+		W4PierreB.setPosition(W4PierreB.getX(), W4PierreB.getY() + scrollSpeed);
 	}
 	
 	@Override
