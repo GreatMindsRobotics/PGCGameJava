@@ -33,8 +33,16 @@ public enum GameImage implements IGameImage{
 	
 	LEVELSELECTRIGHTBUTTON("Images/Controls/DefaultButton.png", "Fonts/DefaultButtonFont.fnt", "Fonts/DefaultButtonFont.png"),
 	LEVELSELECTLEFTBUTTON("Images/Controls/DefaultButton.png", "Fonts/DefaultButtonFont.fnt", "Fonts/DefaultButtonFont.png"),
-	LEVELSELECTBACKBUTTON("Images/Controls/DefaultButton.png", "Fonts/DefaultButtonFont.fnt", "Fonts/DefaultButtonFont.png");
-
+	LEVELSELECTBACKBUTTON("Images/Controls/DefaultButton.png", "Fonts/DefaultButtonFont.fnt", "Fonts/DefaultButtonFont.png"),
+    LEVELSELECTACCEPTBUTTON("Images/Controls/DefaultButton.png", "Fonts/DefaultButtonFont.fnt", "Fonts/DefaultButtonFont.png"),
+	
+	// Levels
+	
+	PLANET1("Images/Planets/AlternativePlanet.png", null, null),
+	PLANET2("Images/Planets/Planet.png", null, null),
+	PLANET3("Images/Planets/Planet3.png", null, null),
+	PLANET4("Images/Planets/Planet4.png", null, null);
+	
 	
 	private GameImage(String ImagePath, String textLabelStyleFntFile, String textLabelStylePngFile) {
 		_imageTexture = ImagePath == null ? null : new Texture(ImagePath);	 
