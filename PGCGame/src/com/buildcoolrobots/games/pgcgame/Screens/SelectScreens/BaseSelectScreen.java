@@ -2,12 +2,9 @@ package com.buildcoolrobots.games.pgcgame.Screens.SelectScreens;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.SortedMap;
 
 import me.pagekite.glen3b.gjlib.ExtendedLabel;
 import me.pagekite.glen3b.gjlib.ExtendedSprite;
@@ -20,7 +17,6 @@ import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseScreen;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
-import com.sun.org.apache.xml.internal.security.keys.content.KeyValue;
 
 public abstract class BaseSelectScreen extends BaseScreen {
 

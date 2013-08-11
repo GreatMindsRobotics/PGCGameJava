@@ -1,14 +1,10 @@
 package com.buildcoolrobots.games.pgcgame.CoreTypes;
 
-import javax.swing.JOptionPane;
+import me.pagekite.glen3b.gjlib.ExtendedSprite;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
-
-import me.pagekite.glen3b.gjlib.ExtendedSprite;
 
 public class DPad extends ExtendedSprite {
 	// 0 - SouthWest
@@ -42,6 +38,9 @@ public class DPad extends ExtendedSprite {
 
 	public void update(float deltaTime) {
 		super.update(deltaTime);
+		
+		//Bad boy: JOptionPane in an android app?!?!?!????!??!?!!?!?!
+		/*
 		for (int i = 0; i < 4; i++) {
 			if (Gdx.input.isTouched()
 				&& Gdx.input.getX() >= dirRectangle[i].getX()
@@ -52,6 +51,7 @@ public class DPad extends ExtendedSprite {
 				JOptionPane.showMessageDialog(null,"workin bro: " + i);
 			}
 		}
+		*/
 	}
 
 }
