@@ -16,6 +16,7 @@ public enum GameImage implements IGameImage{
 	GAMEOVERFONT (null, "Fonts/GameOverFont.fnt", "Fonts/GameOverFont.png"),
 	DEBUGFONT (null, "Fonts/PGCGameDebugFont.fnt", "Fonts/PGCGameDebugFont.png" ),
 	SCROLLINGBACKGROUND ("Images/Backgrounds/background.png", null, null),
+	FIREBUTTON ("Images/Controls/FireButton.png", null, null),
 
 	TRANSITIONBACKGROUND("Images/Backgrounds/SpaceShopBackground.png", null, null),
 	CREDITFONT(null, "Fonts/CreditFont.fnt", "Fonts/CreditFont.png"),
