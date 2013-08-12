@@ -41,12 +41,12 @@ public class PGCGameCore extends Game {
 		titleScreen.setAutoSpriteBatchManager(true);
 		MainMenu mainMenuScreen = new MainMenu(new SpriteManager(), batch, ScreenType.MAINMENU);
 		mainMenuScreen.setAutoSpriteBatchManager(true);
+		GameScreen gameScreen = new GameScreen(new SpriteManager(), batch, ScreenType.GAMESCREEN);
+		gameScreen.setAutoSpriteBatchManager(true);
 		SettingsScreen settingsScreen = new SettingsScreen(new SpriteManager(), batch, ScreenType.SETTINGSSCREEN);
 		settingsScreen.setAutoSpriteBatchManager(true);
 		CreditsScreen creditsScreen = new CreditsScreen(new SpriteManager(), batch, ScreenType.CREDITSSCREEN);
 		creditsScreen.setAutoSpriteBatchManager(true);
-		GameScreen gameScreen = new GameScreen(new SpriteManager(), batch, ScreenType.GAMESCREEN);
-		gameScreen.setAutoSpriteBatchManager(true);
 		TransitionScreen tscreen = new TransitionScreen(new SpriteManager(), batch, ScreenType.TransitionScreen);
 		tscreen.setAutoSpriteBatchManager(true);
 		GameOverScreen gameoverScreen = new GameOverScreen(new SpriteManager(), batch, ScreenType.GAMEOVERSCREEN);

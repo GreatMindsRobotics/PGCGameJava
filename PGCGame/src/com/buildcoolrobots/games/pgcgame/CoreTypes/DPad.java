@@ -17,18 +17,21 @@ public class DPad extends ExtendedSprite {
 	// 5 - NorthWest
 	// 6 - North
 	// 7 - NorthEast
-	Rectangle dirRectangle[];
+	public static Rectangle dirRectangle[];
 	
-	private static Texture baseTexture = GameImage.CONTROL_DIRECTIONAL.ImageTexture();
+	public static Texture baseTexture = GameImage.CONTROL_DIRECTIONAL.ImageTexture();
 	
-	public DPadDirection shipDirection = DPadDirection.NONE;
+	public static DPadDirection shipDirection = DPadDirection.NONE;
+	
+	public static int buttonWidth;
+	public static int buttonHeight;
 	
 	public DPad() {
 		super(baseTexture);
 		dirRectangle = new Rectangle[8];
-
-		int buttonWidth = baseTexture.getWidth() / 3;
-		int buttonHeight = baseTexture.getHeight() / 3;
+		
+		buttonWidth = baseTexture.getWidth() / 3;
+		buttonHeight = baseTexture.getHeight() / 3;
 		
 		dirRectangle[DPadDirection.NORTH.ordinal()] = new Rectangle(buttonWidth, buttonHeight * 2, buttonWidth, buttonHeight);
 		dirRectangle[DPadDirection.NORTHEAST.ordinal()] = new Rectangle(buttonWidth * 2, buttonHeight * 2, buttonWidth, buttonHeight);
@@ -53,8 +56,10 @@ public class DPad extends ExtendedSprite {
 						shipDirection = DPadDirection.values()[i];
 				}				
 			}
-		} else {
-			shipDirection = DPadDirection.NONE;
+		} 
+		
+		else{
+			shipDirection = DPadDirection.NONE;	
 		}
 	}
 }

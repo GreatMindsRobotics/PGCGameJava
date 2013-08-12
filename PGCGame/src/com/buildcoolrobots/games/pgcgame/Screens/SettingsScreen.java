@@ -6,8 +6,11 @@ import me.pagekite.glen3b.gjlib.SpriteManager;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseScreen;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.DPad;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.DPadDirection;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 
@@ -27,15 +30,18 @@ public class SettingsScreen extends BaseScreen {
 	private ExtendedSprite backButton;
 	private ExtendedLabel backButtonLabel;
 	
-	boolean leftyMode = false;
-	boolean SFX = true;
-	boolean music = true;
-	int difficulty = 1; //1 is easy, 2 is medium, 3 is hard
+	public static boolean leftyMode = false;
+	public static boolean SFX = true;
+	public static boolean music = true;
+	public static int difficulty = 1; //1 is easy, 2 is medium, 3 is hard
 	//TODO prompt when you click reset progress "are you sure you want to reset all progress?" and have a yes or no
 	
 	
 	boolean lastTouch = false;
 	
+	int dPadPos = Gdx.graphics.getWidth() - DPad.baseTexture.getWidth();
+	int buttonWidth = DPad.buttonWidth;
+	int buttonHeight = DPad.buttonHeight;
 	public SettingsScreen(SpriteManager allSprites, SpriteBatch target, ScreenType screenType) {
 		super(allSprites, target, screenType);
 		
@@ -109,10 +115,21 @@ public class SettingsScreen extends BaseScreen {
 				if (leftyMode == false) {
 					leftyMode = true;
 					ButtonLabel1.setText("Lefty Mode: On");
+					
 				} else {
 					leftyMode = false;
 					ButtonLabel1.setText("Lefty Mode: Off");
 				}
+				
+				
+				DPad.dirRectangle[DPadDirection.NORTH.ordinal()] = new Rectangle(buttonWidth + (SettingsScreen.leftyMode ? dPadPos : 0), buttonHeight * 2, buttonWidth, buttonHeight);
+				DPad.dirRectangle[DPadDirection.NORTHEAST.ordinal()] = new Rectangle(buttonWidth * 2 + (SettingsScreen.leftyMode ? dPadPos : 0), buttonHeight * 2, buttonWidth, buttonHeight);
+				DPad.dirRectangle[DPadDirection.EAST.ordinal()] = new Rectangle(buttonWidth * 2 + (SettingsScreen.leftyMode ? dPadPos : 0), buttonHeight, buttonWidth, buttonHeight);
+				DPad.dirRectangle[DPadDirection.SOUTHEAST.ordinal()] = new Rectangle(buttonWidth * 2 + (SettingsScreen.leftyMode ? dPadPos : 0), 0, buttonWidth, buttonHeight);
+				DPad.dirRectangle[DPadDirection.SOUTH.ordinal()] = new Rectangle(buttonWidth + (SettingsScreen.leftyMode ? dPadPos : 0), 0, buttonWidth, buttonHeight);
+				DPad.dirRectangle[DPadDirection.SOUTHWEST.ordinal()] = new Rectangle((SettingsScreen.leftyMode ? dPadPos : 0), 0, buttonWidth, buttonHeight);
+				DPad.dirRectangle[DPadDirection.WEST.ordinal()] = new Rectangle((SettingsScreen.leftyMode ? dPadPos : 0), buttonHeight, buttonWidth, buttonHeight);
+				DPad.dirRectangle[DPadDirection.NORTHWEST.ordinal()] = new Rectangle((SettingsScreen.leftyMode ? dPadPos : 0), buttonHeight * 2, buttonWidth, buttonHeight);
 				lastTouch = true;
 			} else if (Gdx.input.getX() >= Button2.getX() && Gdx.input.getX() <= Button2.getX() + Button2.getWidth() &&
 			Gdx.graphics.getHeight() - Gdx.input.getY() >= Button2.getY() && Gdx.graphics.getHeight() - Gdx.input.getY() <= Button2.getY() + Button2.getHeight() && !lastTouch) {
