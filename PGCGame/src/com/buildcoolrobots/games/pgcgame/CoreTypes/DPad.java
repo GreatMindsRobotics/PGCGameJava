@@ -2,8 +2,10 @@ package com.buildcoolrobots.games.pgcgame.CoreTypes;
 
 import me.pagekite.glen3b.gjlib.ExtendedSprite;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.DPadDirection;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
 
 public class DPad extends ExtendedSprite {
@@ -18,40 +20,41 @@ public class DPad extends ExtendedSprite {
 	Rectangle dirRectangle[];
 	
 	private static Texture baseTexture = GameImage.CONTROL_DIRECTIONAL.ImageTexture();
-
+	
+	public DPadDirection shipDirection = DPadDirection.NONE;
+	
 	public DPad() {
 		super(baseTexture);
 		dirRectangle = new Rectangle[8];
 
-		// assuming if bottom left
+		int buttonWidth = baseTexture.getWidth() / 3;
+		int buttonHeight = baseTexture.getHeight() / 3;
 		
-		dirRectangle[0] = new Rectangle(0, 0, baseTexture.getWidth() / 3,
-				baseTexture.getHeight() / 3);
-		dirRectangle[1] = new Rectangle(baseTexture.getWidth()/3, 0, baseTexture.getWidth() / 3,
-				baseTexture.getHeight() / 3);
-		dirRectangle[2] = new Rectangle((baseTexture.getWidth()/3) *2, 0, baseTexture.getWidth() / 3,
-				baseTexture.getHeight() / 3);
-		dirRectangle[3] = new Rectangle(0, baseTexture.getHeight() / 3, baseTexture.getWidth() / 3,
-				baseTexture.getHeight() / 3);
-
+		dirRectangle[DPadDirection.NORTH.ordinal()] = new Rectangle(buttonWidth, buttonHeight * 2, buttonWidth, buttonHeight);
+		dirRectangle[DPadDirection.NORTHEAST.ordinal()] = new Rectangle(buttonWidth * 2, buttonHeight * 2, buttonWidth, buttonHeight);
+		dirRectangle[DPadDirection.EAST.ordinal()] = new Rectangle(buttonWidth * 2, buttonHeight, buttonWidth, buttonHeight);
+		dirRectangle[DPadDirection.SOUTHEAST.ordinal()] = new Rectangle(buttonWidth * 2, 0, buttonWidth, buttonHeight);
+		dirRectangle[DPadDirection.SOUTH.ordinal()] = new Rectangle(buttonWidth, 0, buttonWidth, buttonHeight);
+		dirRectangle[DPadDirection.SOUTHWEST.ordinal()] = new Rectangle(0, 0, buttonWidth, buttonHeight);
+		dirRectangle[DPadDirection.WEST.ordinal()] = new Rectangle(0, buttonHeight, buttonWidth, buttonHeight);
+		dirRectangle[DPadDirection.NORTHWEST.ordinal()] = new Rectangle(0, buttonHeight * 2, buttonWidth, buttonHeight);
 	}
 
 	public void update(float deltaTime) {
 		super.update(deltaTime);
 		
-		//Bad boy: JOptionPane in an android app?!?!?!????!??!?!!?!?!
-		/*
-		for (int i = 0; i < 4; i++) {
-			if (Gdx.input.isTouched()
-				&& Gdx.input.getX() >= dirRectangle[i].getX()
-				&& Gdx.input.getX() <= dirRectangle[i].getX() + dirRectangle[i].getWidth()
-				&& Gdx.graphics.getHeight() - Gdx.input.getY() >= dirRectangle[i].getY()
-				&& Gdx.graphics.getHeight() - Gdx.input.getY() <= dirRectangle[i].getY()
-						+ dirRectangle[0].getHeight()) {
-				JOptionPane.showMessageDialog(null,"workin bro: " + i);
+		if (Gdx.input.isTouched(0)) {
+			for (int i = 0; i < DPadDirection.values().length - 1; i++) {
+				if(Gdx.input.getX() >= dirRectangle[i].getX()
+					&& Gdx.input.getX() <= dirRectangle[i].getX() + dirRectangle[i].getWidth()
+					&& Gdx.graphics.getHeight() - Gdx.input.getY() >= dirRectangle[i].getY()
+					&& Gdx.graphics.getHeight() - Gdx.input.getY() <= dirRectangle[i].getY()
+					+ dirRectangle[i].getHeight()) {
+						shipDirection = DPadDirection.values()[i];
+				}				
 			}
+		} else {
+			shipDirection = DPadDirection.NONE;
 		}
-		*/
 	}
-
 }

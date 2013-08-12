@@ -28,9 +28,11 @@ public class GameScreen extends BaseScreen {
 		Ship.setPosition(100, Gdx.graphics.getHeight()/2 - Ship.getHeight()/2);
 		Dpad = new DPad();
 		Dpad.setPosition(0, 0);
+		
 		xy = new ExtendedLabel(coor , GameImage.DEBUGFONT.ImageText());
 		xy.setPosition(Gdx.graphics.getWidth() - 150, 50);
-		xy.setFontScale(2,2);
+		//xy.setFontScale(2,2);
+		
 		allSprites.add(xy);
 		allSprites.add(Ship);
 		allSprites.add((SimpleSprite) Dpad);
@@ -42,7 +44,7 @@ public class GameScreen extends BaseScreen {
 		super.update(deltaTime);
 		if (Gdx.input.isTouched()) {
 			coor = "" + Gdx.input.getX() + "," + (Gdx.graphics.getHeight() - Gdx.input.getY());
-			xy.setText(coor);
+			xy.setText(coor + "\ndir: " + Dpad.shipDirection.toString());
 		}
 	}
 }
