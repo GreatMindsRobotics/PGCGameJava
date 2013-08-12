@@ -63,6 +63,7 @@ public class GameScreen extends BaseScreen {
 		}
 		case NORTH:{
         	Ship.ySpeed = 5;
+        	Ship.xSpeed = 0;
         	break;
         }
 		case NORTHEAST:{
@@ -72,6 +73,7 @@ public class GameScreen extends BaseScreen {
 		}
 		case EAST:{
         	Ship.xSpeed = 5;
+        	Ship.ySpeed = 0;
         	break;
         }
 		case SOUTHEAST:{
@@ -81,6 +83,7 @@ public class GameScreen extends BaseScreen {
 		}
 		case SOUTH:{
 			Ship.ySpeed = -5;
+			Ship.xSpeed = 0;
 			break;
 		}
 		case SOUTHWEST:{
@@ -90,6 +93,7 @@ public class GameScreen extends BaseScreen {
 		}
 		case WEST:{
 			Ship.xSpeed = -5;
+			Ship.ySpeed = 0;
 			break;
 		}
 		case NORTHWEST:{
