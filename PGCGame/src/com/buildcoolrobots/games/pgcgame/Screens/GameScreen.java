@@ -22,6 +22,9 @@ public class GameScreen extends BaseScreen {
 	ExtendedLabel xy;
 	String coor = "0,0";
 	
+	float timeSinceLastFire = 0;
+	final float fireDelay = 0.150f;  
+	
 	public GameScreen(SpriteManager allSprites, SpriteBatch spriteBatch, ScreenType screenType) {
 		super(allSprites, spriteBatch, screenType);
 		
@@ -39,9 +42,9 @@ public class GameScreen extends BaseScreen {
 		allSprites.add(FireButton);
 	}
 	
-	private boolean lastTouch = false;
 	public void update(float deltaTime) {
 		super.update(deltaTime);
+		timeSinceLastFire += deltaTime;
 
 		if (Gdx.input.isTouched()) {
 			coor = "" + Gdx.input.getX() + "," + (Gdx.graphics.getHeight() - Gdx.input.getY());
@@ -60,16 +63,18 @@ public class GameScreen extends BaseScreen {
 
 		Ship.move(Dpad.shipDirection);		
 		
-		if (Gdx.input.isTouched() &&
-			Gdx.input.getX() >= FireButton.getX() && Gdx.input.getX() <= FireButton.getX() + FireButton.getWidth() &&
-			Gdx.graphics.getHeight() - Gdx.input.getY() >= FireButton.getY() && Gdx.graphics.getHeight() - Gdx.input.getY() <= FireButton.getY() + FireButton.getHeight() && !lastTouch) {
-			
-			Ship.shoot();
-			
-			lastTouch = true;
-		}
-		if (!Gdx.input.isTouched()) {
-			lastTouch = false;
+		
+		for (int i = 0; i < 2; i++) {
+			if (Gdx.input.isTouched(i) &&
+					Gdx.input.getX(i) >= FireButton.getX() && Gdx.input.getX(i) <= FireButton.getX() + FireButton.getWidth() &&
+					Gdx.graphics.getHeight() - Gdx.input.getY(i) >= FireButton.getY() && Gdx.graphics.getHeight() - Gdx.input.getY(i) <= FireButton.getY() + FireButton.getHeight()) {
+					
+					if(timeSinceLastFire >= fireDelay) {
+						Ship.shoot();
+						timeSinceLastFire = 0;
+					} 	
+					
+				}		
 		}
 	}
 }

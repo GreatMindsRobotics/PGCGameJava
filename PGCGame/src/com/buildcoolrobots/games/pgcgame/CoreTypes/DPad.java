@@ -44,20 +44,23 @@ public class DPad extends ExtendedSprite {
 				
 		boolean isDpadTouched = false;
 
-		if (Gdx.input.isTouched(0)) {
-			for (int i = 0; i < DPadDirection.values().length - 1; i++) {
-				if(Gdx.input.getX() >= dirRectangle[i].getX()
-					&& Gdx.input.getX() <= dirRectangle[i].getX() + dirRectangle[i].getWidth()
-					&& Gdx.graphics.getHeight() - Gdx.input.getY() >= dirRectangle[i].getY()
-					&& Gdx.graphics.getHeight() - Gdx.input.getY() <= dirRectangle[i].getY()
-					+ dirRectangle[i].getHeight()) {
-						shipDirection = DPadDirection.values()[i];
-						
-						isDpadTouched = true;
-						break;
-				}				
-			}
-		} 		
+		for (int j = 0; j < 2; j++) {
+			if (Gdx.input.isTouched(j)) {
+				for (int i = 0; i < DPadDirection.values().length - 1; i++) {
+					if(Gdx.input.getX(j) >= dirRectangle[i].getX()
+						&& Gdx.input.getX(j) <= dirRectangle[i].getX() + dirRectangle[i].getWidth()
+						&& Gdx.graphics.getHeight() - Gdx.input.getY(j) >= dirRectangle[i].getY()
+						&& Gdx.graphics.getHeight() - Gdx.input.getY(j) <= dirRectangle[i].getY()
+						+ dirRectangle[i].getHeight()) {
+							shipDirection = DPadDirection.values()[i];
+							
+							isDpadTouched = true;
+							break;
+					}				
+				}
+			} 		
+		}
+		
 
 		//If no known direction, or not touched - set to NONE
 		if(!isDpadTouched) {

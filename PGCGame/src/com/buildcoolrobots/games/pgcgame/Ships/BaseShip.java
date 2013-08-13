@@ -30,7 +30,7 @@ public class BaseShip extends ExtendedSprite {
 	}
 	
 	public void shoot() {
-		 _bullets.add (new Bullet(new Vector2(getX() + getWidth(), getY() + getHeight()/2), 10));		
+		 _bullets.add (new Bullet(new Vector2(getX() + getWidth() - 20, getY() + getHeight()/2 - 6), 10));		
 	}
 
 	@Override
