@@ -19,6 +19,7 @@ public enum GameImage implements IGameImage{
 	FIREBUTTON ("Images/Controls/FireButton.png", null, null),
 	LASERBULLET ("Images/Bullets/Bullet.png", null, null),
 	PAUSEBUTTON ("Images/Controls/PauseButton.png", null, null),
+	PAUSESCREENBUTTON ("Images/Controls/DefaultButton.png", "Fonts/DefaultButtonFont.fnt", "Fonts/DefaultButtonFont.png"),
 	
 	TRANSITIONBACKGROUND("Images/Backgrounds/SpaceShopBackground.png", null, null),
 	CREDITFONT(null, "Fonts/CreditFont.fnt", "Fonts/CreditFont.png"),
