@@ -25,6 +25,10 @@ public class BaseShip extends ExtendedSprite {
 		this.setPosition(position.x, position.y);		
 		_movementSpeed = new Vector2(0, 0);
 		
+		
+		
+		
+		
 		//Store reference to the SpriteManager
 		_spriteManager = allSprites;
 	}

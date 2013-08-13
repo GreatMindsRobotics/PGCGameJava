@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseScreen;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.DPad;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ShipTypes;
@@ -19,6 +20,7 @@ public class GameScreen extends BaseScreen {
 	
 	BaseShip Ship;
 	ExtendedSprite FireButton;
+	ExtendedSprite PauseButton;
 	ExtendedLabel xy;
 	String coor = "0,0";
 	
@@ -31,15 +33,18 @@ public class GameScreen extends BaseScreen {
 		Ship = new BaseShip(new Vector2(100, Gdx.graphics.getHeight()/2 - ShipTypes.PLAYERSHIP.GameTexture().getHeight()/2), ShipTypes.PLAYERSHIP.GameTexture(), allSprites);
 		Dpad = new DPad();
 		FireButton = new ExtendedSprite(GameImage.FIREBUTTON.ImageTexture());
+		PauseButton = new ExtendedSprite(GameImage.PAUSEBUTTON.ImageTexture());
+		PauseButton.setPosition(Gdx.graphics.getWidth() - PauseButton.getWidth(), Gdx.graphics.getHeight() - PauseButton.getHeight());
 		
 		xy = new ExtendedLabel(coor , GameImage.DEBUGFONT.ImageText());
-		xy.setPosition(Gdx.graphics.getWidth() - 150, 50);
+		xy.setPosition(25, Gdx.graphics.getHeight() - 50);
 		//xy.setFontScale(2,2);
 		
 		allSprites.add(xy);
 		allSprites.add(Ship);
 		allSprites.add(Dpad);
 		allSprites.add(FireButton);
+		allSprites.add(PauseButton);
 	}
 	
 	public void update(float deltaTime) {
@@ -51,10 +56,8 @@ public class GameScreen extends BaseScreen {
 			xy.setText(coor + "\ndir: " + Dpad.shipDirection.toString());
 			
 			if (!SettingsScreen.leftyMode) {
-				Dpad.setPosition(0, 0);
 				FireButton.setPosition(Gdx.graphics.getWidth() - FireButton.getWidth(),0);
 			} else {
-				Dpad.setPosition(Gdx.graphics.getWidth() - Dpad.getWidth(), 0);
 				FireButton.setPosition(0, 0);
 			}
 			
@@ -75,6 +78,12 @@ public class GameScreen extends BaseScreen {
 					} 	
 					
 				}		
+		}
+		
+		if (Gdx.input.isTouched() &&
+				Gdx.input.getX() >= PauseButton.getX() && Gdx.input.getX() <= PauseButton.getX() + PauseButton.getWidth() &&
+				Gdx.graphics.getHeight() - Gdx.input.getY() >= PauseButton.getY() && Gdx.graphics.getHeight() - Gdx.input.getY() <= PauseButton.getY() + PauseButton.getHeight()) {
+			StateManager.SwitchScreen(ScreenType.PAUSESCREEN);
 		}
 	}
 }

@@ -14,6 +14,7 @@ import com.buildcoolrobots.games.pgcgame.Screens.CreditsScreen;
 import com.buildcoolrobots.games.pgcgame.Screens.GameOverScreen;
 import com.buildcoolrobots.games.pgcgame.Screens.GameScreen;
 import com.buildcoolrobots.games.pgcgame.Screens.MainMenu;
+import com.buildcoolrobots.games.pgcgame.Screens.PauseScreen;
 import com.buildcoolrobots.games.pgcgame.Screens.SettingsScreen;
 import com.buildcoolrobots.games.pgcgame.Screens.TitleScreen;
 import com.buildcoolrobots.games.pgcgame.Screens.TransitionScreen;
@@ -53,7 +54,9 @@ public class PGCGameCore extends Game {
 		gameoverScreen.setAutoSpriteBatchManager(true);
 		LevelSelectScreen levelSelectScreen = new LevelSelectScreen(new SpriteManager(), batch, ScreenType.LEVELSELECTSCREEN);
         levelSelectScreen.setAutoSpriteBatchManager(true);
-		
+		PauseScreen pauseScreen = new PauseScreen(new SpriteManager(), batch, ScreenType.PAUSESCREEN);
+		pauseScreen.setAutoSpriteBatchManager(true);
+        
 		settingsScreen.hide();
 		mainMenuScreen.hide();
 		creditsScreen.hide();
@@ -61,6 +64,7 @@ public class PGCGameCore extends Game {
 		tscreen.hide();
 		gameoverScreen.hide();
 		levelSelectScreen.hide();
+		pauseScreen.hide();
 		
 		this.setScreen(titleScreen);
 		StateManager.PGC = this;

@@ -18,6 +18,7 @@ public enum GameImage implements IGameImage{
 	SCROLLINGBACKGROUND ("Images/Backgrounds/background.png", null, null),
 	FIREBUTTON ("Images/Controls/FireButton.png", null, null),
 	LASERBULLET ("Images/Bullets/Bullet.png", null, null),
+	PAUSEBUTTON ("Images/Controls/PauseButton.png", null, null),
 	
 	TRANSITIONBACKGROUND("Images/Backgrounds/SpaceShopBackground.png", null, null),
 	CREDITFONT(null, "Fonts/CreditFont.fnt", "Fonts/CreditFont.png"),
