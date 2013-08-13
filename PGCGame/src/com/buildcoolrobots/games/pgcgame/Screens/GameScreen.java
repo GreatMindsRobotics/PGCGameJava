@@ -24,8 +24,6 @@ public class GameScreen extends BaseScreen {
 	public GameScreen(SpriteManager allSprites, SpriteBatch spriteBatch, ScreenType screenType) {
 		super(allSprites, spriteBatch, screenType);
 		
-	
-		
 		Ship = new ExtendedSprite(ShipTypes.PLAYERSHIP.GameTexture());
 		Ship.setPosition(100, Gdx.graphics.getHeight()/2 - Ship.getHeight()/2);
 		Dpad = new DPad();
@@ -37,7 +35,7 @@ public class GameScreen extends BaseScreen {
 		
 		allSprites.add(xy);
 		allSprites.add(Ship);
-		allSprites.add((SimpleSprite) Dpad);
+		allSprites.add(Dpad);
 		allSprites.add(FireButton);
 	}
 	
@@ -177,20 +175,7 @@ public class GameScreen extends BaseScreen {
 		}
 		}
 		
-		/*if (Ship.getX() < 0) {
-			Ship.xSpeed = 0;
-			Ship.setPosition(Ship.getX() + 1, Ship.getY());
-		} else if (Ship.getX() + Ship.getWidth() > Gdx.graphics.getWidth()) {
-			Ship.xSpeed = 0;
-			Ship.setPosition(Ship.getX() - 1, Ship.getY());
-		} else if (Ship.getY() <= 0) {
-			Ship.ySpeed = 0;
-			Ship.setPosition(Ship.getX(), Ship.getY() + 1);
-		} else if (Ship.getY() + Ship.getHeight() >= Gdx.graphics.getHeight()) {
-			Ship.ySpeed = 0;
-			Ship.setPosition(Ship.getX(), Ship.getY() - 1);
-		}
-		*/
+		
 		if (Gdx.input.isTouched() &&
 			Gdx.input.getX() >= FireButton.getX() && Gdx.input.getX() <= FireButton.getX() + FireButton.getWidth() &&
 			Gdx.graphics.getHeight() - Gdx.input.getY() >= FireButton.getY() && Gdx.graphics.getHeight() - Gdx.input.getY() <= FireButton.getY() + FireButton.getHeight() && !lastTouch) {

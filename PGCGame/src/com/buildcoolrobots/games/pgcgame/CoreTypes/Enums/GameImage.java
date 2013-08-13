@@ -20,18 +20,7 @@ public enum GameImage implements IGameImage{
 
 	TRANSITIONBACKGROUND("Images/Backgrounds/SpaceShopBackground.png", null, null),
 	CREDITFONT(null, "Fonts/CreditFont.fnt", "Fonts/CreditFont.png"),
-	
-	//D-Pad
-	CONTROL_DIRECTIONAL ("Images/Controls/DpadButtons/Control_Directional.png", null, null),
-	CONTROL_N ("Images/Controls/DpadButtons/Control_N.png", null, null),
-	CONTROL_NE ("Images/Controls/DpadButtons/Control_NE.png", null, null),
-	CONTROL_E ("Images/Controls/DpadButtons/Control_E.png", null, null),
-	CONTROL_SE ("Images/Controls/DpadButtons/Control_SE.png", null, null),
-	CONTROL_S ("Images/Controls/DpadButtons/Control_S.png", null, null),
-	CONTROL_SW ("Images/Controls/DpadButtons/Control_SW.png", null, null),
-	CONTROL_W ("Images/Controls/DpadButtons/Control_W.png", null, null),
-	CONTROL_NW ("Images/Controls/DpadButtons/Control_NW.png", null, null),
-	
+		
 	LEVELSELECTRIGHTBUTTON("Images/Controls/DefaultButton.png", "Fonts/DefaultButtonFont.fnt", "Fonts/DefaultButtonFont.png"),
 	LEVELSELECTLEFTBUTTON("Images/Controls/DefaultButton.png", "Fonts/DefaultButtonFont.fnt", "Fonts/DefaultButtonFont.png"),
 	LEVELSELECTBACKBUTTON("Images/Controls/DefaultButton.png", "Fonts/DefaultButtonFont.fnt", "Fonts/DefaultButtonFont.png"),

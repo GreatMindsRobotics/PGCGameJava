@@ -39,7 +39,7 @@ public class SettingsScreen extends BaseScreen {
 	
 	boolean lastTouch = false;
 	
-	int dPadPos = Gdx.graphics.getWidth() - DPad.baseTexture.getWidth();
+	int dPadPos = Gdx.graphics.getWidth() - DPadDirection.NONE.ImageTexture().getWidth();
 	int buttonWidth = DPad.buttonWidth;
 	int buttonHeight = DPad.buttonHeight;
 	public SettingsScreen(SpriteManager allSprites, SpriteBatch target, ScreenType screenType) {
