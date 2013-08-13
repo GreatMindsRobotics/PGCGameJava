@@ -3,37 +3,51 @@ package com.buildcoolrobots.games.pgcgame.Ships;
 import java.util.ArrayList;
 
 import me.pagekite.glen3b.gjlib.ExtendedSprite;
+import me.pagekite.glen3b.gjlib.SpriteManager;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import com.badlogic.gdx.math.Vector2;
-import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.DPadDirection;
 import com.buildcoolrobots.games.pgcgame.Ships.Bullets.Bullet;
 
 public class BaseShip extends ExtendedSprite {
 
 	protected Vector2 _movementSpeed;
 	private ArrayList<Bullet> _bullets;	
+	SpriteManager _spriteManager;
 	
-	public BaseShip(Vector2 position, Vector2 speed, Texture texture) {
+	public BaseShip(Vector2 position, Texture texture, SpriteManager allSprites) {
 		super(texture);
 		_bullets = new ArrayList<Bullet>();
 		this.setPosition(position.x, position.y);		
-		_movementSpeed = speed;
+		_movementSpeed = new Vector2(0, 0);
+		
+		//Store reference to the SpriteManager
+		_spriteManager = allSprites;
 	}
 	
 	public void shoot() {
-		 Bullet tempBullet = new Bullet(GameImage.GAMETITLE.ImageTexture());
-		 tempBullet.xSpeed = 5;
-		 _bullets.add (tempBullet);
-		 
-	    }
+		 _bullets.add (new Bullet(new Vector2(getX() + getWidth(), getY() + getHeight()/2), 10));		
+	}
 
-	
-	public void Update()
-	{
+	@Override
+	public void update(float deltaTime) {
+		super.update(deltaTime);
 		
+		for (int i = 0; i < _bullets.size(); i++) {
+			Bullet bullet = _bullets.get(i);
+			
+			bullet.update(deltaTime);
+			
+			if(bullet.getX() > Gdx.graphics.getWidth()) {
+				_spriteManager.remove(bullet);
+				_bullets.remove(bullet);
+				i--;
+			}
+		}
 		
 	}
 	
@@ -46,11 +60,114 @@ public class BaseShip extends ExtendedSprite {
 		}
 	   super.draw(batch);
 	}
-	
-	
-	
 
-	
-	
-	
+	public void move(DPadDirection shipDirection) {
+		switch(shipDirection) {
+		case NONE:
+			xSpeed = 0;
+			ySpeed = 0;
+
+			break;
+		
+		case NORTH:
+			if(getY() + getHeight() < Gdx.graphics.getHeight()) {
+				ySpeed = 5;
+			} else {
+				ySpeed = 0;
+			}
+			xSpeed = 0;
+
+			break;
+        
+		case NORTHEAST:
+			if(getX() + getTexture().getWidth() < Gdx.graphics.getWidth()){
+				xSpeed = 5;
+			} else {
+				xSpeed = 0;
+			}
+			if(getY() + getTexture().getHeight() < Gdx.graphics.getHeight()){
+				ySpeed = 5;
+			}
+			else{
+				ySpeed = 0;
+			}
+			
+			break;
+		
+		case EAST:
+			if(getX() + getTexture().getWidth() < Gdx.graphics.getWidth()){
+				xSpeed = 5;
+			}
+			else{
+				xSpeed = 0;
+			}
+        	
+        	ySpeed = 0;
+        	break;
+        
+		case SOUTHEAST:
+			if(getX() + getTexture().getWidth() < Gdx.graphics.getWidth()){
+				xSpeed = 5;
+			} else {
+				xSpeed = 0;
+			}
+			if(getY() > 0){
+				ySpeed = -5;
+
+			} else {
+				ySpeed = 0;
+			}
+		    break;
+		
+		case SOUTH:
+			if(getY() > 0){
+				ySpeed = -5;
+			} else {
+				ySpeed = 0;
+			}
+			xSpeed = 0;
+			break;
+		
+		case SOUTHWEST:
+			if(getX() > 0){
+				xSpeed = -5;
+			} else {
+				xSpeed = 0;
+			}
+			if(getY()  > 0){
+				ySpeed = -5;
+			} else {
+				ySpeed = 0;
+			}
+			
+			break;
+		
+		case WEST:
+			if(getX() > 0){
+				xSpeed = -5;
+			}
+			else{
+				xSpeed = 0;
+			}
+			
+			ySpeed = 0;
+			break;
+
+		case NORTHWEST:
+			if(getX() > 0){
+				xSpeed = -5;
+			}
+			else{
+				xSpeed = 0;
+			}
+			if(getY() + getHeight() < Gdx.graphics.getHeight()){
+					ySpeed = 5;
+			}
+			else{
+				ySpeed = 0;
+			}
+		
+			break;		
+		}
+	}	
 }

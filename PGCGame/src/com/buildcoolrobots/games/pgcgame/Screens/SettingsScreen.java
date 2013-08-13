@@ -6,11 +6,8 @@ import me.pagekite.glen3b.gjlib.SpriteManager;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Rectangle;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseScreen;
-import com.buildcoolrobots.games.pgcgame.CoreTypes.DPad;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
-import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.DPadDirection;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 
@@ -38,10 +35,7 @@ public class SettingsScreen extends BaseScreen {
 	
 	
 	boolean lastTouch = false;
-	
-	int dPadPos = Gdx.graphics.getWidth() - DPadDirection.NONE.ImageTexture().getWidth();
-	int buttonWidth = DPad.buttonWidth;
-	int buttonHeight = DPad.buttonHeight;
+		
 	public SettingsScreen(SpriteManager allSprites, SpriteBatch target, ScreenType screenType) {
 		super(allSprites, target, screenType);
 		
@@ -120,16 +114,9 @@ public class SettingsScreen extends BaseScreen {
 					leftyMode = false;
 					ButtonLabel1.setText("Lefty Mode: Off");
 				}
+							
+				GameScreen.Dpad.setControlPosition();
 				
-				
-				DPad.dirRectangle[DPadDirection.NORTH.ordinal()] = new Rectangle(buttonWidth + (SettingsScreen.leftyMode ? dPadPos : 0), buttonHeight * 2, buttonWidth, buttonHeight);
-				DPad.dirRectangle[DPadDirection.NORTHEAST.ordinal()] = new Rectangle(buttonWidth * 2 + (SettingsScreen.leftyMode ? dPadPos : 0), buttonHeight * 2, buttonWidth, buttonHeight);
-				DPad.dirRectangle[DPadDirection.EAST.ordinal()] = new Rectangle(buttonWidth * 2 + (SettingsScreen.leftyMode ? dPadPos : 0), buttonHeight, buttonWidth, buttonHeight);
-				DPad.dirRectangle[DPadDirection.SOUTHEAST.ordinal()] = new Rectangle(buttonWidth * 2 + (SettingsScreen.leftyMode ? dPadPos : 0), 0, buttonWidth, buttonHeight);
-				DPad.dirRectangle[DPadDirection.SOUTH.ordinal()] = new Rectangle(buttonWidth + (SettingsScreen.leftyMode ? dPadPos : 0), 0, buttonWidth, buttonHeight);
-				DPad.dirRectangle[DPadDirection.SOUTHWEST.ordinal()] = new Rectangle((SettingsScreen.leftyMode ? dPadPos : 0), 0, buttonWidth, buttonHeight);
-				DPad.dirRectangle[DPadDirection.WEST.ordinal()] = new Rectangle((SettingsScreen.leftyMode ? dPadPos : 0), buttonHeight, buttonWidth, buttonHeight);
-				DPad.dirRectangle[DPadDirection.NORTHWEST.ordinal()] = new Rectangle((SettingsScreen.leftyMode ? dPadPos : 0), buttonHeight * 2, buttonWidth, buttonHeight);
 				lastTouch = true;
 			} else if (Gdx.input.getX() >= Button2.getX() && Gdx.input.getX() <= Button2.getX() + Button2.getWidth() &&
 			Gdx.graphics.getHeight() - Gdx.input.getY() >= Button2.getY() && Gdx.graphics.getHeight() - Gdx.input.getY() <= Button2.getY() + Button2.getHeight() && !lastTouch) {

@@ -2,30 +2,30 @@ package com.buildcoolrobots.games.pgcgame.Screens;
 
 import me.pagekite.glen3b.gjlib.ExtendedLabel;
 import me.pagekite.glen3b.gjlib.ExtendedSprite;
-import me.pagekite.glen3b.gjlib.SimpleSprite;
 import me.pagekite.glen3b.gjlib.SpriteManager;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseScreen;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.DPad;
-import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.DPadDirection;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ShipTypes;
+import com.buildcoolrobots.games.pgcgame.Ships.BaseShip;
 
 public class GameScreen extends BaseScreen {
-
-	ExtendedSprite Ship;
+	public static DPad Dpad;
+	
+	BaseShip Ship;
 	ExtendedSprite FireButton;
-	DPad Dpad;
 	ExtendedLabel xy;
 	String coor = "0,0";
+	
 	public GameScreen(SpriteManager allSprites, SpriteBatch spriteBatch, ScreenType screenType) {
 		super(allSprites, spriteBatch, screenType);
 		
-		Ship = new ExtendedSprite(ShipTypes.PLAYERSHIP.GameTexture());
-		Ship.setPosition(100, Gdx.graphics.getHeight()/2 - Ship.getHeight()/2);
+		Ship = new BaseShip(new Vector2(100, Gdx.graphics.getHeight()/2 - ShipTypes.PLAYERSHIP.GameTexture().getHeight()/2), ShipTypes.PLAYERSHIP.GameTexture(), allSprites);
 		Dpad = new DPad();
 		FireButton = new ExtendedSprite(GameImage.FIREBUTTON.ImageTexture());
 		
@@ -57,130 +57,14 @@ public class GameScreen extends BaseScreen {
 			
 	        
 		}
-		
-		//Ben's borked movement.
-		switch(DPad.shipDirection){
-		case NONE:{
-			Ship.xSpeed = 0;
-			Ship.ySpeed = 0;
-			break;
-		}
-		case NORTH:{
-			if(Ship.getY() + Ship.getHeight() < Gdx.graphics.getHeight())
-			{
-        	 Ship.ySpeed = 5;
-			}
-			else{
-				Ship.ySpeed = 0;
-			}
-			Ship.xSpeed = 0;
-        	break;
-        }
-		case NORTHEAST:{
-			if(Ship.getX() + Ship.getTexture().getWidth() < Gdx.graphics.getWidth()){
-				Ship.xSpeed = 5;
-			}
-			else
-			{
-				Ship.xSpeed = 0;
-			}
-			if(Ship.getY()+ Ship.getTexture().getHeight() < Gdx.graphics.getHeight()){
-				Ship.ySpeed = 5;
-			}
-			else{
-				Ship.ySpeed = 0;
-			}
-			
-			break;
-		}
-		case EAST:{
-			if(Ship.getX() + Ship.getTexture().getWidth() < Gdx.graphics.getWidth()){
-				Ship.xSpeed = 5;
-			}
-			else{
-				Ship.xSpeed = 0;
-			}
-        	
-        	Ship.ySpeed = 0;
-        	break;
-        }
-		case SOUTHEAST:{
-			if(Ship.getX() + Ship.getTexture().getWidth() < Gdx.graphics.getWidth()){
-				Ship.xSpeed = 5;
-			}
-			else{
-				Ship.xSpeed = 0;
-			}
-			if(Ship.getY() > 0){
-				Ship.ySpeed = -5;
 
-			}
-			else{
-				Ship.ySpeed = 0;
-			}
-		    break;
-		}
-		case SOUTH:{
-			if(Ship.getY() > 0){
-				Ship.ySpeed = -5;
-			}
-			else{
-				Ship.ySpeed = 0;
-			}
-			Ship.xSpeed = 0;
-			break;
-		}
-		case SOUTHWEST:{
-			if(Ship.getX() > 0){
-				Ship.xSpeed = -5;
-			}
-			else{
-				Ship.xSpeed = 0;
-			}
-			if(Ship.getY()  > 0){
-				Ship.ySpeed = -5;
-			}
-			else{
-				Ship.ySpeed = 0;
-			}
-			
-			break;
-		}
-		case WEST:{
-		if(Ship.getX() > 0){
-			Ship.xSpeed = -5;
-		}
-		else{
-			Ship.xSpeed = 0;
-		}
-			
-			Ship.ySpeed = 0;
-			break;
-		}
-		case NORTHWEST:{
-			if(Ship.getX() > 0){
-				Ship.xSpeed = -5;
-			}
-			else{
-				Ship.xSpeed = 0;
-			}
-			if(Ship.getY() + Ship.getHeight() < Gdx.graphics.getHeight()){
-					Ship.ySpeed = 5;
-			}
-			else{
-				Ship.ySpeed = 0;
-			}
-		
-			break;
-		}
-		}
-		
+		Ship.move(Dpad.shipDirection);		
 		
 		if (Gdx.input.isTouched() &&
 			Gdx.input.getX() >= FireButton.getX() && Gdx.input.getX() <= FireButton.getX() + FireButton.getWidth() &&
 			Gdx.graphics.getHeight() - Gdx.input.getY() >= FireButton.getY() && Gdx.graphics.getHeight() - Gdx.input.getY() <= FireButton.getY() + FireButton.getHeight() && !lastTouch) {
-			//for debug purposes
-			Gdx.app.error("MEE LIYK", "POOTAYTOHS");
+			
+			Ship.shoot();
 			
 			lastTouch = true;
 		}
