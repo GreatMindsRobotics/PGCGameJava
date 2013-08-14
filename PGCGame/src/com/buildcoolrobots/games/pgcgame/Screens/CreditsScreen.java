@@ -92,7 +92,13 @@ public class CreditsScreen extends BaseScreen {
     ExtendedLabel W7BrandonU;
     ExtendedLabel W7RehaanI;
     // WEEK 8
-
+    ExtendedLabel W8MichaelK;
+    ExtendedLabel W8AlexL;
+    ExtendedLabel W8BrandonU;
+    ExtendedLabel W8RehaanI;
+    ExtendedLabel W8AndrewK;
+    // WEEK 9
+    
     ExtendedLabel CN13RossT;
     ExtendedLabel CN14BrandonU;
     ExtendedLabel CN15PierreB;
@@ -103,7 +109,7 @@ public class CreditsScreen extends BaseScreen {
     
     
 	
-	private final int scrollSpeed = 1;
+	private final int scrollSpeed = 5;
 	
 	public CreditsScreen(SpriteManager allSprites, SpriteBatch target, ScreenType screenType) {
 		super(allSprites, target, screenType);
@@ -178,7 +184,15 @@ public class CreditsScreen extends BaseScreen {
 		W7AlexL = new ExtendedLabel("Alex L.", GameImage.CREDITFONT.ImageText());
 		W7RossT = new ExtendedLabel("Ross T.", GameImage.CREDITFONT.ImageText());
 		W7BrandonU = new ExtendedLabel("Brandon U.", GameImage.CREDITFONT.ImageText());
-		W7RehaanI = new ExtendedLabel("Rehaan I.", GameImage.CREDITFONT.ImageText());
+		W7RehaanI= new ExtendedLabel("Rehaan I.", GameImage.CREDITFONT.ImageText());
+		 
+		CW8= new ExtendedLabel("Week 8", GameImage.CREDITFONT.ImageText());
+		CA8= new ExtendedLabel("?       ?       ?", GameImage.CREDITFONT.ImageText());
+		W8AlexL= new ExtendedLabel("Alex L.", GameImage.CREDITFONT.ImageText());
+		W8MichaelK = new ExtendedLabel("Michael K.", GameImage.CREDITFONT.ImageText());
+		W8AndrewK= new ExtendedLabel("Andrew K.", GameImage.CREDITFONT.ImageText());
+		W8BrandonU= new ExtendedLabel("Brandon U.", GameImage.CREDITFONT.ImageText());
+		W8RehaanI= new ExtendedLabel("Rehaan I.", GameImage.CREDITFONT.ImageText());
 		
 		reset();
 		
@@ -254,6 +268,14 @@ public class CreditsScreen extends BaseScreen {
 	    allSprites.add(W7MichaelK);
 	    allSprites.add(W7RehaanI);
 	    allSprites.add(W7RossT);
+	    
+	    allSprites.add(CW8);
+	    allSprites.add(CA8);
+	    allSprites.add(W8AlexL);
+	    allSprites.add(W8AndrewK);
+	    allSprites.add(W8BrandonU);
+	    allSprites.add(W8MichaelK);
+	    allSprites.add(W8RehaanI);
 	}
 	
 	public void reset() {
@@ -337,6 +359,15 @@ public class CreditsScreen extends BaseScreen {
 	    W7MichaelK.setPosition(Gdx.graphics.getWidth()/2 - W7MichaelK.getWidth() / 3, - 4680);
 	    W7RehaanI.setPosition(Gdx.graphics.getWidth()/2 - W7RehaanI.getWidth() / 3, - 4740);
 	    W7RossT.setPosition(Gdx.graphics.getWidth()/2 - W7RossT.getWidth() / 3, - 4800);
+	
+	    CW8.setPosition(Gdx.graphics.getWidth()/2 - CW8.getWidth() / 3, - 4980);
+	    
+	    CA8.setPosition(Gdx.graphics.getWidth()/2 - CA8.getWidth() / 3, - 5070);
+	    W8AlexL.setPosition(Gdx.graphics.getWidth()/2 - W8AlexL.getWidth() / 3, - 5130);
+	    W8AndrewK.setPosition(Gdx.graphics.getWidth()/2 - W8AndrewK.getWidth() / 3, - 5190);
+	    W8BrandonU.setPosition(Gdx.graphics.getWidth()/2 - W8BrandonU.getWidth() / 3, - 5250);
+	    W8MichaelK.setPosition(Gdx.graphics.getWidth()/2 - W8MichaelK.getWidth() / 3, - 5310);
+	    W8RehaanI.setPosition(Gdx.graphics.getWidth()/2 - W8RehaanI.getWidth() / 3, - 5370);
 	}
 
 	@Override
@@ -414,6 +445,14 @@ public class CreditsScreen extends BaseScreen {
 	    W7MichaelK.setPosition(W7MichaelK.getX(), W7MichaelK.getY() + scrollSpeed);
 	    W7RehaanI.setPosition(W7RehaanI.getX(), W7RehaanI.getY() + scrollSpeed);
 	    W7RossT.setPosition(W7RossT.getX(), W7RossT.getY() + scrollSpeed);
+	
+	    CW8.setPosition(CW8.getX(), CW8.getY() + scrollSpeed);	
+	    CA8.setPosition(CA8.getX(), CA8.getY() + scrollSpeed);
+	    W8AlexL.setPosition(W8AlexL.getX(), W8AlexL.getY() + scrollSpeed);
+	    W8AndrewK.setPosition(W8AndrewK.getX(), W8AndrewK.getY() + scrollSpeed);
+	    W8BrandonU.setPosition(W8BrandonU.getX(), W8BrandonU.getY() + scrollSpeed);
+	    W8MichaelK.setPosition(W8MichaelK.getX(), W8MichaelK.getY() + scrollSpeed);
+	    W8RehaanI.setPosition(W8RehaanI.getX(), W8RehaanI.getY() + scrollSpeed);
 	}
 	
 	@Override
