@@ -14,7 +14,6 @@ public class BaseEnemyShip extends BaseShip{
 		super(position, texture, allSprites);
 		this.setLocation(position);
 		this.setTexture(texture);
-		
 		// TODO Auto-generated constructor stub
 	}
 	

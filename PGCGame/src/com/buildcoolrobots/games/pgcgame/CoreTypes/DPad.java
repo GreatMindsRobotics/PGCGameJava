@@ -1,14 +1,12 @@
 package com.buildcoolrobots.games.pgcgame.CoreTypes;
 
-import me.pagekite.glen3b.gjlib.ExtendedSprite;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.DPadDirection;
 import com.buildcoolrobots.games.pgcgame.Screens.SettingsScreen;
 
-public class DPad extends ExtendedSprite {
+public class DPad extends BaseGameSprite {
 	private Rectangle dirRectangle[];
 	private int buttonWidth;
 	private int buttonHeight;	

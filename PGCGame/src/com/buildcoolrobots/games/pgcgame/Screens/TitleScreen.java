@@ -1,12 +1,12 @@
 package com.buildcoolrobots.games.pgcgame.Screens;
 
 import me.pagekite.glen3b.gjlib.ExtendedLabel;
-import me.pagekite.glen3b.gjlib.ExtendedSprite;
 import me.pagekite.glen3b.gjlib.SpriteManager;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseGameSprite;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseScreen;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
@@ -15,9 +15,9 @@ import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ShipTypes;
 
 public class TitleScreen extends BaseScreen {
 	
-	private ExtendedSprite gameTitle;
-	private ExtendedSprite ship;
-	private ExtendedSprite PlayButton;
+	private BaseGameSprite gameTitle;
+	private BaseGameSprite ship;
+	private BaseGameSprite PlayButton;
 	private ExtendedLabel PlayButtonText;
 	
 	public TitleScreen(SpriteManager allSprites, SpriteBatch spriteBatch, ScreenType screenType) {
@@ -25,17 +25,17 @@ public class TitleScreen extends BaseScreen {
 		
 		StateManager.TitleScreenBGSpriteDebug = false;
 		
-		gameTitle = new ExtendedSprite(GameImage.GAMETITLE.ImageTexture());
+		gameTitle = new BaseGameSprite(GameImage.GAMETITLE.ImageTexture());
 		gameTitle.setPosition(Gdx.graphics.getWidth() / 2 - gameTitle.getWidth() / 2, Gdx.graphics.getHeight() - 100);
 		gameTitle.setScale(new Vector2 (1.3f, 1.3f));
 		
-		ship = new ExtendedSprite(ShipTypes.PLAYERSHIP.GameTexture());
+		ship = new BaseGameSprite(ShipTypes.PLAYERSHIP.GameTexture());
 		ship.setPosition(-200, -100);
 		ship.xSpeed = 3f;
 		ship.ySpeed = 2f;
 		ship.setRotation(25);
 		
-		PlayButton = new ExtendedSprite(GameImage.MAINMENUPLAYBUTTON.ImageTexture());
+		PlayButton = new BaseGameSprite(GameImage.MAINMENUPLAYBUTTON.ImageTexture());
 		PlayButton.setPosition(Gdx.graphics.getWidth()/2 - PlayButton.getWidth()/2, Gdx.graphics.getHeight()/2 - PlayButton.getHeight());
 		PlayButton.setScale(new Vector2(1f, 1f));
 		

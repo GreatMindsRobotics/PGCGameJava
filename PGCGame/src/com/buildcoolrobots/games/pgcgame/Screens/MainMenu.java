@@ -1,12 +1,12 @@
 package com.buildcoolrobots.games.pgcgame.Screens;
 
 import me.pagekite.glen3b.gjlib.ExtendedLabel;
-import me.pagekite.glen3b.gjlib.ExtendedSprite;
 import me.pagekite.glen3b.gjlib.SpriteManager;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseGameSprite;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseScreen;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
@@ -14,16 +14,16 @@ import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 
 public class MainMenu extends BaseScreen {
 
-	ExtendedSprite MainMenuPlayButton;
-	ExtendedSprite MainMenuSettingsButton;
-	ExtendedSprite MainMenuCreditsButton;
+	BaseGameSprite MainMenuPlayButton;
+	BaseGameSprite MainMenuSettingsButton;
+	BaseGameSprite MainMenuCreditsButton;
 	
 	public MainMenu(SpriteManager allSprites, SpriteBatch target, ScreenType screenType) {
 		super(allSprites, target, screenType);
 		
-		MainMenuPlayButton = new ExtendedSprite(GameImage.MAINMENUPLAYBUTTON.ImageTexture());
-		MainMenuSettingsButton = new ExtendedSprite(GameImage.MAINMENUSETTINGSBUTTON.ImageTexture());
-		MainMenuCreditsButton = new ExtendedSprite(GameImage.MAINMENUCREDITSBUTTON.ImageTexture());
+		MainMenuPlayButton = new BaseGameSprite(GameImage.MAINMENUPLAYBUTTON.ImageTexture());
+		MainMenuSettingsButton = new BaseGameSprite(GameImage.MAINMENUSETTINGSBUTTON.ImageTexture());
+		MainMenuCreditsButton = new BaseGameSprite(GameImage.MAINMENUCREDITSBUTTON.ImageTexture());
 		
 		MainMenuPlayButton.setPosition(Gdx.graphics.getWidth() / 2 - MainMenuPlayButton.getWidth() / 2, Gdx.graphics.getHeight() / 4);
 		MainMenuPlayButton.setScale(new Vector2(1f, 1f));

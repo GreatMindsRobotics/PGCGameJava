@@ -2,7 +2,6 @@ package com.buildcoolrobots.games.pgcgame.Ships;
 
 import java.util.ArrayList;
 
-import me.pagekite.glen3b.gjlib.ExtendedSprite;
 import me.pagekite.glen3b.gjlib.SpriteManager;
 
 import com.badlogic.gdx.Gdx;
@@ -10,10 +9,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import com.badlogic.gdx.math.Vector2;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseGameSprite;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.DPadDirection;
 import com.buildcoolrobots.games.pgcgame.Ships.Bullets.Bullet;
 
-public class BaseShip extends ExtendedSprite {
+public class BaseShip extends BaseGameSprite {
 
 	protected Vector2 _movementSpeed;
 	private ArrayList<Bullet> _bullets;	

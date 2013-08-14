@@ -67,11 +67,12 @@ public abstract class StateManager {
     public static ScreenType getScreenState() {
     	return _screenState;
     }
-    public static void SwitchScreen(ScreenType ScreenState) {
-    	_screenStack.push(ScreenState);
-    	_screenState = ScreenState;
-    	PGC.setScreen(AllScreens.getScreen(ScreenState));
-    	//SwitchScreen(ScreenState); Need to make this method
+    public static void SwitchScreen(ScreenType screenState) {
+    	if(screenState != null) {
+	    	_screenStack.push(screenState);
+	    	_screenState = screenState;
+	    	PGC.setScreen(AllScreens.getScreen(screenState));
+    	}
     }
     public static int getSpaceBucks() {
     	return _spaceBucks;
@@ -97,15 +98,7 @@ public abstract class StateManager {
     	_screenState = _screenStack.peek();
     	PGC.setScreen(AllScreens.getScreen(_screenStack.peek()));
     }
-    /*
-    public static void SwitchScreen(ScreenType screenType) {
-    	if(screenType != null) {
-	    	PGC.setScreen(AllScreens.getScreen(screenType));
-	    	_screenState = screenType;
-	    	
-    	}
-    } 
-    */
+
     public static void SwitchScreen(int debugKey) {
     	SwitchScreen(AllScreens.getScreenType(debugKey));
     	if(debugKey == 244){

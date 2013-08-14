@@ -1,23 +1,21 @@
 package com.buildcoolrobots.games.pgcgame.CoreTypes;
 
-import me.pagekite.glen3b.gjlib.ExtendedSprite;
 import me.pagekite.glen3b.gjlib.SpriteManager;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
 
-public class BGSprite extends Sprite {
+public class BGSprite extends BaseGameSprite {
 	private static final BGSprite _currentBG = new BGSprite();
 	
 	
 	private BGSprite() {
 		super(GameImage.SCROLLINGBACKGROUND.ImageTexture());
 
-		background = new ExtendedSprite(GameImage.SCROLLINGBACKGROUND.ImageTexture());
+		background = new BaseGameSprite(GameImage.SCROLLINGBACKGROUND.ImageTexture());
 		background.setPosition(0, 0);
 		background.xSpeed = -1f;
 		
-		background2 = new ExtendedSprite(GameImage.SCROLLINGBACKGROUND.ImageTexture());
+		background2 = new BaseGameSprite(GameImage.SCROLLINGBACKGROUND.ImageTexture());
 		if (!StateManager.TitleScreenBGSpriteDebug) {
 			background2.setPosition(background.getX() + background.getWidth(), 0);
 		}
@@ -32,8 +30,8 @@ public class BGSprite extends Sprite {
 	}
 	
 	
-	private static ExtendedSprite background;
-	private static ExtendedSprite background2;
+	private static BaseGameSprite background;
+	private static BaseGameSprite background2;
 	public static void scrollingBackground(SpriteManager allSprites) {		
 		allSprites.add(background);
 		allSprites.add(background2);
