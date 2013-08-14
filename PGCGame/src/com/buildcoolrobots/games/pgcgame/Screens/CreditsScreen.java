@@ -22,6 +22,7 @@ public class CreditsScreen extends BaseScreen {
 	ExtendedLabel CW6;
 	ExtendedLabel CW7;
 	ExtendedLabel CW8;
+	ExtendedLabel CW9;
 	
 	ExtendedLabel CA1;  // functional spec. and game management
 	ExtendedLabel CA2;  // class design, functionality, technical spec
@@ -31,6 +32,7 @@ public class CreditsScreen extends BaseScreen {
 	ExtendedLabel CA6;  // ???
 	ExtendedLabel CA7;
 	ExtendedLabel CA8;
+	ExtendedLabel CA9;
 	// WEEK 1
 	ExtendedLabel W1AlexL;
 	ExtendedLabel W1AlexaL;
@@ -98,6 +100,9 @@ public class CreditsScreen extends BaseScreen {
     ExtendedLabel W8RehaanI;
     ExtendedLabel W8AndrewK;
     // WEEK 9
+    ExtendedLabel W9AlexL;
+    ExtendedLabel W9MichaelK;
+    
     
     ExtendedLabel CN13RossT;
     ExtendedLabel CN14BrandonU;
@@ -109,7 +114,7 @@ public class CreditsScreen extends BaseScreen {
     
     
 	
-	private final int scrollSpeed = 5;
+	private final int scrollSpeed = 1;
 	
 	public CreditsScreen(SpriteManager allSprites, SpriteBatch target, ScreenType screenType) {
 		super(allSprites, target, screenType);
@@ -194,6 +199,11 @@ public class CreditsScreen extends BaseScreen {
 		W8BrandonU= new ExtendedLabel("Brandon U.", GameImage.CREDITFONT.ImageText());
 		W8RehaanI= new ExtendedLabel("Rehaan I.", GameImage.CREDITFONT.ImageText());
 		
+		CW9= new ExtendedLabel("Week 9", GameImage.CREDITFONT.ImageText());
+		CA9= new ExtendedLabel("?       ?       ?", GameImage.CREDITFONT.ImageText());
+		W9AlexL= new ExtendedLabel("Alex L.", GameImage.CREDITFONT.ImageText());
+		W9MichaelK= new ExtendedLabel("Michael K.", GameImage.CREDITFONT.ImageText());
+		
 		reset();
 		
 		allSprites.add(CTLine);
@@ -276,6 +286,11 @@ public class CreditsScreen extends BaseScreen {
 	    allSprites.add(W8BrandonU);
 	    allSprites.add(W8MichaelK);
 	    allSprites.add(W8RehaanI);
+	    
+	    allSprites.add(CW9);
+	    allSprites.add(CA9);
+	    allSprites.add(W9AlexL);
+	    allSprites.add(W9MichaelK);
 	}
 	
 	public void reset() {
@@ -368,6 +383,11 @@ public class CreditsScreen extends BaseScreen {
 	    W8BrandonU.setPosition(Gdx.graphics.getWidth()/2 - W8BrandonU.getWidth() / 3, - 5250);
 	    W8MichaelK.setPosition(Gdx.graphics.getWidth()/2 - W8MichaelK.getWidth() / 3, - 5310);
 	    W8RehaanI.setPosition(Gdx.graphics.getWidth()/2 - W8RehaanI.getWidth() / 3, - 5370);
+	
+	    CW9.setPosition(Gdx.graphics.getWidth()/2 - CW9.getWidth() / 3, - 5550);
+	    CA9.setPosition(Gdx.graphics.getWidth()/2 - CA9.getWidth() / 3, - 5640);
+	    W9AlexL.setPosition(Gdx.graphics.getWidth()/2 - W9AlexL.getWidth() / 3, - 5700);
+	    W9MichaelK.setPosition(Gdx.graphics.getWidth()/2 - W9MichaelK.getWidth() / 3, - 5760);
 	}
 
 	@Override
@@ -453,7 +473,12 @@ public class CreditsScreen extends BaseScreen {
 	    W8BrandonU.setPosition(W8BrandonU.getX(), W8BrandonU.getY() + scrollSpeed);
 	    W8MichaelK.setPosition(W8MichaelK.getX(), W8MichaelK.getY() + scrollSpeed);
 	    W8RehaanI.setPosition(W8RehaanI.getX(), W8RehaanI.getY() + scrollSpeed);
-	}
+	
+	    CW9.setPosition(CW9.getX(), CW9.getY() + scrollSpeed);
+	    CA9.setPosition(CA9.getX(), CA9.getY() + scrollSpeed);
+	    W9AlexL.setPosition(W9AlexL.getX(), W9AlexL.getY() + scrollSpeed);
+	    W9MichaelK.setPosition(W9MichaelK.getX(), W9MichaelK.getY() + scrollSpeed);
+		}
 	
 	@Override
 	public void show() {
