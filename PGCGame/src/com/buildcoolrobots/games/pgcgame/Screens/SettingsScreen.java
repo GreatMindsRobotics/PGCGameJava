@@ -153,7 +153,7 @@ public class SettingsScreen extends BaseScreen {
 				lastTouch = true;
 			} else if (Gdx.input.getX() >= backButton.getX() && Gdx.input.getX() <= backButton.getX() + backButton.getWidth() &&
 			Gdx.graphics.getHeight() - Gdx.input.getY() >= backButton.getY() && Gdx.graphics.getHeight() - Gdx.input.getY() <= backButton.getY() + backButton.getHeight()) {
-				StateManager.SwitchScreen(ScreenType.MAINMENU);
+				StateManager.GoBackScreen();
 			}
 		}
 	}

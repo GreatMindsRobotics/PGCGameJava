@@ -71,7 +71,8 @@ public class PGCGameCore extends Game {
 		
 		//Input processor
 		debugKeys = new DebugInputProcessor();		
-		Gdx.input.setInputProcessor(debugKeys);		
+		Gdx.input.setInputProcessor(debugKeys);	
+		StateManager.SwitchScreen(ScreenType.TITLESCREEN);
 	}
 
 	@SuppressWarnings("unused")
