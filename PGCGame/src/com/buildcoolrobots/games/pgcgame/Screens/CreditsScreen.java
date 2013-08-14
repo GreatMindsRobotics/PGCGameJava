@@ -20,13 +20,17 @@ public class CreditsScreen extends BaseScreen {
 	ExtendedLabel CW4;
 	ExtendedLabel CW5;
 	ExtendedLabel CW6;
+	ExtendedLabel CW7;
+	ExtendedLabel CW8;
 	
 	ExtendedLabel CA1;  // functional spec. and game management
 	ExtendedLabel CA2;  // class design, functionality, technical spec
 	ExtendedLabel CA3;  // ai programming
 	ExtendedLabel CA4;  // Xbox conversion
 	ExtendedLabel CA5;  // generl game programming
-	ExtendedLabel CA6;  //
+	ExtendedLabel CA6;  // ???
+	ExtendedLabel CA7;
+	ExtendedLabel CA8;
 	// WEEK 1
 	ExtendedLabel W1AlexL;
 	ExtendedLabel W1AlexaL;
@@ -82,16 +86,18 @@ public class CreditsScreen extends BaseScreen {
     ExtendedLabel W6JeremiahT;
     ExtendedLabel W6RehaanI;
     // WEEK 7
-    
-    
-    
-    ExtendedLabel CN12AlyssaF;
+    ExtendedLabel W7MichaelK;
+    ExtendedLabel W7AlexL;
+    ExtendedLabel W7RossT;
+    ExtendedLabel W7BrandonU;
+    ExtendedLabel W7RehaanI;
+    // WEEK 8
+
     ExtendedLabel CN13RossT;
     ExtendedLabel CN14BrandonU;
     ExtendedLabel CN15PierreB;
     ExtendedLabel CN16EedanS;
     ExtendedLabel CN17RehaanI;
-    ExtendedLabel CN18BrandonF;
     
 
     
@@ -166,6 +172,14 @@ public class CreditsScreen extends BaseScreen {
 		W6AndrewK = new ExtendedLabel("Andrew K.", GameImage.CREDITFONT.ImageText());
 		W6JeremiahT = new ExtendedLabel("Jeremiah T.", GameImage.CREDITFONT.ImageText());
 		
+		CW7 = new ExtendedLabel("Week 7", GameImage.CREDITFONT.ImageText());
+		CA7 = new ExtendedLabel("?       ?       ?",GameImage.CREDITFONT.ImageText());
+		W7MichaelK = new ExtendedLabel("Michael K.", GameImage.CREDITFONT.ImageText());
+		W7AlexL = new ExtendedLabel("Alex L.", GameImage.CREDITFONT.ImageText());
+		W7RossT = new ExtendedLabel("Ross T.", GameImage.CREDITFONT.ImageText());
+		W7BrandonU = new ExtendedLabel("Brandon U.", GameImage.CREDITFONT.ImageText());
+		W7RehaanI = new ExtendedLabel("Rehaan I.", GameImage.CREDITFONT.ImageText());
+		
 		reset();
 		
 		allSprites.add(CTLine);
@@ -232,6 +246,14 @@ public class CreditsScreen extends BaseScreen {
 	    allSprites.add(W6GlenH);
 	    allSprites.add(W6JeremiahT);
 	    allSprites.add(W6MichaelK);
+	    
+	    allSprites.add(CW7);
+	    allSprites.add(CA7);
+	    allSprites.add(W7AlexL);
+	    allSprites.add(W7BrandonU);
+	    allSprites.add(W7MichaelK);
+	    allSprites.add(W7RehaanI);
+	    allSprites.add(W7RossT);
 	}
 	
 	public void reset() {
@@ -306,6 +328,15 @@ public class CreditsScreen extends BaseScreen {
 		W6GlenH.setPosition(Gdx.graphics.getWidth()/2 - W6GlenH.getWidth() / 3, - 4110);
 		W6JeremiahT.setPosition(Gdx.graphics.getWidth()/2 - W6JeremiahT.getWidth() / 3, - 4170);
 		W6MichaelK.setPosition(Gdx.graphics.getWidth()/2 - W6MichaelK.getWidth() / 3, - 4230);
+		
+		CW7.setPosition(Gdx.graphics.getWidth()/2 - CW7.getWidth() / 3, - 4410);
+		
+	    CA7.setPosition(Gdx.graphics.getWidth()/2 - CA7.getWidth() / 3, - 4500);
+	    W7AlexL.setPosition(Gdx.graphics.getWidth()/2 - W7AlexL.getWidth() / 3, - 4560);
+	    W7BrandonU.setPosition(Gdx.graphics.getWidth()/2 - W7BrandonU.getWidth() / 3, - 4620);
+	    W7MichaelK.setPosition(Gdx.graphics.getWidth()/2 - W7MichaelK.getWidth() / 3, - 4680);
+	    W7RehaanI.setPosition(Gdx.graphics.getWidth()/2 - W7RehaanI.getWidth() / 3, - 4740);
+	    W7RossT.setPosition(Gdx.graphics.getWidth()/2 - W7RossT.getWidth() / 3, - 4800);
 	}
 
 	@Override
@@ -375,6 +406,14 @@ public class CreditsScreen extends BaseScreen {
 		W6GlenH.setPosition(W6GlenH.getX(), W6GlenH.getY() + scrollSpeed);
 		W6JeremiahT.setPosition(W6JeremiahT.getX(), W6JeremiahT.getY() + scrollSpeed);
 		W6MichaelK.setPosition(W6MichaelK.getX(), W6MichaelK.getY() + scrollSpeed);
+		
+		CW7.setPosition(CW7.getX(), CW7.getY() + scrollSpeed);
+	    CA7.setPosition(CA7.getX(), CA7.getY() + scrollSpeed);
+	    W7AlexL.setPosition(W7AlexL.getX(), W7AlexL.getY() + scrollSpeed);
+	    W7BrandonU.setPosition(W7BrandonU.getX(), W7BrandonU.getY() + scrollSpeed);
+	    W7MichaelK.setPosition(W7MichaelK.getX(), W7MichaelK.getY() + scrollSpeed);
+	    W7RehaanI.setPosition(W7RehaanI.getX(), W7RehaanI.getY() + scrollSpeed);
+	    W7RossT.setPosition(W7RossT.getX(), W7RossT.getY() + scrollSpeed);
 	}
 	
 	@Override
