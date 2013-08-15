@@ -7,6 +7,7 @@ import me.pagekite.glen3b.gjlib.ExtendedLabel;
 import me.pagekite.glen3b.gjlib.SpriteManager;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -79,7 +80,7 @@ public class GameScreen extends BaseScreen {
 		
 		if (timeSinceLastEnemySpawn >= enemySpawnTimer) {
 			BaseEnemyShip enemy = new BaseEnemyShip(Vector2.Zero, EnemyTextures[randomNum.nextInt(2)],getAllSprites());
-			enemy.setPosition(Gdx.graphics.getWidth(), randomNum.nextInt(Gdx.graphics.getHeight()-(int)enemy.getHeight()));
+			enemy.setPosition(Gdx.graphics.getWidth(), randomNum.nextInt(Gdx.graphics.getHeight() - 2*(int)enemy.getHeight() - (int)enemy.getHeight()) + (int)enemy.getHeight());
 			enemies.add(enemy);
 			enemies.get(enemies.size()-1).xSpeed = -3;
 		    _allSprites.add(enemy);
@@ -105,7 +106,7 @@ public class GameScreen extends BaseScreen {
 
 		Ship.move(Dpad.shipDirection);		
 		
-		
+		boolean isShooting = false;
 		for (int i = 0; i < 2; i++) {
 			if (Gdx.input.isTouched(i) &&
 					Gdx.input.getX(i) >= FireButton.getX() && Gdx.input.getX(i) <= FireButton.getX() + FireButton.getWidth() &&
@@ -115,7 +116,14 @@ public class GameScreen extends BaseScreen {
 						Ship.shoot();
 						timeSinceLastFire = 0;
 					}
+					isShooting = true;
 				}		
+		}
+		
+		if (isShooting) {
+			FireButton.setColor(Color.PINK);
+		} else {
+			FireButton.setColor(Color.WHITE);
 		}
 		
 		if (Gdx.input.isTouched() &&
