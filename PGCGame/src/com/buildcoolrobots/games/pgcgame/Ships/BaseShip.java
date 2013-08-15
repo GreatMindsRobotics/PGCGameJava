@@ -173,5 +173,22 @@ public class BaseShip extends BaseGameSprite {
 		
 			break;		
 		}
+	}
+
+	public void clearBullets() {
+		_bullets.clear();
 	}	
+	
+	public int getListBulletSize() {
+		return _bullets.size();
+	}
+	
+	public Bullet getBullet(int i) {
+		return _bullets.get(i);
+	}
+
+	public void removeBulletFromScreen(int j) {
+		_spriteManager.remove(_bullets.get(j));
+		_bullets.remove(j);
+	}
 }

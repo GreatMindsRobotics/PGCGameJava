@@ -29,7 +29,7 @@ public class GameOverScreen extends BaseScreen {
 		PlayButton.setPosition(Gdx.graphics.getWidth()/2 - PlayButton.getWidth()/2, Gdx.graphics.getHeight()/2 - PlayButton.getHeight());
 		PlayButton.setScale(new Vector2(1f, 1f));
 		
-		PlayButtonText = new ExtendedLabel("Play Again", GameImage.MAINMENUPLAYBUTTON.ImageText());
+		PlayButtonText = new ExtendedLabel("Main Menu", GameImage.MAINMENUPLAYBUTTON.ImageText());
 		PlayButtonText.setPosition(Gdx.graphics.getWidth()/2 - PlayButtonText.getWidth()/2, Gdx.graphics.getHeight()/2 - PlayButton.getHeight() + PlayButtonText.getHeight()/2);
 	
 		allSprites.add(GameOver);
