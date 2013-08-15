@@ -111,7 +111,7 @@ public class GameScreen extends BaseScreen {
 		}
 
 		Ship.move(Dpad.shipDirection);		
-				
+
 		boolean isShooting = false;
 
 		for (int i = 0; i < 2; i++) {
@@ -142,6 +142,13 @@ public class GameScreen extends BaseScreen {
 		
 		if(!isShooting) {
 			FireButton.setColor(Color.WHITE);			
+			isShooting = true;
+		}		
+		
+		if (Gdx.input.isTouched() &&
+				Gdx.input.getX() >= PauseButton.getX() && Gdx.input.getX() <= PauseButton.getX() + PauseButton.getWidth() &&
+				Gdx.graphics.getHeight() - Gdx.input.getY() >= PauseButton.getY() && Gdx.graphics.getHeight() - Gdx.input.getY() <= PauseButton.getY() + PauseButton.getHeight()) {
+			StateManager.SwitchScreen(ScreenType.PAUSESCREEN);
 		}
 	}
 }
