@@ -7,6 +7,7 @@ import me.pagekite.glen3b.gjlib.ExtendedLabel;
 import me.pagekite.glen3b.gjlib.SpriteManager;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
@@ -79,7 +80,7 @@ public class GameScreen extends BaseScreen {
 		
 		if (timeSinceLastEnemySpawn >= enemySpawnTimer) {
 			BaseEnemyShip enemy = new BaseEnemyShip(Vector2.Zero, EnemyTextures[randomNum.nextInt(2)],getAllSprites());
-			enemy.setPosition(Gdx.graphics.getWidth(), randomNum.nextInt(Gdx.graphics.getHeight()-(int)enemy.getHeight()));
+			enemy.setPosition(Gdx.graphics.getWidth(), randomNum.nextInt(Gdx.graphics.getHeight() - 2*(int)enemy.getHeight() - (int)enemy.getHeight()) + (int)enemy.getHeight());
 			enemies.add(enemy);
 			enemies.get(enemies.size()-1).xSpeed = -3;
 		    _allSprites.add(enemy);
@@ -88,6 +89,14 @@ public class GameScreen extends BaseScreen {
 		
 		for(int i = 0; i < enemies.size(); i++){
 			enemies.get(i).Update();
+			if (enemies.get(i).getX() + enemies.get(i).getWidth() < 0) {
+				_allSprites.remove(enemies.get(i));
+				enemies.clear();
+				Ship.setX(100);
+				Ship.setY(100);
+				timeSinceLastEnemySpawn = 0;
+				StateManager.SwitchScreen(ScreenType.GAMEOVERSCREEN);
+			}
 		}
 		
 		if (Gdx.input.isTouched()) {
@@ -99,29 +108,40 @@ public class GameScreen extends BaseScreen {
 			} else {
 				FireButton.setPosition(0, 0);
 			}
-			
-	        
 		}
 
 		Ship.move(Dpad.shipDirection);		
-		
-		
+				
+		boolean isShooting = false;
+
 		for (int i = 0; i < 2; i++) {
+		
 			if (Gdx.input.isTouched(i) &&
 					Gdx.input.getX(i) >= FireButton.getX() && Gdx.input.getX(i) <= FireButton.getX() + FireButton.getWidth() &&
 					Gdx.graphics.getHeight() - Gdx.input.getY(i) >= FireButton.getY() && Gdx.graphics.getHeight() - Gdx.input.getY(i) <= FireButton.getY() + FireButton.getHeight()) {
 					
 					if(timeSinceLastFire >= fireDelay) {
 						Ship.shoot();
+
+						FireButton.setColor(Color.PINK);
 						timeSinceLastFire = 0;
 					}
-				}		
+					
+					isShooting = true;
+					break;					
+			} else {
+				isShooting = false;
+			}
+		
+			if (Gdx.input.isTouched(i) &&
+				Gdx.input.getX(i) >= PauseButton.getX() && Gdx.input.getX(i) <= PauseButton.getX() + PauseButton.getWidth() &&
+				Gdx.graphics.getHeight() - Gdx.input.getY(i) >= PauseButton.getY() && Gdx.graphics.getHeight() - Gdx.input.getY(i) <= PauseButton.getY() + PauseButton.getHeight()) {
+				StateManager.SwitchScreen(ScreenType.PAUSESCREEN);
+			}
 		}
 		
-		if (Gdx.input.isTouched() &&
-				Gdx.input.getX() >= PauseButton.getX() && Gdx.input.getX() <= PauseButton.getX() + PauseButton.getWidth() &&
-				Gdx.graphics.getHeight() - Gdx.input.getY() >= PauseButton.getY() && Gdx.graphics.getHeight() - Gdx.input.getY() <= PauseButton.getY() + PauseButton.getHeight()) {
-			StateManager.SwitchScreen(ScreenType.PAUSESCREEN);
+		if(!isShooting) {
+			FireButton.setColor(Color.WHITE);			
 		}
 	}
 }

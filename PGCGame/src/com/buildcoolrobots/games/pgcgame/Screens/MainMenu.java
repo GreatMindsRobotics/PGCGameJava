@@ -74,10 +74,11 @@ public class MainMenu extends BaseScreen {
 		if (Gdx.input.isTouched() && 
 				Gdx.input.getX() >= MainMenuPlayButton.getX() && Gdx.input.getX() <= MainMenuPlayButton.getX() + MainMenuPlayButton.getWidth() &&
 				Gdx.graphics.getHeight() - Gdx.input.getY() >= MainMenuPlayButton.getY() &&
-				Gdx.graphics.getHeight() - Gdx.input.getY() <= MainMenuPlayButton.getY() + MainMenuPlayButton.getHeight()) {
-				
-					StateManager.SwitchScreen(ScreenType.GAMESCREEN);
-				}
-
-}
+				Gdx.graphics.getHeight() - Gdx.input.getY() <= MainMenuPlayButton.getY() + MainMenuPlayButton.getHeight()) {				
+			
+			
+			
+			StateManager.SwitchScreen(ScreenType.GAMESCREEN);
+		}
+	}
 }
