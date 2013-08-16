@@ -9,6 +9,10 @@ import com.badlogic.gdx.math.Vector2;
 import com.buildcoolrobots.games.pgcgame.Ships.BaseShip;
 
 public class BaseEnemyShip extends BaseShip{
+	
+	protected int health;
+	
+	protected int enemyValue;
 
 	public BaseEnemyShip(Vector2 position, Texture texture, SpriteManager allSprites) {
 		super(position, texture, allSprites);
@@ -17,10 +21,24 @@ public class BaseEnemyShip extends BaseShip{
 		// TODO Auto-generated constructor stub
 	}
 	
-
+	public int getHealth() {
+		return health;
+	}
+	
+	public boolean isDead() {
+		return health == 0;
+	}
+	
+	public void isShot() {
+		health--;
+	}
 	
 	public void Draw(SpriteBatch batch) {
 		batch.draw(getTexture(), this.getLocation().x, this.getLocation().y);
+	}
+	
+	public int EnemyValue() {
+		return enemyValue;
 	}
 	
 	public void Update() {

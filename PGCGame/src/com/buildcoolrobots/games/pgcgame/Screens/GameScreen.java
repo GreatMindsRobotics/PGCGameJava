@@ -21,17 +21,20 @@ import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ShipTypes;
 import com.buildcoolrobots.games.pgcgame.Ships.BaseShip;
 import com.buildcoolrobots.games.pgcgame.Ships.Bullets.Bullet;
 import com.buildcoolrobots.games.pgcgame.Ships.Enemies.BaseEnemyShip;
+import com.buildcoolrobots.games.pgcgame.Ships.Enemies.RedShip;
+import com.buildcoolrobots.games.pgcgame.Ships.Enemies.WhiteShip;
 
 public class GameScreen extends BaseScreen {
-
+	
 	Texture[] EnemyTextures = new Texture[2];
 
 	public static DPad Dpad;
-
+	
 	ArrayList<BaseEnemyShip> enemies;
 	BaseShip Ship;
 	BaseGameSprite FireButton;
 	BaseGameSprite PauseButton;
+	ExtendedLabel Score;
 	ExtendedLabel xy;
 	String coor = "0,0";
 
@@ -42,6 +45,8 @@ public class GameScreen extends BaseScreen {
 
 	float timeSinceLastEnemySpawn = 0;
 	final float enemySpawnTimer = 2;
+	
+	public static int score = 0;
 
 	public GameScreen(SpriteManager allSprites, SpriteBatch spriteBatch,
 			ScreenType screenType) {
@@ -51,26 +56,27 @@ public class GameScreen extends BaseScreen {
 		EnemyTextures[1] = ShipTypes.ENEMYDRONE2.GameTexture();
 
 		enemies = new ArrayList<BaseEnemyShip>();
-		Ship = new BaseShip(new Vector2(100, Gdx.graphics.getHeight() / 2
-				- ShipTypes.PLAYERSHIP.GameTexture().getHeight() / 2),
-				ShipTypes.PLAYERSHIP.GameTexture(), allSprites);
+		Ship = new BaseShip(new Vector2(100, Gdx.graphics.getHeight() / 2 - ShipTypes.PLAYERSHIP.GameTexture().getHeight() / 2),ShipTypes.PLAYERSHIP.GameTexture(), allSprites);
 		Dpad = new DPad();
 		FireButton = new BaseGameSprite(GameImage.FIREBUTTON.ImageTexture());
 		PauseButton = new BaseGameSprite(GameImage.PAUSEBUTTON.ImageTexture());
-		PauseButton.setPosition(
-				Gdx.graphics.getWidth() - PauseButton.getWidth(),
-				Gdx.graphics.getHeight() - PauseButton.getHeight());
+		PauseButton.setPosition(Gdx.graphics.getWidth() - PauseButton.getWidth(), Gdx.graphics.getHeight() - PauseButton.getHeight());
 
 		xy = new ExtendedLabel(coor, GameImage.DEBUGFONT.ImageText());
 		xy.setPosition(25, Gdx.graphics.getHeight() - 50);
 		// xy.setFontScale(2,2);
-
+		
+		Score = new ExtendedLabel("Score: 0", GameImage.CREDITFONT.ImageText());
+		Score.setPosition(Gdx.graphics.getWidth()/2 - Score.getWidth()/2, Gdx.graphics.getHeight() - 50);
+		Score.setFontScale(.8f,.8f);
+		
 		allSprites.add(xy);
 		allSprites.add(Ship);
 		allSprites.add(Dpad);
 		allSprites.add(FireButton);
 		allSprites.add(PauseButton);
-
+		allSprites.add(Score);
+		
 		// Save allSprites reference
 		_allSprites = allSprites;
 
@@ -80,17 +86,21 @@ public class GameScreen extends BaseScreen {
 
 	public void update(float deltaTime) {
 		super.update(deltaTime);
+		
+		Score.setText(String.format("Score: %s", score));
+		
 		timeSinceLastFire += deltaTime;
 		timeSinceLastEnemySpawn += deltaTime;
 
 		if (timeSinceLastEnemySpawn >= enemySpawnTimer) {
-			BaseEnemyShip enemy = new BaseEnemyShip(Vector2.Zero,
-					EnemyTextures[randomNum.nextInt(2)], getAllSprites());
-			enemy.setPosition(
-					Gdx.graphics.getWidth(),
-					randomNum.nextInt(Gdx.graphics.getHeight() - 2
-							* (int) enemy.getHeight() - (int) enemy.getHeight())
-							+ (int) enemy.getHeight());
+			BaseEnemyShip enemy;			
+			if (randomNum.nextInt(10) > 1) {
+				enemy = new WhiteShip(Vector2.Zero, EnemyTextures[1], getAllSprites());
+			}
+			else {
+				enemy = new RedShip(Vector2.Zero, EnemyTextures[0], getAllSprites());
+			}
+			enemy.setPosition(Gdx.graphics.getWidth(), randomNum.nextInt(Gdx.graphics.getHeight() - 2* (int) enemy.getHeight() - (int) enemy.getHeight()) + (int) enemy.getHeight());
 			enemies.add(enemy);
 			enemies.get(enemies.size() - 1).xSpeed = -3;
 			_allSprites.add(enemy);
@@ -130,12 +140,9 @@ public class GameScreen extends BaseScreen {
 
 			if (Gdx.input.isTouched(i)
 					&& Gdx.input.getX(i) >= FireButton.getX()
-					&& Gdx.input.getX(i) <= FireButton.getX()
-							+ FireButton.getWidth()
-					&& Gdx.graphics.getHeight() - Gdx.input.getY(i) >= FireButton
-							.getY()
-					&& Gdx.graphics.getHeight() - Gdx.input.getY(i) <= FireButton
-							.getY() + FireButton.getHeight()) {
+					&& Gdx.input.getX(i) <= FireButton.getX() + FireButton.getWidth()
+					&& Gdx.graphics.getHeight() - Gdx.input.getY(i) >= FireButton.getY()
+					&& Gdx.graphics.getHeight() - Gdx.input.getY(i) <= FireButton.getY() + FireButton.getHeight()) {
 
 				if (timeSinceLastFire >= fireDelay) {
 					Ship.shoot();
@@ -152,12 +159,9 @@ public class GameScreen extends BaseScreen {
 
 			if (Gdx.input.isTouched(i)
 					&& Gdx.input.getX(i) >= PauseButton.getX()
-					&& Gdx.input.getX(i) <= PauseButton.getX()
-							+ PauseButton.getWidth()
-					&& Gdx.graphics.getHeight() - Gdx.input.getY(i) >= PauseButton
-							.getY()
-					&& Gdx.graphics.getHeight() - Gdx.input.getY(i) <= PauseButton
-							.getY() + PauseButton.getHeight()) {
+					&& Gdx.input.getX(i) <= PauseButton.getX() + PauseButton.getWidth()
+					&& Gdx.graphics.getHeight() - Gdx.input.getY(i) >= PauseButton.getY()
+					&& Gdx.graphics.getHeight() - Gdx.input.getY(i) <= PauseButton.getY() + PauseButton.getHeight()) {
 				StateManager.SwitchScreen(ScreenType.PAUSESCREEN);
 			}
 		}
@@ -169,12 +173,9 @@ public class GameScreen extends BaseScreen {
 
 		if (Gdx.input.isTouched()
 				&& Gdx.input.getX() >= PauseButton.getX()
-				&& Gdx.input.getX() <= PauseButton.getX()
-						+ PauseButton.getWidth()
-				&& Gdx.graphics.getHeight() - Gdx.input.getY() >= PauseButton
-						.getY()
-				&& Gdx.graphics.getHeight() - Gdx.input.getY() <= PauseButton
-						.getY() + PauseButton.getHeight()) {
+				&& Gdx.input.getX() <= PauseButton.getX() + PauseButton.getWidth()
+				&& Gdx.graphics.getHeight() - Gdx.input.getY() >= PauseButton.getY()
+				&& Gdx.graphics.getHeight() - Gdx.input.getY() <= PauseButton.getY() + PauseButton.getHeight()) {
 			
 			StateManager.SwitchScreen(ScreenType.PAUSESCREEN);
 		}
@@ -185,14 +186,24 @@ public class GameScreen extends BaseScreen {
 				Bullet bullet = Ship.getBullet(j);
 				if (bullet.getX() + bullet.getWidth() >= enemy.getX()
 						&& bullet.getX() <= enemy.getX() + enemy.getWidth()
-						&& bullet.getY() + bullet.getHeight() <= enemy.getY()
-								+ enemy.getHeight()
+						&& bullet.getY() + bullet.getHeight() <= enemy.getY()+ enemy.getHeight()
 						&& bullet.getY() >= enemy.getY()) {
-					_allSprites.remove(enemy);
-					enemies.remove(enemy);
-					i--;
+
+					
+					enemy.isShot();
+					
+					if (enemy.isDead()) {
+						score += enemy.EnemyValue();
+						_allSprites.remove(enemy);
+						enemies.remove(enemy);
+						i--;
+						
+					}
+					
 					Ship.removeBulletFromScreen(j);
 					j--;
+					
+					
 				}
 			}
 		}
@@ -204,5 +215,6 @@ public class GameScreen extends BaseScreen {
 		Ship.clearBullets();
 		Ship.setPosition(100, Gdx.graphics.getHeight() / 2 - ShipTypes.PLAYERSHIP.GameTexture().getHeight() / 2);
 		timeSinceLastEnemySpawn = 0;
+		score = 0;
 	}
 }
