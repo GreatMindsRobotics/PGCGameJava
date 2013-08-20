@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import me.pagekite.glen3b.gjlib.ExtendedLabel;
+import me.pagekite.glen3b.gjlib.ExtendedSprite;
 import me.pagekite.glen3b.gjlib.SpriteManager;
 
 import com.badlogic.gdx.Gdx;
@@ -27,6 +28,8 @@ import com.buildcoolrobots.games.pgcgame.Ships.Enemies.WhiteShip;
 public class GameScreen extends BaseScreen {
 	
 	Texture[] EnemyTextures = new Texture[2];
+	
+	ExtendedSprite[] LivesShips = new ExtendedSprite[3];
 
 	public static DPad Dpad;
 	
@@ -37,6 +40,8 @@ public class GameScreen extends BaseScreen {
 	ExtendedLabel Score;
 	ExtendedLabel xy;
 	String coor = "0,0";
+	
+	int lives = 3;
 
 	SpriteManager _allSprites;
 
@@ -69,6 +74,8 @@ public class GameScreen extends BaseScreen {
 		Score = new ExtendedLabel("Score: 0", GameImage.CREDITFONT.ImageText());
 		Score.setPosition(Gdx.graphics.getWidth()/2 - Score.getWidth()/2, Gdx.graphics.getHeight() - 50);
 		Score.setFontScale(.8f,.8f);
+		
+		for (int i = 0; i < LivesShips.length; )
 		
 		allSprites.add(xy);
 		allSprites.add(Ship);
@@ -110,12 +117,17 @@ public class GameScreen extends BaseScreen {
 		for (int i = 0; i < enemies.size(); i++) {
 			enemies.get(i).Update();
 			if (enemies.get(i).getX() + enemies.get(i).getWidth() < 0) {
-				_allSprites.removeAll(enemies);
-				enemies.clear();
-				Ship.clearBullets();
-				Ship.setPosition(100, Gdx.graphics.getHeight() / 2 - ShipTypes.PLAYERSHIP.GameTexture().getHeight() / 2);
-				timeSinceLastEnemySpawn = 0;
-				StateManager.SwitchScreen(ScreenType.GAMEOVERSCREEN);
+				
+				lives--;
+				
+				if (lives < 0) { 
+					_allSprites.removeAll(enemies);
+					enemies.clear();
+					Ship.clearBullets();
+					Ship.setPosition(100, Gdx.graphics.getHeight() / 2 - ShipTypes.PLAYERSHIP.GameTexture().getHeight() / 2);
+					timeSinceLastEnemySpawn = 0;
+					StateManager.SwitchScreen(ScreenType.GAMEOVERSCREEN);
+				}
 			}
 		}
 
