@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import me.pagekite.glen3b.gjlib.ExtendedLabel;
-import me.pagekite.glen3b.gjlib.ExtendedSprite;
 import me.pagekite.glen3b.gjlib.SpriteManager;
 
 import com.badlogic.gdx.Gdx;
@@ -25,12 +24,11 @@ import com.buildcoolrobots.games.pgcgame.Ships.Enemies.BaseEnemyShip;
 import com.buildcoolrobots.games.pgcgame.Ships.Enemies.RedShip;
 import com.buildcoolrobots.games.pgcgame.Ships.Enemies.WhiteShip;
 
+
 public class GameScreen extends BaseScreen {
 	
 	Texture[] EnemyTextures = new Texture[2];
 	
-	ExtendedSprite[] LivesShips = new ExtendedSprite[3];
-
 	public static DPad Dpad;
 	
 	ArrayList<BaseEnemyShip> enemies;
@@ -41,9 +39,11 @@ public class GameScreen extends BaseScreen {
 	ExtendedLabel xy;
 	String coor = "0,0";
 	
-	int lives = 3;
+	private int lives = 3;
+	
+	private ArrayList<BaseGameSprite> _livesShips; 
 
-	SpriteManager _allSprites;
+	private SpriteManager _allSprites;
 
 	float timeSinceLastFire = 0;
 	final float fireDelay = 0.150f;
@@ -74,9 +74,7 @@ public class GameScreen extends BaseScreen {
 		Score = new ExtendedLabel("Score: 0", GameImage.CREDITFONT.ImageText());
 		Score.setPosition(Gdx.graphics.getWidth()/2 - Score.getWidth()/2, Gdx.graphics.getHeight() - 50);
 		Score.setFontScale(.8f,.8f);
-		
-		for (int i = 0; i < LivesShips.length; )
-		
+			
 		allSprites.add(xy);
 		allSprites.add(Ship);
 		allSprites.add(Dpad);
@@ -87,10 +85,28 @@ public class GameScreen extends BaseScreen {
 		// Save allSprites reference
 		_allSprites = allSprites;
 
+		//Last, but not least - add lives!
+		createLives();				
+	}
+
+	private void createLives() {
+		_livesShips = new ArrayList<BaseGameSprite>();				
+		
+		for (int i = 0; i < lives; i++) {
+			BaseGameSprite life = new BaseGameSprite(ShipTypes.PLAYERSHIP.GameTexture());
+			life.setScale(.1f);
+			life.setPosition(i * 30 - 100, Gdx.graphics.getHeight() - 150);
+			
+			
+			_livesShips.add(life);
+			_allSprites.add(life);
+		}
+
+		
 	}
 
 	Random randomNum = new Random();
-
+	
 	public void update(float deltaTime) {
 		super.update(deltaTime);
 		
@@ -117,16 +133,21 @@ public class GameScreen extends BaseScreen {
 		for (int i = 0; i < enemies.size(); i++) {
 			enemies.get(i).Update();
 			if (enemies.get(i).getX() + enemies.get(i).getWidth() < 0) {
-				
-				lives--;
-				
-				if (lives < 0) { 
-					_allSprites.removeAll(enemies);
-					enemies.clear();
-					Ship.clearBullets();
-					Ship.setPosition(100, Gdx.graphics.getHeight() / 2 - ShipTypes.PLAYERSHIP.GameTexture().getHeight() / 2);
-					timeSinceLastEnemySpawn = 0;
+
+				//Remove enemy that passed the edge of the screen
+				_allSprites.remove(enemies.get(i));
+				enemies.remove(i);
+				i--;
+
+				//Remove one life
+				lives--;							
+				_allSprites.remove(_livesShips.get(_livesShips.size() - 1));
+				_livesShips.remove(_livesShips.size() - 1);
+								
+				if (lives == 0) { 
+					Reset();
 					StateManager.SwitchScreen(ScreenType.GAMEOVERSCREEN);
+					break;
 				}
 			}
 		}
@@ -228,5 +249,8 @@ public class GameScreen extends BaseScreen {
 		Ship.setPosition(100, Gdx.graphics.getHeight() / 2 - ShipTypes.PLAYERSHIP.GameTexture().getHeight() / 2);
 		timeSinceLastEnemySpawn = 0;
 		score = 0;
+		lives = 3;	
+		
+		createLives();		
 	}
 }
