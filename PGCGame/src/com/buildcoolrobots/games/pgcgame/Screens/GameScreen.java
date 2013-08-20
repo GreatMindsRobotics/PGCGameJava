@@ -68,7 +68,7 @@ public class GameScreen extends BaseScreen {
 		PauseButton.setPosition(Gdx.graphics.getWidth() - PauseButton.getWidth(), Gdx.graphics.getHeight() - PauseButton.getHeight());
 
 		xy = new ExtendedLabel(coor, GameImage.DEBUGFONT.ImageText());
-		xy.setPosition(25, Gdx.graphics.getHeight() - 50);
+		xy.setPosition(525, Gdx.graphics.getHeight() - 30);
 		// xy.setFontScale(2,2);
 		
 		Score = new ExtendedLabel("Score: 0", GameImage.CREDITFONT.ImageText());
@@ -92,11 +92,12 @@ public class GameScreen extends BaseScreen {
 	private void createLives() {
 		_livesShips = new ArrayList<BaseGameSprite>();				
 		
+		int lifeSpacer = 15;
 		for (int i = 0; i < lives; i++) {
 			BaseGameSprite life = new BaseGameSprite(ShipTypes.PLAYERSHIP.GameTexture());
-			life.setScale(.1f);
-			life.setPosition(i * 30 - 100, Gdx.graphics.getHeight() - 150);
-			
+			life.setScale(.2f);
+			life.setOrigin(0, 0);
+			life.setPosition(i * (life.getWidth() * life.getScaleX() + lifeSpacer), Gdx.graphics.getHeight() - 50);			
 			
 			_livesShips.add(life);
 			_allSprites.add(life);
@@ -145,7 +146,6 @@ public class GameScreen extends BaseScreen {
 				_livesShips.remove(_livesShips.size() - 1);
 								
 				if (lives == 0) { 
-					Reset();
 					StateManager.SwitchScreen(ScreenType.GAMEOVERSCREEN);
 					break;
 				}

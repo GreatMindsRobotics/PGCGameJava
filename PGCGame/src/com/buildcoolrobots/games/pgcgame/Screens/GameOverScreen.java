@@ -53,7 +53,7 @@ public class GameOverScreen extends BaseScreen {
 				
 					StateManager.SwitchScreen(ScreenType.MAINMENU);
 					
-					GameScreen.score = 0;
+					((GameScreen)StateManager.AllScreens.getScreen(ScreenType.GAMESCREEN)).Reset();
 				}
 	}
 
