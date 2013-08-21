@@ -14,6 +14,7 @@ public class DPad extends BaseGameSprite {
 	private Vector2 scale;
 		
 	public DPadDirection shipDirection = DPadDirection.NONE;
+	public DPadDirection debugShipDirection = DPadDirection.NONE;
 	
 	public DPad() {
 		super(DPadDirection.NONE.ImageTexture());
@@ -67,13 +68,12 @@ public class DPad extends BaseGameSprite {
 				}
 			} 		
 		}
-		
-
-		//If no known direction, or not touched - set to NONE
+		//If no known direction, or not touched then, check keyboard
+		//If debug keyboard use is enabled, set to debugShipDirection
+		//If it's not enabled, it would remain "NONE" 
 		if(!isDpadTouched) {
-			shipDirection = DPadDirection.NONE;
+			shipDirection = debugShipDirection;
 		}
-		
 		//Assign proper image based on ship direction
 		setTexture(shipDirection.ImageTexture());
 	}

@@ -131,6 +131,7 @@ public abstract class StateManager {
 	public static class DebugData {
 		public static Boolean AllowScreenSwitching = true;
 		public static Boolean ShowScreenName = true;
+		public static Boolean KeyboardControlEnabled = true;
 	}
 	
 	public static class Options {
