@@ -37,6 +37,7 @@ public class GameScreen extends BaseScreen {
 	BaseGameSprite PauseButton;
 	ExtendedLabel Score;
 	ExtendedLabel xy;
+	ExtendedLabel Invincibility;
 	String coor = "0,0";
 	
 	private int lives = 3;
@@ -66,16 +67,23 @@ public class GameScreen extends BaseScreen {
 		FireButton = new BaseGameSprite(GameImage.FIREBUTTON.ImageTexture());
 		PauseButton = new BaseGameSprite(GameImage.PAUSEBUTTON.ImageTexture());
 		PauseButton.setPosition(Gdx.graphics.getWidth() - PauseButton.getWidth(), Gdx.graphics.getHeight() - PauseButton.getHeight());
-
+		
+		Invincibility = new ExtendedLabel("Invincibility: On", GameImage.DEBUGFONT.ImageText());
+		Invincibility.setPosition(525, Gdx.graphics.getHeight() - 60);
+		
 		xy = new ExtendedLabel(coor, GameImage.DEBUGFONT.ImageText());
 		xy.setPosition(525, Gdx.graphics.getHeight() - 30);
 		// xy.setFontScale(2,2);
+		
 		
 		Score = new ExtendedLabel("Score: 0", GameImage.CREDITFONT.ImageText());
 		Score.setPosition(Gdx.graphics.getWidth()/2 - Score.getWidth()/2, Gdx.graphics.getHeight() - 50);
 		Score.setFontScale(.8f,.8f);
 			
 		allSprites.add(xy);
+		if (StateManager.DebugData.Invincible) {
+			allSprites.add(Invincibility);
+		}
 		allSprites.add(Ship);
 		allSprites.add(Dpad);
 		allSprites.add(FireButton);
