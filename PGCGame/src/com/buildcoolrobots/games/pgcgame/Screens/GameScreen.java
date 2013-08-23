@@ -140,11 +140,12 @@ public class GameScreen extends BaseScreen {
 				enemies.remove(i);
 				i--;
 
-				//Remove one life
-				lives--;							
-				_allSprites.remove(_livesShips.get(_livesShips.size() - 1));
-				_livesShips.remove(_livesShips.size() - 1);
-								
+				//Remove one life unless invincible
+				if (!StateManager.DebugData.Invincible) {
+					lives--;							
+					_allSprites.remove(_livesShips.get(_livesShips.size() - 1));
+					_livesShips.remove(_livesShips.size() - 1);
+				}			
 				if (lives == 0) { 
 					StateManager.SwitchScreen(ScreenType.GAMEOVERSCREEN);
 					break;

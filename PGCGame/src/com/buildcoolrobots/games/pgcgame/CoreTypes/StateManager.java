@@ -132,6 +132,7 @@ public abstract class StateManager {
 		public static Boolean AllowScreenSwitching = true;
 		public static Boolean ShowScreenName = true;
 		public static Boolean KeyboardControlEnabled = true;
+		public static Boolean Invincible = true;
 	}
 	
 	public static class Options {
