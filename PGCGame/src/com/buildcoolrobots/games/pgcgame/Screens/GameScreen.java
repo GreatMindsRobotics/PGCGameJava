@@ -3,6 +3,8 @@ package com.buildcoolrobots.games.pgcgame.Screens;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 import me.pagekite.glen3b.gjlib.ExtendedLabel;
 import me.pagekite.glen3b.gjlib.SpriteManager;
 
@@ -46,11 +48,14 @@ public class GameScreen extends BaseScreen {
 
 	private SpriteManager _allSprites;
 
+	private int bulletAccuracyPercentage = 0;
+	
 	float timeSinceLastFire = 0;
 	final float fireDelay = 0.150f;
 
 	float timeSinceLastEnemySpawn = 0;
 	final float enemySpawnTimer = 2;
+
 	
 	public static int score = 0;
 
@@ -154,7 +159,10 @@ public class GameScreen extends BaseScreen {
 					_allSprites.remove(_livesShips.get(_livesShips.size() - 1));
 					_livesShips.remove(_livesShips.size() - 1);
 				}			
-				if (lives == 0) { 
+				if (lives == 0) {
+					//TODO:Add Accuracy bonus to score delete joption import
+					bulletAccuracyPercentage = StateManager.bulletEnemyHits * 100 / (StateManager.bulletEnemyHits + StateManager.bulletEnemyMisses);
+					//JOptionPane.showMessageDialog(null, bulletAccuracyPercentage);
 					StateManager.SwitchScreen(ScreenType.GAMEOVERSCREEN);
 					break;
 				}
@@ -242,6 +250,7 @@ public class GameScreen extends BaseScreen {
 						
 					}
 					
+					StateManager.bulletEnemyHits++;
 					Ship.removeBulletFromScreen(j);
 					j--;
 					

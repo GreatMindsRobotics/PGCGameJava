@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import com.badlogic.gdx.math.Vector2;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseGameSprite;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.DPadDirection;
 import com.buildcoolrobots.games.pgcgame.Ships.Bullets.Bullet;
 
@@ -47,8 +48,8 @@ public class BaseShip extends BaseGameSprite {
 			bullet.update(deltaTime);
 			
 			if(bullet.getX() > Gdx.graphics.getWidth()) {
-				_spriteManager.remove(bullet);
-				_bullets.remove(bullet);
+				removeBulletFromScreen(bullet);
+				StateManager.bulletEnemyMisses++;;
 				i--;
 			}
 		}
@@ -190,5 +191,10 @@ public class BaseShip extends BaseGameSprite {
 	public void removeBulletFromScreen(int j) {
 		_spriteManager.remove(_bullets.get(j));
 		_bullets.remove(j);
+	}
+	
+	public void removeBulletFromScreen(Bullet bullet) {
+		_spriteManager.remove(bullet);
+		_bullets.remove(bullet);
 	}
 }
