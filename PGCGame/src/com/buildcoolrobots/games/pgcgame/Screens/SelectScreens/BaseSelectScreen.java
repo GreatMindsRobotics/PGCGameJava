@@ -1,6 +1,5 @@
 package com.buildcoolrobots.games.pgcgame.Screens.SelectScreens;
 
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +16,7 @@ import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseScreen;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
+import com.badlogic.gdx.graphics.*;
 
 public abstract class BaseSelectScreen extends BaseScreen {
 
@@ -31,8 +31,8 @@ public abstract class BaseSelectScreen extends BaseScreen {
 		super(allSprites, target, screenType);
 			for(Map.Entry<ExtendedSprite, ExtendedLabel> item : items.entrySet()) {
 				//item.get
-				item.getKey().setColor(Color.TRANSLUCENT);
-				item.getValue().setColor(0, 0, 0, Color.TRANSLUCENT);
+				item.getKey().setColor(Color.WHITE);
+				item.getValue().setColor(0, 0, 0, 0);
 				
 				allSprites.add(item.getKey());
 				allSprites.add(item.getValue());
@@ -91,8 +91,8 @@ public abstract class BaseSelectScreen extends BaseScreen {
 			        
 					ArrayList<Map.Entry<ExtendedSprite, ExtendedLabel>> list = new ArrayList<Entry<ExtendedSprite, ExtendedLabel>>(items.entrySet());
 					
-					list.get(selected).getKey().setColor(Color.TRANSLUCENT);
-					list.get(selected).getValue().setColor(0, 0, 0, Color.TRANSLUCENT);
+					list.get(selected).getKey().setColor(Color.WHITE);
+					list.get(selected).getValue().setColor(0, 0, 0, 0);
 			
 			        selected++;
 			        
@@ -101,8 +101,8 @@ public abstract class BaseSelectScreen extends BaseScreen {
 						selected -= items.size();
 					}		
 					
-					list.get(selected).getKey().setColor(Color.OPAQUE);
-					list.get(selected).getValue().setColor(0, 0, 0, Color.OPAQUE);
+					list.get(selected).getKey().setColor(Color.WHITE);
+					list.get(selected).getValue().setColor(0, 0, 0, 0);
 					
 				}
 		
