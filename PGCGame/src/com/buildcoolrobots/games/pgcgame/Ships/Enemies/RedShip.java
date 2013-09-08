@@ -12,6 +12,6 @@ public class RedShip extends BaseEnemyShip {
 
 		health = 2;
 		
-		enemyValue = 2;
+		enemyValue = 200;
 	}
 }

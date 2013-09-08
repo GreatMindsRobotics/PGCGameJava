@@ -12,6 +12,6 @@ public class WhiteShip extends BaseEnemyShip {
 
 		health = 1;
 		
-		enemyValue = 1;
+		enemyValue = 100;
 	}
 }
