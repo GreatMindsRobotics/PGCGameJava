@@ -49,7 +49,6 @@ public class BaseShip extends BaseGameSprite {
 			
 			if(bullet.getX() > Gdx.graphics.getWidth()) {
 				removeBulletFromScreen(bullet);
-				StateManager.bulletEnemyMisses++;;
 				i--;
 			}
 		}

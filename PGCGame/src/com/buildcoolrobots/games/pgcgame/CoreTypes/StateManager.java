@@ -30,7 +30,7 @@ public abstract class StateManager {
     // Public Fields
     public static Game PGC;
 	public static int bulletEnemyHits = 0;
-	public static int bulletEnemyMisses = 0;
+	public static int bulletsShot = 0;
     public static ArrayList<Bullet> LegitBullets = new ArrayList<Bullet>();
     public static boolean IsWSFirstUpdate = true;
     public static final Rectangle WorldSize = new Rectangle(0, 0, (Gdx.graphics.getWidth()) * 5, Gdx.graphics.getHeight());
@@ -75,6 +75,11 @@ public abstract class StateManager {
 	    	PGC.setScreen(AllScreens.getScreen(screenState));
     	}
     }
+    
+    public static float getAccuracyPercentage(){
+    	return (float)bulletEnemyHits/ (float)bulletsShot * 100f;
+    }
+    
     public static int getSpaceBucks() {
     	return _spaceBucks;
     }

@@ -19,6 +19,7 @@ import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ShipTypes;
 import com.buildcoolrobots.games.pgcgame.Ships.BaseShip;
+import com.buildcoolrobots.games.pgcgame.Ships.Allies.PlayerShip;
 import com.buildcoolrobots.games.pgcgame.Ships.Bullets.Bullet;
 import com.buildcoolrobots.games.pgcgame.Ships.Enemies.BaseEnemyShip;
 import com.buildcoolrobots.games.pgcgame.Ships.Enemies.RedShip;
@@ -45,8 +46,6 @@ public class GameScreen extends BaseScreen {
 	private ArrayList<BaseGameSprite> _livesShips; 
 
 	private SpriteManager _allSprites;
-
-	private int bulletAccuracyPercentage = 0;
 	
 	float timeSinceLastFire = 0;
 	final float fireDelay = 0.150f;
@@ -65,7 +64,7 @@ public class GameScreen extends BaseScreen {
 		EnemyTextures[1] = ShipTypes.ENEMYDRONE2.GameTexture();
 
 		enemies = new ArrayList<BaseEnemyShip>();
-		Ship = new BaseShip(new Vector2(100, Gdx.graphics.getHeight() / 2 - ShipTypes.PLAYERSHIP.GameTexture().getHeight() / 2),ShipTypes.PLAYERSHIP.GameTexture(), allSprites);
+		Ship = new PlayerShip(new Vector2(100, Gdx.graphics.getHeight() / 2 - ShipTypes.PLAYERSHIP.GameTexture().getHeight() / 2),ShipTypes.PLAYERSHIP.GameTexture(), allSprites);
 		Dpad = new DPad();
 		FireButton = new BaseGameSprite(GameImage.FIREBUTTON.ImageTexture());
 		PauseButton = new BaseGameSprite(GameImage.PAUSEBUTTON.ImageTexture());
@@ -159,7 +158,6 @@ public class GameScreen extends BaseScreen {
 				}			
 				if (lives == 0) {
 					//TODO:Add Accuracy bonus to score delete joption import
-					bulletAccuracyPercentage = StateManager.bulletEnemyHits * 100 / (StateManager.bulletEnemyHits + StateManager.bulletEnemyMisses);
 					//JOptionPane.showMessageDialog(null, bulletAccuracyPercentage);
 					StateManager.SwitchScreen(ScreenType.GAMEOVERSCREEN);
 					break;
@@ -248,7 +246,6 @@ public class GameScreen extends BaseScreen {
 						
 					}
 					
-					StateManager.bulletEnemyHits++;
 					Ship.removeBulletFromScreen(j);
 					j--;
 					
@@ -266,6 +263,8 @@ public class GameScreen extends BaseScreen {
 		timeSinceLastEnemySpawn = 0;
 		score = 0;
 		lives = 3;	
+		StateManager.bulletEnemyHits = 0;
+		StateManager.bulletsShot = 0;
 		
 		createLives();		
 	}

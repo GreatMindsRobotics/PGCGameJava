@@ -45,7 +45,8 @@ public class GameOverScreen extends BaseScreen {
 	public void update(float deltatime) {
 		super.update(deltatime);
 		
-		Score.setText(String.format("Score: %s", GameScreen.score));
+		Score.setText(String.format("Score: %s\nAccuracy: %f", GameScreen.score, StateManager.getAccuracyPercentage()));
+		
 		
 		if (Gdx.input.isTouched() && 
 				Gdx.input.getX() >= PlayButton.getX() && Gdx.input.getX() <= PlayButton.getX() + PlayButton.getWidth() &&

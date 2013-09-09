@@ -6,6 +6,7 @@ import me.pagekite.glen3b.gjlib.SpriteManager;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 import com.buildcoolrobots.games.pgcgame.Ships.BaseShip;
 
 public class PlayerShip extends BaseShip {
@@ -15,6 +16,11 @@ public class PlayerShip extends BaseShip {
 	}
 	
 
+	@Override
+	public void shoot(){
+		super.shoot();
+		StateManager.bulletsShot++;
+	}
 
 public void Update() {
 
@@ -24,7 +30,7 @@ public void Update() {
 	}
 	
 	if(Gdx.input.getX() > 350) {
-	shoot();
+		shoot();
 	}
 }
 	
