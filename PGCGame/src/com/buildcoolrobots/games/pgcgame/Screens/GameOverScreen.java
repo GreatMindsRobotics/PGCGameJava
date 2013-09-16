@@ -57,7 +57,7 @@ public class GameOverScreen extends BaseScreen {
 		
 		int score = GameScreen.score + accuracyBonus;
 		float accuracy = StateManager.getAccuracyPercentage();
-		Score.setText(String.format("Score: %d\nAccuracy: %1.2f\nAccuracy Bonus: %d", score, accuracy, accuracyBonus));
+		Score.setText(String.format("Score: %d\nAccuracy: %1.0f\nAccuracy Bonus: %d", score, accuracy, accuracyBonus));
 		
 		
 		if (Gdx.input.isTouched() && 
