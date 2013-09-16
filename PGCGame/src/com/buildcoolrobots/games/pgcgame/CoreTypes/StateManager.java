@@ -77,7 +77,10 @@ public abstract class StateManager {
     }
     
     public static float getAccuracyPercentage(){
-    	return (float)bulletEnemyHits/ (float)bulletsShot * 100f;
+    	float accuracy = (float)bulletEnemyHits/ (float)bulletsShot * 100f; 
+    	
+    	//Check for NaN (NaN != NaN... cool!)
+    	return accuracy == accuracy ? accuracy : 0.0f; 
     }
     
     public static int getSpaceBucks() {
