@@ -11,7 +11,8 @@ import me.pagekite.glen3b.gjlib.ExtendedLabel;
 import me.pagekite.glen3b.gjlib.SpriteManager;
 
 public abstract class BaseScreen extends BasicScreen {
-
+	public Boolean FullScreenBackground = true;
+	
 	public BaseScreen(SpriteManager allSprites, SpriteBatch target, ScreenType screenType) {
 		super(allSprites, target);		
 
@@ -20,7 +21,15 @@ public abstract class BaseScreen extends BasicScreen {
 
 		//If this screen has a background, set it
 		if(screenType.ScreenTexture() != null) {
-			allSprites.add(new BaseGameSprite(screenType.ScreenTexture()));			
+			BaseGameSprite bgImage = new BaseGameSprite(screenType.ScreenTexture());
+			
+			if(FullScreenBackground)
+			{
+				bgImage.setPosition(0, 0);
+				bgImage.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+			}
+			
+			allSprites.add(bgImage);			
 		}
 		
 		

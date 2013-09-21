@@ -59,7 +59,7 @@ public class MainMenu extends BaseScreen {
 				Gdx.input.getX() >= MainMenuSettingsButton.getX() && Gdx.input.getX() <= MainMenuSettingsButton.getX() + MainMenuSettingsButton.getWidth() &&
 				Gdx.graphics.getHeight() - Gdx.input.getY() >= MainMenuSettingsButton.getY() &&
 				Gdx.graphics.getHeight() - Gdx.input.getY() <= MainMenuSettingsButton.getY() + MainMenuSettingsButton.getHeight()) {
-				
+			    
 					StateManager.SwitchScreen(ScreenType.SETTINGSSCREEN);
 				}
 		
@@ -78,7 +78,7 @@ public class MainMenu extends BaseScreen {
 			
 			
 			
-			StateManager.SwitchScreen(ScreenType.GAMESCREEN);
+			StateManager.SwitchScreen(ScreenType.TransitionScreen);
 		}
 	}
 }

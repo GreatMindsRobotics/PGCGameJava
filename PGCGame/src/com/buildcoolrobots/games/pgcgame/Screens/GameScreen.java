@@ -129,10 +129,10 @@ public class GameScreen extends BaseScreen {
 		if (timeSinceLastEnemySpawn >= enemySpawnTimer) {
 			BaseEnemyShip enemy;			
 			if (randomNum.nextInt(10) > 1) {
-				enemy = new WhiteShip(Vector2.Zero, EnemyTextures[1], getAllSprites());
+				enemy = new WhiteShip(new Vector2(0, 0), EnemyTextures[1], getAllSprites());
 			}
 			else {
-				enemy = new RedShip(Vector2.Zero, EnemyTextures[0], getAllSprites());
+				enemy = new RedShip(new Vector2(0, 0), EnemyTextures[0], getAllSprites());
 			}
 			enemy.setPosition(Gdx.graphics.getWidth(), randomNum.nextInt(Gdx.graphics.getHeight() - 2* (int) enemy.getHeight() - (int) enemy.getHeight()) + (int) enemy.getHeight());
 			enemies.add(enemy);
@@ -169,14 +169,15 @@ public class GameScreen extends BaseScreen {
 			coor = "" + Gdx.input.getX() + ","
 					+ (Gdx.graphics.getHeight() - Gdx.input.getY());
 			xy.setText(coor + "\ndir: " + Dpad.shipDirection.toString());
-
-			if (!SettingsScreen.leftyMode) {
-				FireButton.setPosition(
-						Gdx.graphics.getWidth() - FireButton.getWidth(), 0);
-			} else {
-				FireButton.setPosition(0, 0);
-			}
 		}
+		
+		//TODO: Move this into a separate function, and run on load and on return settings change
+		if (!SettingsScreen.leftyMode) {
+			FireButton.setPosition(Gdx.graphics.getWidth() - FireButton.getWidth(), 0);
+		} else {
+			FireButton.setPosition(0, 0);
+		}
+
 
 		Ship.move(Dpad.shipDirection);
 

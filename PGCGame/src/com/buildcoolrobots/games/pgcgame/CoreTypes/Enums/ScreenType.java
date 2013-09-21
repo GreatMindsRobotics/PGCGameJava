@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 public enum ScreenType implements IGameScreen {
 	
 	TITLESCREEN (null, null, null, Input.Keys.F1),
-	MAINMENU (null, null, null, Input.Keys.F2),
+	MAINMENU ("Images/Backgrounds/SpaceShopBackground.png", null, null, Input.Keys.F2),
 	SETTINGSSCREEN (null, null, null, Input.Keys.F3),
 	CREDITSSCREEN (null, null, null, Input.Keys.F4),
 	GAMESCREEN (null, null, null, Input.Keys.F5),
