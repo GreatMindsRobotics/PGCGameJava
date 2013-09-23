@@ -137,7 +137,7 @@ public class GameScreen extends BaseScreen {
 			}
 			enemy.setPosition(Gdx.graphics.getWidth(), randomNum.nextInt(Gdx.graphics.getHeight() - 2* (int) enemy.getHeight() - (int) enemy.getHeight()) + (int) enemy.getHeight());
 			enemies.add(enemy);
-			enemies.get(enemies.size() - 1).xSpeed = StateManager.CurrentLevel.Speed();
+			enemies.get(enemies.size() - 1).xSpeed = -2;
 			_allSprites.add(enemy);
 			timeSinceLastEnemySpawn = 0;
 		}
