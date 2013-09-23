@@ -27,8 +27,9 @@ import com.buildcoolrobots.games.pgcgame.Ships.Enemies.WhiteShip;
 
 
 public class GameScreen extends BaseScreen {
-	
 	Texture[] EnemyTextures = new Texture[2];
+	
+	public int enemyDeaths = 0;
 	
 	public static DPad Dpad;
 	
@@ -136,7 +137,7 @@ public class GameScreen extends BaseScreen {
 			}
 			enemy.setPosition(Gdx.graphics.getWidth(), randomNum.nextInt(Gdx.graphics.getHeight() - 2* (int) enemy.getHeight() - (int) enemy.getHeight()) + (int) enemy.getHeight());
 			enemies.add(enemy);
-			enemies.get(enemies.size() - 1).xSpeed = -3;
+			enemies.get(enemies.size() - 1).xSpeed = StateManager.CurrentLevel.Speed();
 			_allSprites.add(enemy);
 			timeSinceLastEnemySpawn = 0;
 		}
@@ -244,7 +245,7 @@ public class GameScreen extends BaseScreen {
 						_allSprites.remove(enemy);
 						enemies.remove(enemy);
 						i--;
-						
+						enemyDeaths++;
 					}
 					
 					Ship.removeBulletFromScreen(j);

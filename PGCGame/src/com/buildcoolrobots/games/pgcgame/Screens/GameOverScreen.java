@@ -47,9 +47,9 @@ public class GameOverScreen extends BaseScreen {
 	public void update(float deltatime) {
 		super.update(deltatime);
 		accuracyBonus = (int) StateManager.getAccuracyPercentage();
-		if (StateManager.getAccuracyPercentage() >= 50 && StateManager.getAccuracyPercentage() < 100){
+		if (StateManager.getAccuracyPercentage() >= 40 && StateManager.getAccuracyPercentage() < 95){
 			accuracyBonus *= 10;
-		} else if (StateManager.getAccuracyPercentage() == 100) {
+		} else if (StateManager.getAccuracyPercentage() >= 95) {
 			accuracyBonus = 5000;
 		} else {
 			accuracyBonus = 0;
