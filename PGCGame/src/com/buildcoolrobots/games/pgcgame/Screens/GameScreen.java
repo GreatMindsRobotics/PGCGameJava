@@ -122,6 +122,10 @@ public class GameScreen extends BaseScreen {
 	public void update(float deltaTime) {
 		super.update(deltaTime);
 		
+		
+		
+		
+		
 		Score.setText(String.format("Score: %s", score));
 		
 		timeSinceLastFire += deltaTime;
@@ -137,7 +141,7 @@ public class GameScreen extends BaseScreen {
 			}
 			enemy.setPosition(Gdx.graphics.getWidth(), randomNum.nextInt(Gdx.graphics.getHeight() - 2* (int) enemy.getHeight() - (int) enemy.getHeight()) + (int) enemy.getHeight());
 			enemies.add(enemy);
-			enemies.get(enemies.size() - 1).xSpeed = -2;
+			enemies.get(enemies.size() - 1).xSpeed = -2*(StateManager.getLevel().Speed());
 			_allSprites.add(enemy);
 			timeSinceLastEnemySpawn = 0;
 		}
