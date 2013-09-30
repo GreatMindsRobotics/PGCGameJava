@@ -16,6 +16,7 @@ import com.buildcoolrobots.games.pgcgame.CoreTypes.BaseScreen;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.DPad;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameLevel;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ShipTypes;
 import com.buildcoolrobots.games.pgcgame.Ships.BaseShip;
@@ -122,8 +123,19 @@ public class GameScreen extends BaseScreen {
 	public void update(float deltaTime) {
 		super.update(deltaTime);
 		
-		
-		
+		if (enemyDeaths < 2){
+			StateManager.setLevel(GameLevel.LEVEL1);
+		} else if (enemyDeaths >= 2 && enemyDeaths < 4) {
+			StateManager.setLevel(GameLevel.LEVEL2);
+		} else if (enemyDeaths >= 4 && enemyDeaths < 6) {
+			StateManager.setLevel(GameLevel.LEVEL3);
+		} else if (enemyDeaths >= 6 && enemyDeaths < 8) {
+			StateManager.setLevel(GameLevel.LEVEL4);
+		} else if (enemyDeaths >= 8 && enemyDeaths < 10) {
+			StateManager.setLevel(GameLevel.LEVEL5);
+		} else if (enemyDeaths >= 10) {
+			StateManager.SwitchScreen(ScreenType.GAMEOVERSCREEN);
+		}
 		
 		
 		Score.setText(String.format("Score: %s", score));
@@ -271,6 +283,8 @@ public class GameScreen extends BaseScreen {
 		lives = 3;	
 		StateManager.bulletEnemyHits = 0;
 		StateManager.bulletsShot = 0;
+		StateManager.setLevel(GameLevel.LEVEL1);
+		enemyDeaths = 0;
 		
 		createLives();		
 	}

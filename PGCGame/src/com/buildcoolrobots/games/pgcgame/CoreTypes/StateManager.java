@@ -56,15 +56,10 @@ public abstract class StateManager {
 		return _level;
     }
     public static void setLevel(GameLevel level) {
-    	if (level != _level) {
-    		if (CurrentLevel == _level) {
-    			//_level++;
-    			
-    		}
-    		_level = level;
-    		// check if level completed?
-    	}
+    	_level = level;
+    	CurrentLevel = _level;
     }
+    
     public static ScreenType getScreenState() {
     	return _screenState;
     }

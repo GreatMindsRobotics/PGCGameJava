@@ -68,6 +68,7 @@ public class GameOverScreen extends BaseScreen {
 					
 					((GameScreen)StateManager.AllScreens.getScreen(ScreenType.GAMESCREEN)).Reset();
 				}
+		
 	}
 
 }
