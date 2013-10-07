@@ -14,6 +14,8 @@ public enum GameLevel implements IGameLevel{
 		_mapTexture = MapTexturePath == null ? null : new Texture(Gdx.files.internal(MapTexturePath));
 		_speed = speed;
 		_enemyDeaths = enemyDeaths;
+		_value1 = value1;
+		_value2 = value2;
 	}
 
 	private final Texture _mapTexture;
@@ -21,6 +23,10 @@ public enum GameLevel implements IGameLevel{
 	private final float _speed;
 	
 	private final int _enemyDeaths;
+	
+	private final int _value1;
+	
+	private final int _value2;
 	@Override
 	public Texture MapTexture() {
 		// TODO Auto-generated method stub
@@ -34,6 +40,14 @@ public enum GameLevel implements IGameLevel{
 	public float Speed()
 	{
 	    return _speed;	
+	}
+	
+	public int value1() {
+		return _value1;
+	}
+	
+	public int value2() {
+		return _value2;
 	}
 }
 	

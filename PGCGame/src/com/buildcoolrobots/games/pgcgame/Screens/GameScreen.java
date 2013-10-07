@@ -42,6 +42,7 @@ public class GameScreen extends BaseScreen {
 	ExtendedLabel xy;
 	ExtendedLabel Invincibility;
 	String coor = "0,0";
+	ExtendedLabel CurrentLevel;
 	
 	private int lives = 3;
 	
@@ -75,13 +76,17 @@ public class GameScreen extends BaseScreen {
 		Invincibility = new ExtendedLabel("Invincibility: On", GameImage.DEBUGFONT.ImageText());
 		Invincibility.setPosition(525, Gdx.graphics.getHeight() - 60);
 		
+		CurrentLevel = new ExtendedLabel("Level: 1", GameImage.CREDITFONT.ImageText());
+		CurrentLevel.setPosition(Gdx.graphics.getWidth()/2 - CurrentLevel.getWidth()/2 - 100, Gdx.graphics.getHeight() - 50);
+		CurrentLevel.setFontScale(.8f, .8f);
+		
 		xy = new ExtendedLabel(coor, GameImage.DEBUGFONT.ImageText());
 		xy.setPosition(525, Gdx.graphics.getHeight() - 30);
 		// xy.setFontScale(2,2);
 		
 		
 		Score = new ExtendedLabel("Score: 0", GameImage.CREDITFONT.ImageText());
-		Score.setPosition(Gdx.graphics.getWidth()/2 - Score.getWidth()/2, Gdx.graphics.getHeight() - 50);
+		Score.setPosition(Gdx.graphics.getWidth()/2 - Score.getWidth()/2 + 50, Gdx.graphics.getHeight() - 50);
 		Score.setFontScale(.8f,.8f);
 			
 		allSprites.add(xy);
@@ -93,6 +98,7 @@ public class GameScreen extends BaseScreen {
 		allSprites.add(FireButton);
 		allSprites.add(PauseButton);
 		allSprites.add(Score);
+		allSprites.add(CurrentLevel);
 		
 		// Save allSprites reference
 		_allSprites = allSprites;
@@ -100,6 +106,8 @@ public class GameScreen extends BaseScreen {
 		//Last, but not least - add lives!
 		createLives();				
 	}
+	
+
 
 	private void createLives() {
 		_livesShips = new ArrayList<BaseGameSprite>();				
@@ -123,22 +131,27 @@ public class GameScreen extends BaseScreen {
 	public void update(float deltaTime) {
 		super.update(deltaTime);
 		
-		if (enemyDeaths < 2){
+		if (enemyDeaths < 10){
 			StateManager.setLevel(GameLevel.LEVEL1);
-		} else if (enemyDeaths >= 2 && enemyDeaths < 4) {
+		} else if (enemyDeaths >= 10 && enemyDeaths < 20) {
 			StateManager.setLevel(GameLevel.LEVEL2);
-		} else if (enemyDeaths >= 4 && enemyDeaths < 6) {
+		} else if (enemyDeaths >= 20 && enemyDeaths < 30) {
 			StateManager.setLevel(GameLevel.LEVEL3);
-		} else if (enemyDeaths >= 6 && enemyDeaths < 8) {
+		} else if (enemyDeaths >= 30 && enemyDeaths < 40) {
 			StateManager.setLevel(GameLevel.LEVEL4);
-		} else if (enemyDeaths >= 8 && enemyDeaths < 10) {
+		} else if (enemyDeaths >= 40 && enemyDeaths < 50) {
 			StateManager.setLevel(GameLevel.LEVEL5);
-		} else if (enemyDeaths >= 10) {
+		} else if (enemyDeaths >= 50) {
 			StateManager.SwitchScreen(ScreenType.GAMEOVERSCREEN);
 		}
 		
 		
 		Score.setText(String.format("Score: %s", score));
+		
+		CurrentLevel.setText(String.format("Level: %s", StateManager.getIntLevel()));
+		
+		//CurrentLevel.setText(String.format("Level: %s", level));
+
 		
 		timeSinceLastFire += deltaTime;
 		timeSinceLastEnemySpawn += deltaTime;

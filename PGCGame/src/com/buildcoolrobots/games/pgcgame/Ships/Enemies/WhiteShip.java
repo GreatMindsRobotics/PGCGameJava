@@ -4,6 +4,7 @@ import me.pagekite.glen3b.gjlib.SpriteManager;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 
 public class WhiteShip extends BaseEnemyShip {
 
@@ -12,6 +13,6 @@ public class WhiteShip extends BaseEnemyShip {
 
 		health = 1;
 		
-		enemyValue = 100;
+		enemyValue = StateManager.CurrentLevel.value1();
 	}
 }

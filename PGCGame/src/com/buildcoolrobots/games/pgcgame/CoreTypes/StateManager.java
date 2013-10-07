@@ -77,7 +77,25 @@ public abstract class StateManager {
     	//Check for NaN (NaN != NaN... cool!)
     	return accuracy == accuracy ? accuracy : 0.0f; 
     }
-    
+	public static int getIntLevel(){
+		switch(CurrentLevel){
+		
+			case LEVEL1:{
+				return 1;
+			}
+			case LEVEL2:{
+				return 2;
+			} case LEVEL3:{
+				return 3;
+			} case LEVEL4:{
+				return 4;
+			} case LEVEL5:{
+				return 5;
+			}
+			
+		}
+		return 0;
+	}
     public static int getSpaceBucks() {
     	return _spaceBucks;
     }

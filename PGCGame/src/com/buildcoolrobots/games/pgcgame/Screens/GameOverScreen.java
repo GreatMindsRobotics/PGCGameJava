@@ -49,7 +49,7 @@ public class GameOverScreen extends BaseScreen {
 		accuracyBonus = (int) StateManager.getAccuracyPercentage();
 		if (StateManager.getAccuracyPercentage() >= 40 && StateManager.getAccuracyPercentage() < 95){
 			accuracyBonus *= 10;
-		} else if (StateManager.getAccuracyPercentage() >= 95) {
+		} else if (StateManager.getAccuracyPercentage() >= 90) {
 			accuracyBonus = 5000;
 		} else {
 			accuracyBonus = 0;
