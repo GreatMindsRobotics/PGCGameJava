@@ -16,7 +16,7 @@ public class TransitionScreen extends BaseScreen {
 	ExtendedSprite scrollingDoor;
 	ExtendedSprite ship;
 
-	private final int scrollingSpeed = 2;
+	private final int scrollingSpeed = 4;
 
 	public TransitionScreen(SpriteManager allSprites, SpriteBatch target,
 			ScreenType screenType) {
@@ -53,7 +53,7 @@ public class TransitionScreen extends BaseScreen {
 			StateManager.SwitchScreen(ScreenType.GAMESCREEN);
 		}
 		
-		if (ship.getX() > 50 && ship.getX() < Gdx.graphics.getWidth()) {
+		if (ship.getX() > 300 && ship.getX() < Gdx.graphics.getWidth()) {
 			ship.xSpeed *= 1.035f;
 			ship.ySpeed *= 0;
 			if (ship.getRotation() >= 1) {

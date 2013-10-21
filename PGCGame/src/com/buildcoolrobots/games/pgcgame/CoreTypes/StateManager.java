@@ -35,7 +35,6 @@ public abstract class StateManager {
     public static boolean IsWSFirstUpdate = true;
     public static final Rectangle WorldSize = new Rectangle(0, 0, (Gdx.graphics.getWidth()) * 5, Gdx.graphics.getHeight());
     public static ScreenManager AllScreens = new ScreenManager();
-    
     public static ShipTypes SelectedShip;
     //public static ShipTier SelectedTier;
 

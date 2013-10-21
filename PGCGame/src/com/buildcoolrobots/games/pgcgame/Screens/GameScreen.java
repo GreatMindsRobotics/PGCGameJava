@@ -43,6 +43,7 @@ public class GameScreen extends BaseScreen {
 	ExtendedLabel Invincibility;
 	String coor = "0,0";
 	ExtendedLabel CurrentLevel;
+	ExtendedLabel Overheating;
 	
 	private int lives = 3;
 	
@@ -52,7 +53,15 @@ public class GameScreen extends BaseScreen {
 	
 	float timeSinceLastFire = 0;
 	final float fireDelay = 0.150f;
-
+	
+	
+	int energy = 100;
+	float elapsedRegenRate = 0;
+	//todo: make final regenRate
+	float regenRate = 0.1f;
+	
+	private boolean isOverheating = false;
+	
 	float timeSinceLastEnemySpawn = 0;
 	final float enemySpawnTimer = 2;
 
@@ -88,7 +97,11 @@ public class GameScreen extends BaseScreen {
 		Score = new ExtendedLabel("Score: 0", GameImage.CREDITFONT.ImageText());
 		Score.setPosition(Gdx.graphics.getWidth()/2 - Score.getWidth()/2 + 50, Gdx.graphics.getHeight() - 50);
 		Score.setFontScale(.8f,.8f);
-			
+		
+		Overheating = new ExtendedLabel("Energy: 100", GameImage.CREDITFONT.ImageText());
+		Overheating.setPosition(Gdx.graphics.getWidth()/2 + 150, Gdx.graphics.getHeight() - 50);
+		Overheating.setFontScale(.8f,.8f);
+		
 		allSprites.add(xy);
 		if (StateManager.DebugData.Invincible) {
 			allSprites.add(Invincibility);
@@ -99,6 +112,7 @@ public class GameScreen extends BaseScreen {
 		allSprites.add(PauseButton);
 		allSprites.add(Score);
 		allSprites.add(CurrentLevel);
+		allSprites.add(Overheating);
 		
 		// Save allSprites reference
 		_allSprites = allSprites;
@@ -130,6 +144,9 @@ public class GameScreen extends BaseScreen {
 	
 	public void update(float deltaTime) {
 		super.update(deltaTime);
+		
+		
+		Overheating.setText(String.format("Energy: %d", energy));
 		
 		if (enemyDeaths < 10){
 			StateManager.setLevel(GameLevel.LEVEL1);
@@ -213,26 +230,37 @@ public class GameScreen extends BaseScreen {
 
 		boolean isShooting = false;
 
-		for (int i = 0; i < 2; i++) {
-
+		for (int i = 0; i < 2; i++) 
+		{
+			
 			if (Gdx.input.isTouched(i)
 					&& Gdx.input.getX(i) >= FireButton.getX()
 					&& Gdx.input.getX(i) <= FireButton.getX() + FireButton.getWidth()
 					&& Gdx.graphics.getHeight() - Gdx.input.getY(i) >= FireButton.getY()
-					&& Gdx.graphics.getHeight() - Gdx.input.getY(i) <= FireButton.getY() + FireButton.getHeight()) {
+					&& Gdx.graphics.getHeight() - Gdx.input.getY(i) <= FireButton.getY() + FireButton.getHeight()) 
+			{
 
-				if (timeSinceLastFire >= fireDelay) {
+				if (timeSinceLastFire >= fireDelay && !isOverheating) 
+				{
 					Ship.shoot();
-
+					energy--;
+					
+					if (energy <= 0) {
+						isOverheating = true;
+					}
+					
 					FireButton.setColor(Color.PINK);
 					timeSinceLastFire = 0;
 				}
 
 				isShooting = true;
 				break;
-			} else {
+			} 
+			else 
+			{
 				isShooting = false;
 			}
+			
 
 			if (Gdx.input.isTouched(i)
 					&& Gdx.input.getX(i) >= PauseButton.getX()
@@ -245,8 +273,25 @@ public class GameScreen extends BaseScreen {
 
 		if (!isShooting) {
 			FireButton.setColor(Color.WHITE);
-			isShooting = true;
+			isShooting = true;//useless
+			isShooting = false;
+			
+			elapsedRegenRate += deltaTime;
+			if(elapsedRegenRate >= regenRate){
+				elapsedRegenRate = 0;
+				
+				if(energy < 100){
+					energy++;
+					
+					if (energy >= 20) {
+						isOverheating = false;
+					}
+				}
+			}
 		}
+		
+		
+		
 
 		if (Gdx.input.isTouched()
 				&& Gdx.input.getX() >= PauseButton.getX()
@@ -279,11 +324,14 @@ public class GameScreen extends BaseScreen {
 					
 					Ship.removeBulletFromScreen(j);
 					j--;
-					
-					
 				}
 			}
 		}
+		
+		
+		
+		
+		
 	}
 	
 	public void Reset() { 

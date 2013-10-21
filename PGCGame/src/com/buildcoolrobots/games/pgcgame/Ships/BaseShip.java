@@ -74,7 +74,7 @@ public class BaseShip extends BaseGameSprite {
 		
 		case NORTH:
 			if(getY() + getHeight() < Gdx.graphics.getHeight()) {
-				ySpeed = 5;
+				ySpeed = 10;
 			} else {
 				ySpeed = 0;
 			}
@@ -84,12 +84,12 @@ public class BaseShip extends BaseGameSprite {
         
 		case NORTHEAST:
 			if(getX() + getTexture().getWidth() < Gdx.graphics.getWidth()){
-				xSpeed = 5;
+				xSpeed = 10;
 			} else {
 				xSpeed = 0;
 			}
 			if(getY() + getTexture().getHeight() < Gdx.graphics.getHeight()){
-				ySpeed = 5;
+				ySpeed = 10;
 			}
 			else{
 				ySpeed = 0;
@@ -99,7 +99,7 @@ public class BaseShip extends BaseGameSprite {
 		
 		case EAST:
 			if(getX() + getTexture().getWidth() < Gdx.graphics.getWidth()){
-				xSpeed = 5;
+				xSpeed = 10;
 			}
 			else{
 				xSpeed = 0;
@@ -110,12 +110,12 @@ public class BaseShip extends BaseGameSprite {
         
 		case SOUTHEAST:
 			if(getX() + getTexture().getWidth() < Gdx.graphics.getWidth()){
-				xSpeed = 5;
+				xSpeed = 10;
 			} else {
 				xSpeed = 0;
 			}
 			if(getY() > 0){
-				ySpeed = -5;
+				ySpeed = -10;
 
 			} else {
 				ySpeed = 0;
@@ -124,7 +124,7 @@ public class BaseShip extends BaseGameSprite {
 		
 		case SOUTH:
 			if(getY() > 0){
-				ySpeed = -5;
+				ySpeed = -10;
 			} else {
 				ySpeed = 0;
 			}
@@ -133,12 +133,12 @@ public class BaseShip extends BaseGameSprite {
 		
 		case SOUTHWEST:
 			if(getX() > 0){
-				xSpeed = -5;
+				xSpeed = -10;
 			} else {
 				xSpeed = 0;
 			}
 			if(getY()  > 0){
-				ySpeed = -5;
+				ySpeed = -10;
 			} else {
 				ySpeed = 0;
 			}
@@ -147,7 +147,7 @@ public class BaseShip extends BaseGameSprite {
 		
 		case WEST:
 			if(getX() > 0){
-				xSpeed = -5;
+				xSpeed = -10;
 			}
 			else{
 				xSpeed = 0;
@@ -158,13 +158,13 @@ public class BaseShip extends BaseGameSprite {
 
 		case NORTHWEST:
 			if(getX() > 0){
-				xSpeed = -5;
+				xSpeed = -10;
 			}
 			else{
 				xSpeed = 0;
 			}
 			if(getY() + getHeight() < Gdx.graphics.getHeight()){
-					ySpeed = 5;
+					ySpeed = 10;
 			}
 			else{
 				ySpeed = 0;
