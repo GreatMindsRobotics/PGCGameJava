@@ -17,8 +17,12 @@ import com.buildcoolrobots.games.pgcgame.CoreTypes.DPad;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameLevel;
+import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GamePowerup;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ShipTypes;
+import com.buildcoolrobots.games.pgcgame.Powerups.BasePowerup;
+import com.buildcoolrobots.games.pgcgame.Powerups.LifePowerup;
+import com.buildcoolrobots.games.pgcgame.Powerups.ShieldPowerup;
 import com.buildcoolrobots.games.pgcgame.Ships.BaseShip;
 import com.buildcoolrobots.games.pgcgame.Ships.Allies.PlayerShip;
 import com.buildcoolrobots.games.pgcgame.Ships.Bullets.Bullet;
@@ -53,7 +57,7 @@ public class GameScreen extends BaseScreen {
 	
 	float timeSinceLastFire = 0;
 	final float fireDelay = 0.150f;
-	
+	private ArrayList<BasePowerup> _AllPowerups;
 	
 	int energy = 100;
 	float elapsedRegenRate = 0;
@@ -71,7 +75,9 @@ public class GameScreen extends BaseScreen {
 	public GameScreen(SpriteManager allSprites, SpriteBatch spriteBatch,
 			ScreenType screenType) {
 		super(allSprites, spriteBatch, screenType);
-
+		
+		_AllPowerups = new ArrayList<BasePowerup>();
+		
 		EnemyTextures[0] = ShipTypes.ENEMYDRONE1.GameTexture();
 		EnemyTextures[1] = ShipTypes.ENEMYDRONE2.GameTexture();
 
@@ -118,7 +124,7 @@ public class GameScreen extends BaseScreen {
 		_allSprites = allSprites;
 
 		//Last, but not least - add lives!
-		createLives();				
+		createLives();		
 	}
 	
 
@@ -315,11 +321,22 @@ public class GameScreen extends BaseScreen {
 					enemy.isShot();
 					
 					if (enemy.isDead()) {
+						//TODO: Powerup
+						int powerupchance = randomNum.nextInt(3);
+						if (powerupchance == 0) {
+							_AllPowerups.add(new LifePowerup());
+						} else if (powerupchance == 1) {
+							_AllPowerups.add(new ShieldPowerup());
+						}
+						if (powerupchance < 2){
+							_AllPowerups.get(_AllPowerups.size() - 1).setPosition(enemy.getX(), enemy.getY());
+							_allSprites.add(_AllPowerups.get(_AllPowerups.size() - 1));
+						}
 						score += enemy.EnemyValue();
 						_allSprites.remove(enemy);
 						enemies.remove(enemy);
 						i--;
-						enemyDeaths++;
+						enemyDeaths++;				
 					}
 					
 					Ship.removeBulletFromScreen(j);
@@ -327,6 +344,8 @@ public class GameScreen extends BaseScreen {
 				}
 			}
 		}
+		
+
 		
 		
 		
@@ -336,6 +355,8 @@ public class GameScreen extends BaseScreen {
 	
 	public void Reset() { 
 		_allSprites.removeAll(enemies);
+		_allSprites.removeAll(_AllPowerups);
+		_AllPowerups.clear();
 		enemies.clear();
 		Ship.clearBullets();
 		Ship.setPosition(100, Gdx.graphics.getHeight() / 2 - ShipTypes.PLAYERSHIP.GameTexture().getHeight() / 2);
@@ -346,7 +367,6 @@ public class GameScreen extends BaseScreen {
 		StateManager.bulletsShot = 0;
 		StateManager.setLevel(GameLevel.LEVEL1);
 		enemyDeaths = 0;
-		
 		createLives();		
 	}
 }

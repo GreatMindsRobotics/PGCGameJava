@@ -5,8 +5,8 @@ import com.badlogic.gdx.graphics.Texture;
 
 public enum GamePowerup implements IGamePowerup{
 	
-	EXTRA_LIFE(null, "extra life"),
-	SHIELD(null, "shield");
+	EXTRA_LIFE("Images/Powerups/LifePowerup.png", "extra life"),
+	SHIELD("Images/Powerups/ShieldPowerup.png", "shield");
 	
 	private GamePowerup(String PowerupTextureFileName, String PowerupName) {
 		_PowerupTexture = PowerupTextureFileName == null ? null : new Texture(Gdx.files.internal(PowerupTextureFileName));
