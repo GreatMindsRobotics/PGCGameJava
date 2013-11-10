@@ -17,7 +17,6 @@ import com.buildcoolrobots.games.pgcgame.CoreTypes.DPad;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameImage;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GameLevel;
-import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.GamePowerup;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ScreenType;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.Enums.ShipTypes;
 import com.buildcoolrobots.games.pgcgame.Powerups.BasePowerup;
@@ -308,6 +307,21 @@ public class GameScreen extends BaseScreen {
 			StateManager.SwitchScreen(ScreenType.PAUSESCREEN);
 		}
 
+		for (int i = 0; i < _AllPowerups.size(); i++) {
+			if (_AllPowerups.get(i).getX() >= Gdx.graphics.getWidth()) {
+				_AllPowerups.remove(i);
+				i--;
+			}
+			else if (_AllPowerups.get(i).getX() <= Ship.getX() + Ship.getWidth()
+					&& _AllPowerups.get(i).getX() + _AllPowerups.get(i).getWidth() >= Ship.getX() + Ship.getWidth()
+					&& _AllPowerups.get(i).getY() <= Ship.getY() + Ship.getHeight()
+					&& _AllPowerups.get(i).getY() >= Ship.getY()) {
+				_AllPowerups.get(i).usePowerUp();
+				_AllPowerups.remove(i);
+				i--;
+			}
+		}
+		
 		for (int i = 0; i < enemies.size(); i++) {
 			BaseEnemyShip enemy = enemies.get(i);
 			for (int j = 0; j < Ship.getListBulletSize(); j++) {
@@ -321,7 +335,7 @@ public class GameScreen extends BaseScreen {
 					enemy.isShot();
 					
 					if (enemy.isDead()) {
-						//TODO: Powerup
+						//TODO: Finish Powerups
 						int powerupchance = randomNum.nextInt(3);
 						if (powerupchance == 0) {
 							_AllPowerups.add(new LifePowerup());

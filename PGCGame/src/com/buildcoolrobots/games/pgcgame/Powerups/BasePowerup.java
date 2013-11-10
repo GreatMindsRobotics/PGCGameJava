@@ -14,4 +14,12 @@ public abstract class BasePowerup extends BaseGameSprite {
 		
 	}
 	
+	public void update(float deltaTime) {
+		super.update(deltaTime);
+		this.xSpeed = 1;
+	}
+	
+	public void usePowerUp() {
+		
+	}
 }
