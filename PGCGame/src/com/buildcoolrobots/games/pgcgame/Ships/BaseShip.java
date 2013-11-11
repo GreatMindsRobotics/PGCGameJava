@@ -16,7 +16,7 @@ import com.buildcoolrobots.games.pgcgame.Ships.Bullets.Bullet;
 public class BaseShip extends BaseGameSprite {
 
 	protected Vector2 _movementSpeed;
-	private ArrayList<Bullet> _bullets;	
+	protected ArrayList<Bullet> _bullets;	
 	SpriteManager _spriteManager;
 	
 	public BaseShip(Vector2 position, Texture texture, SpriteManager allSprites) {
@@ -34,7 +34,7 @@ public class BaseShip extends BaseGameSprite {
 	}
 	
 	public void shoot() {
-		 _bullets.add (new Bullet(new Vector2(getX() + getWidth() - 20, getY() + getHeight()/2 - 6), 10));		
+		 _bullets.add(new Bullet(new Vector2(getX() + getWidth() - 20, getY() + getHeight()/2 - 6), 10));		
 	}
 
 	@Override

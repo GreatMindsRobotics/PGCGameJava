@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.buildcoolrobots.games.pgcgame.CoreTypes.StateManager;
 
-public class RedFighterShip extends BaseEnemyShip {
+public class RedFighterShip extends BaseEnemyFighterShip {
 
 	
 	public RedFighterShip(Vector2 position, Texture texture, SpriteManager allSprites) {
