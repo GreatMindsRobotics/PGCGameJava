@@ -4,18 +4,19 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
 public enum GameLevel implements IGameLevel{
-	LEVEL1 (null, 1f, 100, 200, 0),
-	LEVEL2 (null, 1.5f, 150, 250, 10),
-	LEVEL3 (null, 2f, 200, 300, 20),
-	LEVEL4 (null, 2.5f, 250, 350, 30),
-	LEVEL5 (null, 3f, 300, 400, 40);
+	LEVEL1 (null, 1f, 100, 200, 300, 0),
+	LEVEL2 (null, 1.5f, 150, 250, 350, 10),
+	LEVEL3 (null, 2f, 200, 300, 400, 20),
+	LEVEL4 (null, 2.5f, 250, 350, 450, 30),
+	LEVEL5 (null, 3f, 300, 400, 500, 40);
 	
-	private GameLevel(String MapTexturePath, float speed, int value1, int value2, int enemyDeaths) {
+	private GameLevel(String MapTexturePath, float speed, int value1, int value2, int value3, int enemyDeaths) {
 		_mapTexture = MapTexturePath == null ? null : new Texture(Gdx.files.internal(MapTexturePath));
 		_speed = speed;
 		_enemyDeaths = enemyDeaths;
 		_value1 = value1;
 		_value2 = value2;
+		_value3 = value3;
 	}
 
 	private final Texture _mapTexture;
@@ -27,6 +28,8 @@ public enum GameLevel implements IGameLevel{
 	private final int _value1;
 	
 	private final int _value2;
+	
+	private final int _value3;
 	@Override
 	public Texture MapTexture() {
 		// TODO Auto-generated method stub
@@ -48,6 +51,10 @@ public enum GameLevel implements IGameLevel{
 	
 	public int value2() {
 		return _value2;
+	}
+	
+	public int value3() {
+		return _value3;
 	}
 }
 	

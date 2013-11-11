@@ -26,12 +26,13 @@ import com.buildcoolrobots.games.pgcgame.Ships.BaseShip;
 import com.buildcoolrobots.games.pgcgame.Ships.Allies.PlayerShip;
 import com.buildcoolrobots.games.pgcgame.Ships.Bullets.Bullet;
 import com.buildcoolrobots.games.pgcgame.Ships.Enemies.BaseEnemyShip;
+import com.buildcoolrobots.games.pgcgame.Ships.Enemies.RedFighterShip;
 import com.buildcoolrobots.games.pgcgame.Ships.Enemies.RedShip;
 import com.buildcoolrobots.games.pgcgame.Ships.Enemies.WhiteShip;
 
 
 public class GameScreen extends BaseScreen {
-	Texture[] EnemyTextures = new Texture[2];
+	Texture[] EnemyTextures = new Texture[3];
 	
 	public int enemyDeaths = 0;
 	
@@ -79,6 +80,7 @@ public class GameScreen extends BaseScreen {
 		
 		EnemyTextures[0] = ShipTypes.ENEMYDRONE1.GameTexture();
 		EnemyTextures[1] = ShipTypes.ENEMYDRONE2.GameTexture();
+		EnemyTextures[2] = ShipTypes.ENEMYDRONE3.GameTexture();
 
 		enemies = new ArrayList<BaseEnemyShip>();
 		Ship = new PlayerShip(new Vector2(100, Gdx.graphics.getHeight() / 2 - ShipTypes.PLAYERSHIP.GameTexture().getHeight() / 2),ShipTypes.PLAYERSHIP.GameTexture(), allSprites);
@@ -179,13 +181,19 @@ public class GameScreen extends BaseScreen {
 		timeSinceLastEnemySpawn += deltaTime;
 
 		if (timeSinceLastEnemySpawn >= enemySpawnTimer) {
-			BaseEnemyShip enemy;			
-			if (randomNum.nextInt(10) > 1) {
+			BaseEnemyShip enemy;		
+			int num = randomNum.nextInt(10);
+			if (num > 7) {
 				enemy = new WhiteShip(new Vector2(0, 0), EnemyTextures[1], getAllSprites());
 			}
-			else {
+			else if(num > 3) {
 				enemy = new RedShip(new Vector2(0, 0), EnemyTextures[0], getAllSprites());
 			}
+			else
+			{
+				enemy = new RedFighterShip(new Vector2(0, 0), EnemyTextures[2], getAllSprites());
+			}
+			//TODO: REHAAN IS AWESOme
 			enemy.setPosition(Gdx.graphics.getWidth(), randomNum.nextInt(Gdx.graphics.getHeight() - 2* (int) enemy.getHeight() - (int) enemy.getHeight()) + (int) enemy.getHeight());
 			enemies.add(enemy);
 			enemies.get(enemies.size() - 1).xSpeed = -2*(StateManager.getLevel().Speed());

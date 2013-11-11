@@ -6,7 +6,8 @@ import com.badlogic.gdx.graphics.Texture;
 public enum ShipTypes implements IGameObject {
 	PLAYERSHIP ("Player's Ship", "Images/Player/PlayerShip.png", null),
 	ENEMYDRONE1 ("Enemy Drone Tier 1", "Images/Enemies/EnemyDrone.png", "Images/Enemies/EnemyDrone.png"),
-	ENEMYDRONE2 ("Enemy Drone Tier 2", "Images/Enemies/EnemyDrone2.png", "Images/Enemies/EnemyDrone2.png");
+	ENEMYDRONE2 ("Enemy Drone Tier 2", "Images/Enemies/EnemyDrone2.png", "Images/Enemies/EnemyDrone2.png"),
+	ENEMYDRONE3 ("Enemy Drone Tier 3", "Images/Enemies/EnemyDrone3.png", "Images/Enemies/EnemyDrone3.png");
 
 	private final String _displayName;
 	private final Texture _shopTexture;
