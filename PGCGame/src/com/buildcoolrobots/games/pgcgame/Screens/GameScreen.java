@@ -316,7 +316,16 @@ public class GameScreen extends BaseScreen {
 					&& _AllPowerups.get(i).getX() + _AllPowerups.get(i).getWidth() >= Ship.getX() + Ship.getWidth()
 					&& _AllPowerups.get(i).getY() <= Ship.getY() + Ship.getHeight()
 					&& _AllPowerups.get(i).getY() >= Ship.getY()) {
-				_AllPowerups.get(i).usePowerUp();
+				
+				
+				if(_AllPowerups.get(i).getPowerUp().PowerupName().equals("extra life"))
+				{
+					lives++;							
+					_allSprites.removeAll(_livesShips);
+					createLives();
+				}
+				
+				_allSprites.remove(_AllPowerups.get(i));
 				_AllPowerups.remove(i);
 				i--;
 			}
@@ -339,11 +348,14 @@ public class GameScreen extends BaseScreen {
 						int powerupchance = randomNum.nextInt(3);
 						if (powerupchance == 0) {
 							_AllPowerups.add(new LifePowerup());
+							
 						} else if (powerupchance == 1) {
 							_AllPowerups.add(new ShieldPowerup());
+							_AllPowerups.get(_AllPowerups.size() - 1).setPosition(Ship.getX(), Ship.getX());
 						}
 						if (powerupchance < 2){
 							_AllPowerups.get(_AllPowerups.size() - 1).setPosition(enemy.getX(), enemy.getY());
+
 							_allSprites.add(_AllPowerups.get(_AllPowerups.size() - 1));
 						}
 						score += enemy.EnemyValue();
