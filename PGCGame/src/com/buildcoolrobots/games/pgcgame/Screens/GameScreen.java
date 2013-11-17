@@ -50,6 +50,7 @@ public class GameScreen extends BaseScreen {
 	ExtendedLabel Overheating;
 	
 	private int lives = 3;
+	private int maxlives = 5;
 	
 	private ArrayList<BaseGameSprite> _livesShips; 
 
@@ -130,6 +131,14 @@ public class GameScreen extends BaseScreen {
 	
 
 
+	public void removeLives() {
+		for (int i = 0; i < lives; i++) {
+			_allSprites.remove(_livesShips.get(_livesShips.size() - 1));
+			_livesShips.remove(_livesShips.size() - 1);
+
+		}
+	}
+	
 	private void createLives() {
 		_livesShips = new ArrayList<BaseGameSprite>();				
 		
@@ -193,7 +202,6 @@ public class GameScreen extends BaseScreen {
 			{
 				enemy = new RedFighterShip(new Vector2(0, 0), EnemyTextures[2], getAllSprites());
 			}
-			//TODO: REHAAN IS AWESOme
 			enemy.setPosition(Gdx.graphics.getWidth(), randomNum.nextInt(Gdx.graphics.getHeight() - 2* (int) enemy.getHeight() - (int) enemy.getHeight()) + (int) enemy.getHeight());
 			enemies.add(enemy);
 			enemies.get(enemies.size() - 1).xSpeed = -2*(StateManager.getLevel().Speed());
@@ -212,13 +220,12 @@ public class GameScreen extends BaseScreen {
 
 				//Remove one life unless invincible
 				if (!StateManager.DebugData.Invincible) {
-					lives--;							
-					_allSprites.remove(_livesShips.get(_livesShips.size() - 1));
-					_livesShips.remove(_livesShips.size() - 1);
+					lives--;		
+					removeLives();
+					createLives();
 				}			
 				if (lives == 0) {
-					//TODO:Add Accuracy bonus to score delete joption import
-					//JOptionPane.showMessageDialog(null, bulletAccuracyPercentage);
+
 					StateManager.SwitchScreen(ScreenType.GAMEOVERSCREEN);
 					break;
 				}
@@ -328,7 +335,9 @@ public class GameScreen extends BaseScreen {
 				
 				if(_AllPowerups.get(i).getPowerUp().PowerupName().equals("extra life"))
 				{
-					lives++;							
+					if (lives < maxlives) {
+						lives++;
+					}
 					_allSprites.removeAll(_livesShips);
 					createLives();
 				}
